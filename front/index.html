@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="phaser/phaser.js"></script>
+<body>
+
+
+<script>
+    let game = new Phaser.Game(800, 600, Phaser.AUTO, '', {preload: preload, create: create, update: update});
+
+    function preload() {
+//        game.load.image('sky', 'assets/sky.jpg');
+        game.load.image('castle', 'assets/castle.jpg');
+        game.load.image('ground', 'assets/grass.png');
+        game.load.image('bullet', 'assets/bullet.png');
+        game.load.image('sauron', 'assets/sauron.png');
+        game.load.image('enemyBullet', 'assets/enemy-bullet.png');
+        game.load.spritesheet('kaboom', 'assets/explode.png', 128, 128);
+        game.load.spritesheet('magician', 'assets/magician.png', 68, 80);
+        game.load.audio('explosion', 'assets/audio/explosion.mp3');
+        game.load.audio('magic_shot', 'assets/audio/magic_shot.mp3');
+        game.load.audio('sauron_shot', 'assets/audio/sauron_shot.mp3');
+        game.load.atlas('win-button', 'assets/win-button.png','assets/win-button.json');
+        game.load.atlas('lose-button', 'assets/lose-button.png','assets/lose-button.json');
+    }
+
+    let playerLiveText;
+    let enemyLiveText;
+    let audioExplosion;
+    let magicShot;
+    let sauronShot;
+
+    let platforms;
+    let sauron;
+    let player;
+    let cursors;
+    let playerName = "Dinko";
+    let playerLive = 1000;
+    let playerLevel = 1;
+    let playerDamage = 100;
+    let totalPlayerDamage = 0;
+    let playerShoots = 0;
+
+    let bullets;
+    let sauronBulletTime = 0;
+    let bulletTime = 0;
+    let bullet;
+
+    let enemyName = "Pinko";
+    let enemyShootingLevel = 500;  //lower is faster
+    let enemyLevel = 1;
+    let enemyBullet;
+    let enemyDamage = 100;
+    let sauronEyeLive = 3500;
+    let sauronMovementSpeed = 3500;
+    let totalEnemyDamage = 0;
+    let enemyShoots = 0;
+    let shootedEnemyShots = 0;
+
+
+    function create() {
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+
+        game.add.sprite(0, 0, 'castle');
+        platforms = game.add.group();
+        platforms.enableBody = true;
+
+        let ground = platforms.create(0, game.world.height - 54, 'ground');
+        ground.scale.setTo(1.2, 1);
+        ground.body.immovable = true;
+
+
+        audioExplosion = game.add.audio('explosion');
+        magicShot = game.add.audio('magic_shot');
+        sauronShot = game.add.audio('sauron_shot');
+
+        bullets = game.add.group();
+        bullets.enableBody = true;
+        bullets.physicsBodyType = Phaser.Physics.ARCADE;
+        bullets.createMultiple(30, 'bullet');
+        bullets.setAll('anchor.x', 0.5);
+        bullets.setAll('anchor.y', 1);
+        bullets.setAll('outOfBoundsKill', true);
+        bullets.setAll('checkWorldBounds', true);
+
+        for (let i = 0; i < 20; i++) {
+            let b = bullets.create(0, 0, 'bullet');
+            b.name = 'bullet' + i;
+            b.exists = false;
+            b.visible = false;
+            b.checkWorldBounds = true;
+            b.events.onOutOfBounds.add(resetBullet, this);
+        }
+
+        // The enemy's bullets
+        enemyBullets = game.add.group();
+        enemyBullets.enableBody = true;
+        enemyBullets.physicsBodyType = Phaser.Physics.ARCADE;
+        enemyBullets.createMultiple(30, 'enemyBullet');
+        enemyBullets.setAll('anchor.x', 0.5);
+        enemyBullets.setAll('anchor.y', 1);
+        enemyBullets.setAll('outOfBoundsKill', true);
+        enemyBullets.setAll('checkWorldBounds', true);
+
+
+        // The player and its settings
+        player = game.add.sprite(32, game.world.height - 150, 'magician');
+
+        //  We need to enable physics on the player
+        game.physics.arcade.enable(player);
+
+        //  Player physics properties. Give the little guy a slight bounce.
+        player.body.bounce.y = 0.2;
+        player.body.gravity.y = 400;
+        player.body.collideWorldBounds = true;
+
+        //  Our two animations, walking left and right.
+        player.animations.add('left', [0, 1, 2, 3], 10, true);
+        player.animations.add('right', [5, 6, 7, 8], 10, true);
+
+        sauron = game.add.group();
+        sauron.enableBody = true;
+        sauron.physicsBodyType = Phaser.Physics.ARCADE;
+        game.physics.arcade.enable(sauron);
+
+        createSauronEye(sauron);
+
+        player.alive = true;
+        sauron.alive = true;
+
+
+        let style = {font: "20px Courier", fill: "#fffcec", tabs: 0,fontWeight : 'bold'};
+        playerLiveText = game.add.text(30, 573, `Player Health: ${playerLive}`, style);
+        playerLiveText.strokeThickness = 6;
+        enemyLiveText = game.add.text(550, 573, `Enemy Health: ${sauronEyeLive}`, style)
+        enemyLiveText.strokeThickness = 6;
+    }
+
+
+    function update() {
+
+        //  Collide the player and the stars with the platforms
+        let hitPlatform = game.physics.arcade.collide(player, platforms);
+        cursors = game.input.keyboard.createCursorKeys();
+
+        player.body.velocity.x = 0;
+
+        if (cursors.left.isDown) {
+            //  Move to the left
+            player.body.velocity.x = -150;
+            player.animations.play('left');
+        }
+        else if (cursors.right.isDown) {
+            //  Move to the right
+            player.body.velocity.x = 150;
+            player.animations.play('right');
+        }
+        else {
+            //  Stand still
+            player.animations.stop();
+            player.frame = 4;
+        }
+
+        if (game.time.now > sauronBulletTime) {
+            sauronFire();
+        }
+
+        //  Allow the player to jump if they are touching the ground.
+        if (cursors.up.isDown && player.body.touching.down && hitPlatform) {
+            player.body.velocity.y = -350;
+        }
+
+        if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+            fireBullet();
+        }
+        playerLiveText.text = `${playerName} health: ${playerLive}`;
+        enemyLiveText.text = `${enemyName} health: ${sauronEyeLive}`;
+        game.physics.arcade.overlap(bullets, sauron, playerHitEnemy, null, this);
+        game.physics.arcade.overlap(enemyBullets, player, enemyHitsPlayer, null, this);
+    }
+
+    function sauronFire() {
+        enemyBullet = enemyBullets.getFirstExists(false);
+
+        if (enemyBullet && sauronEyeLive > 0) {
+
+            if(shootedEnemyShots % 3 == 0){
+                            sauronShot.play();
+            }
+            // And fire the bullet from this enemy
+            enemyBullet.reset(sauron.x, sauron.y);
+            game.physics.arcade.moveToObject(enemyBullet, player, 120);
+            sauronBulletTime = game.time.now + enemyShootingLevel;
+            shootedEnemyShots++;
+        }
+    }
+
+    function fireBullet() {
+
+        if (game.time.now > bulletTime) {
+            bullet = bullets.getFirstExists(false);
+
+            if (bullet) {
+                magicShot.play();
+                bullet.reset(player.x + 6, player.y - 8);
+                bullet.body.velocity.y = -400;
+                bulletTime = game.time.now + 150;
+            }
+        }
+    }
+
+
+    function enemyHitsPlayer(player, bullet) {
+
+        createKaboom(player.x + 80, player.y - 50);
+        playerLive = playerLive - enemyDamage;
+        enemyShoots++;
+        totalEnemyDamage += enemyDamage;
+        if (player.alive && playerLive <= 0) {
+
+            player.alive = false;
+            player.kill();
+            bullets.children = [];
+            gameOver();
+        }
+        audioExplosion.play();
+        bullet.kill();
+
+    }
+
+    function resetBullet(bullet) {
+        bullet.kill();
+    }
+    function playerHitEnemy(sauronEye, bullet) {
+
+        createKaboom(sauronEye.x, sauronEye.y);
+        sauronEyeLive = sauronEyeLive - playerDamage;
+        playerShoots++;
+        totalPlayerDamage += playerDamage;
+        if (sauron.alive && sauronEyeLive <= 0) {
+            sauron.alive = false;
+            sauronEye.kill();
+
+            gameWin();
+        }
+        audioExplosion.play();
+
+        bullet.kill();
+    }
+
+    function createSauronEye(sauronIn) {
+
+        sauron = sauronIn.create(1 * 48, 1 * 50, 'sauron');
+        sauron.anchor.setTo(0.5, 0.5);
+        sauron.animations.add('fly', [0,], 10, true);
+        sauron.play('fly');
+        sauron.body.moves = false;
+        sauron.x = 600;
+        sauron.y = 50;
+
+//          All this does is basically start the invaders moving. Notice we're moving the Group they belong to, rather than the invaders directly.
+        var tween = game.add.tween(sauron).to({x: 100}, sauronMovementSpeed, Phaser.Easing.Linear.None, true, 0, 1100, true);
+
+//          When the tween loops it calls descend
+        tween.onLoop.add(descend, this);
+    }
+
+    function descend() {
+        sauron.y += 10;
+    }
+
+    function createKaboom(x, y) {
+        kaboom = game.add.sprite(x - 100, y - 20, 'kaboom');
+        kaboom.animations.add('kaboom');
+        let anim = kaboom.animations.play('kaboom', 30, true);
+        anim.onLoop.add(kaboomValidator, this);
+
+    }
+
+    function kaboomValidator(sprite, animation) {
+        if (animation.loopCount > 1)
+            animation.loop = false;
+        sprite.kill();
+    }
+
+    function gameOver() {
+
+        let style = {font: "20px Courier", fill: "#fff", tabs: 100};
+
+        let headings = ['Player', 'Total Damage', 'Speed Level', 'Total Landed Shoots'];
+        text = game.add.text(32, 64, '', style);
+        text.parseList(headings);
+
+        let gameInfo = [
+            [playerName, totalPlayerDamage, playerLevel, playerShoots],
+            [enemyName, totalEnemyDamage, enemyLevel, enemyShoots],
+        ];
+
+        let style2 = {font: "20px Courier", fill: "#fff", tabs: 200};
+        let text2 = game.add.text(32, 120, '', style2);
+        text2.parseList(gameInfo);
+
+        let style3 = {font: "50px Courier", fill: "#fff", tabs: 200, align: 'center'};
+        let gameWinText = game.add.text(200, 220, `GAME OVER ${playerName}`, style3);
+
+        button = game.add.button(game.world.centerX - 95,300, 'lose-button', loseClick, this, 'out', 'over');
+
+    }
+
+    function gameWin() {
+        let style = {font: "20px Courier", fill: "#fff", tabs: 100};
+
+        let headings = ['Player', 'Total Damage', 'Speed Level', 'Total Landed Shoots'];
+        text = game.add.text(32, 64, '', style);
+        text.parseList(headings);
+
+        let gameInfo = [
+            [playerName, totalPlayerDamage, playerLevel, playerShoots],
+            [enemyName, totalEnemyDamage, enemyLevel, enemyShoots],
+        ];
+
+        let style2 = {font: "20px Courier", fill: "#fff", tabs: 200};
+        let text2 = game.add.text(32, 120, '', style2);
+        text2.parseList(gameInfo);
+
+        let style3 = {font: "50px Courier", fill: "#fff", tabs: 200, align: 'center'};
+        let gameWinText = game.add.text(200, 220, `YOU KILLED ${enemyName}`, style3);
+
+        button = game.add.button(game.world.centerX - 95,300, 'win-button', winClick, this, 'out', 'over');
+    }
+
+    function winClick() {
+
+    }
+
+    function loseClick() {
+        console.log(1221);
+    }
+    
+</script>
+
+</body>
+</html>

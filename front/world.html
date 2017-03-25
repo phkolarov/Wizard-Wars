@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script src="phaser/phaser.js"></script>
+
+<style>
+
+    html {
+        cursor: url("assets/world/cursor.png"), auto;
+    }
+
+
+</style>
+<body>
+
+
+<script>
+
+
+    let game = new Phaser.Game(992, 702, Phaser.CANVAS, 'phaser-example', {
+        preload: preload,
+        create: create,
+        update: update,
+        render: render
+    });
+    let type = 'red';
+    let pointerX;
+    let pointerY;
+
+
+    function preload() {
+
+        game.load.image('backdrop', 'assets/world/world.png');
+        game.load.spritesheet('cursor', 'assets/world/cursor.png', 64, 64);
+        game.load.spritesheet('magician_' + type, 'assets/player/magician_' + type + '.png', 68, 80);
+    }
+
+    let cursors;
+    let magician;
+    function create() {
+
+//        game.physics.enable()
+//        game.world.setBounds(0, 0, 992, 702);
+        game.add.sprite(0, 0, 'backdrop');
+
+        magician = game.add.sprite(game.world.centerX - 100, game.world.centerY, 'magician_' + type);
+        game.physics.arcade.enable(magician, Phaser.Physics.Arcade);
+
+
+//        magician.body.bounce.y = 0.2;
+//        magician.body.gravity.y = 400;
+//        magician.body.collideWorldBounds = true;
+
+
+        //  Our two animations, walking left and right.
+        magician.animations.add('left', [0, 1, 2, 3], 10, true);
+        magician.animations.add('right', [5, 6, 7, 8], 10, true);
+
+
+        cursors = game.input.keyboard.createCursorKeys();
+
+    }
+
+    function update() {
+
+
+        if (game.input.mousePointer.isDown) {
+            game.physics.arcade.moveToPointer(magician, 100);
+            pointerX = game.input.mousePointer.x;
+            pointerY = game.input.mousePointer.y;
+
+        }
+
+        if (magician.x >= pointerX - 20 && magician.x <= pointerX + 20 &&
+            magician.y >= pointerY - 20 && magician.y <= pointerY + 20) {
+            magician.animations.stop();
+            magician.body.velocity.setTo(0, 0);
+
+            magician.frame = 4;
+        }
+
+
+        if(magician.x > pointerX){
+            magician.animations.play('left')
+        }else if(magician.x < pointerX){
+            magician.animations.play('right')
+        }
+
+    }
+
+    function moveObjectToPointer(object) {
+
+        game.physics.arcade.moveToPointer(magician, 200);
+    }
+
+
+    function render() {
+
+//        game.debug.cameraInfo(game.camera, 500, 32);
+//        game.debug.spriteCoords(cursor, 32, 32);
+
+    }
+
+
+</script>
+
+</body>
+</html>

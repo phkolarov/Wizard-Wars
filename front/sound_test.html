@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<audio id="audio2" preload="auto" src="assets/audio/music/intro.mp3">
+
+</audio>
+
+<script>
+
+    let audio = new Audio('assets/audio/music/intro.mp3');
+    let duration = 116;
+    let playTime = 0;
+    console.log( parseInt(sessionStorage.playtime) )
+        audio.currentTime = parseInt(sessionStorage.playtime) || playTime;
+    audio.play();
+
+    setInterval(function () {
+
+        if(parseInt(sessionStorage.playtime) >= duration){
+            sessionStorage.playtime = 0;
+        }
+        let time = parseInt(sessionStorage.playtime);
+        sessionStorage.playtime = ++time;
+    },1000)
+
+</script>
+</body>
+</html>
+
+
