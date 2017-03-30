@@ -1,8 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
+    <div id="login_wrapper" class="">
 
+        <div class="row">
+           <div class="col-md-3 col-centered">
+               <form class="form" >
+                   <div class="form-group">
+                       <label>Login</label>
+                       <input type="text" class="form-control" placeholder="EMAIL ADDRESS">
+                   </div>
+                   <div class="form-group">
+                       <label>Password</label>
+                       <input type="password" class="form-control" placeholder="PASSWORD">
+                   </div>
+                   <div class="form-group">
+                       <input type="button" value="Login" class="btn btn-danger">
+                   </div>
+               </form>
+           </div>
+        </div>
     </div>
 {% endblock %}
 

@@ -1,0 +1,23 @@
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+#login_wrapper{
+    background: url("images/login_page.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    width:100%;
+    height:100%;
+    position: absolute;
+}
+
+#login_wrapper>div>div{
+
+    top: 501px;
+}
+#login_wrapper label{
+    color: white;
+}
