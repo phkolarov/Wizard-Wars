@@ -2,124 +2,70 @@
 
 namespace AppBundle\Entity;
 
-
-namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
+ * User
+ *
+ * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_8D93D649E7927C74", columns={"email"})}, indexes={@ORM\Index(name="FK_user_race", columns={"race"})})
  * @ORM\Entity
- * @UniqueEntity(fields="email", message="This email address is already in use")
  */
-class User implements UserInterface
+class User
 {
     /**
-     * @ORM\Id;
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    protected $id;
+    private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
-    protected $email;
+    private $email;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=64, nullable=false)
      */
-    protected $name;
+    private $password;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=50, nullable=false)
      */
-    protected $role;
+    private $role;
 
     /**
-     * @Assert\Length(max=4096)
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=40, nullable=false)
      */
-    protected $plainPassword;
+    private $name;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @var integer
+     *
+     * @ORM\Column(name="choosed_race", type="integer", nullable=true)
      */
-    protected $password;
+    private $choosedRace = '0';
 
-    public function eraseCredentials()
-    {
-        return null;
-    }
+    /**
+     * @var \Race
+     *
+     * @ORM\ManyToOne(targetEntity="Race")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="race", referencedColumnName="id")
+     * })
+     */
+    private $race;
 
-    public function getRole()
-    {
-        return $this->role;
-    }
 
-    public function setRole($role = null)
-    {
-        $this->role = $role;
-    }
-
-    public function getRoles()
-    {
-        return [$this->getRole()];
-    }
-
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function getUsername()
-    {
-        return $this->email;
-    }
-
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
-
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword($plainPassword)
-    {
-        $this->plainPassword = $plainPassword;
-    }
-
-    public function getSalt()
-    {
-        return null;
-    }
 }
+

@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,6 +35,18 @@ class SecurityController extends Controller
     /**
      * @Route("/login_check", name="security_login_check")
      */
+    public function checkForChoosenRace()
+    {
+
+        $usr= $this->get('security.context')->getToken()->getUser();
+
+        if($usr->chossed_race == null){
+            return $this->redirect("choose_race");
+        }else{
+            return $this->redirect("homepage");
+        }
+    }
+
     public function loginCheckAction()
     {
 

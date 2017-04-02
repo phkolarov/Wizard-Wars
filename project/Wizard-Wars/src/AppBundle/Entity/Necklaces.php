@@ -26,21 +26,21 @@ class Necklaces
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
-    private $name = '0';
+    private $name;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="attack_bonus", type="integer", nullable=false)
      */
-    private $attackBonus = '0';
+    private $attackBonus;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="health_bonus", type="integer", nullable=false)
      */
-    private $healthBonus = '0';
+    private $healthBonus;
 
 
 }

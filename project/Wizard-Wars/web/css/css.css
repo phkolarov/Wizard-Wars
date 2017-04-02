@@ -21,3 +21,17 @@
 #login_wrapper label{
     color: white;
 }
+
+@font-face {
+    font-family: magicFont;
+    src: url(assets/font/magic_font.ttf);
+}
+
+html {
+    cursor: url("assets/world/cursor.png"), auto;
+}
+
+body{
+    font-family: magicFont !important;
+}
+
