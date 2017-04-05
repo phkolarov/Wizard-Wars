@@ -24,11 +24,11 @@
 
 @font-face {
     font-family: magicFont;
-    src: url(assets/font/magic_font.ttf);
+    src: url(../assets/font/magic_font.ttf);
 }
 
 html {
-    cursor: url("assets/world/cursor.png"), auto;
+    cursor: url("../assets/world/cursor.png"), auto;
 }
 
 body{

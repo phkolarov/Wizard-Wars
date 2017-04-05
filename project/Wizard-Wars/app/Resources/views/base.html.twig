@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <meta name="csrf-token" id="csrf-token" value="{{ csrf_token('authenticate') }}">
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Wizard wars!{% endblock %}</title>
@@ -14,6 +15,7 @@
     <script src="js/libraries/phaser/phaser.js"></script>
     <script src="js/libraries/bootstrap/js/bootstrap.js"></script>
     <script src="js/app/app.js"></script>
+    <script src="js/app/helpers.js"></script>
 
     <body>
         {% block body %}{% endblock %}

@@ -129,11 +129,13 @@ html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
-  cursor: pointer;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
+
 }
 button[disabled],
 html input[disabled] {
-  cursor: default;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
+
 }
 button::-moz-focus-inner,
 input::-moz-focus-inner {
@@ -1169,7 +1171,7 @@ hr {
   clip: auto;
 }
 [role="button"] {
-  cursor: pointer;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
 }
 h1,
 h2,
@@ -1467,7 +1469,7 @@ dd {
 }
 abbr[title],
 abbr[data-original-title] {
-  cursor: help;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
   border-bottom: 1px dotted #777;
 }
 .initialism {
@@ -2644,7 +2646,8 @@ input[type="search"] {
   padding-left: 20px;
   margin-bottom: 0;
   font-weight: normal;
-  cursor: pointer;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
+
 }
 .radio input[type="radio"],
 .radio-inline input[type="radio"],
@@ -2666,7 +2669,8 @@ input[type="search"] {
   margin-bottom: 0;
   font-weight: normal;
   vertical-align: middle;
-  cursor: pointer;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
+
 }
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
@@ -3012,7 +3016,7 @@ select[multiple].input-lg {
   vertical-align: middle;
   -ms-touch-action: manipulation;
       touch-action: manipulation;
-  cursor: pointer;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -4035,7 +4039,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #555;
-  cursor: default;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
   background-color: #fff;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
@@ -4757,7 +4761,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > .active > span:focus {
   z-index: 3;
   color: #fff;
-  cursor: default;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
+
   background-color: #337ab7;
   border-color: #337ab7;
 }
@@ -4858,7 +4863,8 @@ a.label:hover,
 a.label:focus {
   color: #fff;
   text-decoration: none;
-  cursor: pointer;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
+
 }
 .label:empty {
   display: none;
@@ -4939,7 +4945,8 @@ a.badge:hover,
 a.badge:focus {
   color: #fff;
   text-decoration: none;
-  cursor: pointer;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
+
 }
 .list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
@@ -5292,7 +5299,8 @@ button.list-group-item {
 .list-group-item.disabled .list-group-item-heading,
 .list-group-item.disabled:hover .list-group-item-heading,
 .list-group-item.disabled:focus .list-group-item-heading {
-  color: inherit;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
+
 }
 .list-group-item.disabled .list-group-item-text,
 .list-group-item.disabled:hover .list-group-item-text,
@@ -5852,14 +5860,16 @@ button.list-group-item-danger.active:focus {
 .close:focus {
   color: #000;
   text-decoration: none;
-  cursor: pointer;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
+
   filter: alpha(opacity=50);
   opacity: .5;
 }
 button.close {
   -webkit-appearance: none;
   padding: 0;
-  cursor: pointer;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
+
   background: transparent;
   border: 0;
 }
@@ -6404,7 +6414,8 @@ button.close {
   height: 10px;
   margin: 1px;
   text-indent: -999px;
-  cursor: pointer;
+  cursor: url("../../../../assets/world/cursor.png"), auto;
+
   background-color: #000 \9;
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid #fff;

@@ -48,29 +48,39 @@ class HomeController extends Controller
 
     /**
      * @Security("is_authenticated()")
-     * @Route("/choose_race", name="choose")
+     * @Route("/choose_race", name="choose_race")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function chooseRace(Request $request){
-        return $this->render('pages/choose_race.html.twig');
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        if($user->getChoosedRace() != 1){
+            return $this->render('pages/choose_race.html.twig');
+        }else{
+           return $this->redirectToRoute('homepage');
+        }
     }
 
 
     /**
      * @param Request $request
      * @Route("/save_race", name="save_race")
+     * Method("POST")
      */
     public function saveRace(Request $request){
 
-        $user = $this->get('security.context')->getToken()->getUser();
-        $race =$request-$this->get("race");
 
-        $currentRace = Race::where('name', $race)->first();
+        var_dump(123);
+//        $user = $this->get('security.context')->getToken()->getUser();
+//        $race =$request-$this->get("race");
+//
+//        $currentRace = Race::where('name', $race)->first();
+//
+//        $user->race = $currentRace->id;
 
-        $user->race = $currentRace->id;
 
-        $
 
     }
 

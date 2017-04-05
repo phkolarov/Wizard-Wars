@@ -184,7 +184,17 @@
 
                 setTimeout(function () {
 
+                    let token = $("csrf-token").attr('value')+ 123;
+
+                    ww.helpers.request('{{ path("choosing_race") }}',"POST",{"_csrf_token": token},{"type":"BlueWizard"},function (data) {
+                        if(data.success == 'choosed'){
+                            window.location.href = "{{ path("homepage") }}"
+                        }
+                    },function () {
+                        console.log(data)
+                    })
                 },1000)
+
             }else{
                 $('#blue_wizard_wrapper').fadeOut();
                 $('#wizard_info').fadeOut();
@@ -195,6 +205,19 @@
                 $(this).css({
                     'box-shadow': '0px 0px 45px 15px #599bcc'
                 });
+
+                setTimeout(function () {
+
+                    let token = $("csrf-token").attr('value')+ 123;
+
+                    ww.helpers.request('{{ path("choosing_race") }}',"POST",{"_csrf_token": token},{"type":"RedWizard"},function (data) {
+                        if(data.success == 'choosed'){
+                            window.location.href = "{{ path("homepage") }}"
+                        }
+                    },function () {
+                        console.log(data)
+                    })
+                },1000)
             }
             $('.wizard_race').off();
         });
