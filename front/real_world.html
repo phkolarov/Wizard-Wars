@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="code.jquery.js"></script>
+    <script src="phaser/phaser.js"></script>
+    <style>
+        .custom {
+            cursor: url('assets/world/cursor.png'), auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="choose_title">WIZARD WORLD</h1>
+
+
+<div id="wizard_world"></div>
+
+<script>
+
+
+    var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'wizard_world', {
+        preload: preload,
+        create: create,
+        update: update,
+        render: render
+    });
+
+    function preload() {
+
+//        game.load.tilemap('map', 'assets/world/real_world.csv', null, Phaser.Tilemap.CSV);
+//        game.load.image('tiles', 'assets/world/real_world_sprite.png');
+        game.load.image('world', 'assets/world/dotamap.jpg')
+        game.load.spritesheet('player', 'assets/player/magician_red.png', 68, 80);
+        game.load.spritesheet('castle', 'assets/world/buildings/castlehover.png', 150, 150);
+
+    }
+
+    var map;
+    var layer;
+    var cursors;
+    var player;
+
+    var castleArr = [];
+    var castleInfoArr = [];
+    var castle;
+
+    castleInfoArr = createCastles();
+
+    function create() {
+
+        //  Because we're loading CSV map data we have to specify the tile size here or we can't render it
+//        map = game.add.tilemap('map', 16, 16);
+//
+//        //  Now add in the tileset
+//        map.addTilesetImage('tiles');
+//
+//        //  Create our layer
+//        layer = map.createLayer(0);
+//
+//        //  Resize the world
+//        layer.resizeWorld();
+//
+//        //  This isn't totally accurate, but it'll do for now
+////        map.setCollisionBetween(54, 83);
+//        map.setCollision([273, 274, 275, 303, 304, 305, 333, 334, 335, 18, 19, 20, 21, 22, 47, 48, 49, 50, 51, 52, 77, 78, 79, 80, 81, 82, 107, 108, 109, 110, 111, 112, 137, 138, 139, 140, 141, 142, 168, 169, 170, 171, 199, 200, 229, 230,])
+//
+//        //  Un-comment this on to see the collision tiles
+//        // layer.debug = true;
+
+        game.world.setBounds(0, 0, 9000, 8600);
+        game.add.sprite(0, 0, 'world');
+
+        for (var i = 0; i < castleInfoArr.length; i++) {
+
+            let castleInfoObject = castleInfoArr[i];
+            let x = castleInfoObject.x;
+            let y = castleInfoObject.y;
+            let castle = game.add.sprite(x, y, 'castle', 0);
+
+            castle.inputEnabled = true;
+            castle.health = 100;
+            castle.attack = 40;
+            castle.animations.add("onhover", [0, 1], 10, false);
+            castle.animations.add("outhover", [1, 0], 10, false);
+            let info1, info2, info3;
+            $('#wizard_world').css('cursor', "url('assets/world/cursor.png'), auto");
+
+            castle.events.onInputOver.add(function () {
+
+//                this.game.canvas.style.cursor = "move";
+                $('#wizard_world').css('cursor', "url('assets/world/attack.png'), auto");
+
+                castle.animations.play('onhover');
+                info1 = game.add.text(x, y - 65, 'King of kingdom: ' + castleInfoObject.king, {
+                    font: '16px Arial',
+                    fill: '#FFFFFF',
+                    'fontWeight': 'bold',
+                    'stroke': '#000000',
+                    'strokeThickness': 6
+                });
+                info2 = game.add.text(x, y - 42, 'Attack of castle: ' + castleInfoObject.attack, {
+                    font: '16px Arial',
+                    'fontWeight': 'bold',
+                    'stroke': '#000000',
+                    'strokeThickness': 6,
+                    fill: '#FF3333',
+                });
+                info3 = game.add.text(x, y - 22, 'Health of castle: ' + castleInfoObject.health, {
+                    font: '16px Arial',
+                    'fontWeight': 'bold',
+                    'stroke': '#000000',
+                    'strokeThickness': 6,
+                    'fill': '#43d637',
+                });
+
+            }, this);
+
+            castle.events.onInputOut.add(function () {
+
+                castle.frame = 1;
+                $('#wizard_world').css('cursor', "url('assets/world/cursor.png'), auto");
+                castle.animations.play('outhover');
+                info1.destroy();
+                info2.destroy();
+                info3.destroy();
+            }, this);
+
+            castleArr.push(castle);
+        }
+
+
+//        castle = this.game.add.button(10,200, "castle",function () {
+//
+//            console.log(12)
+//        },this,0,1,0);
+//        castle.input.useHandCursor = true;
+//
+//        castle.onInputOver.add((e) => {
+//            over(e);
+//        });
+
+
+        //  Player
+        player = game.add.sprite(148, 148, 'player', 1);
+        player.animations.add('left', [0, 1, 2, 3], 4, true);
+        player.animations.add('right', [5, 6, 7, 8], 4, true);
+//        player.animations.add('left', [8, 9], 10, true);
+//        player.animations.add('right', [1, 2], 10, true);
+        player.animations.add('up', [4], 4, true);
+        player.animations.add('down', [4], 4, true);
+
+        game.physics.enable(player, Phaser.Physics.ARCADE);
+
+
+        for (var i = 0; i < castleInfoArr.length; i++) {
+            console.log(castleArr[i]);
+
+            game.physics.enable(castleArr[i], Phaser.Physics.ARCADE);
+            game.physics.arcade.enable([player, castleArr[i]]);
+        }
+        player.body.setSize(10, 14, 2, 1);
+
+        game.camera.follow(player);
+
+        cursors = game.input.keyboard.createCursorKeys();
+
+        var help = game.add.text(16, 16, 'Arrows to move', {font: '14px Arial', fill: '#FF3333'});
+        help.fixedToCamera = true;
+
+    }
+
+    function update() {
+
+        game.physics.arcade.collide(player, layer);
+
+        for (var i = 0; i < castleArr.length; i++) {
+
+            game.physics.arcade.collide(player, castleArr[i], colide, function () {
+                castleArr[i].body.velocity.set(0);
+                castleArr[i].body.immovable = true;
+            }, function () {
+
+
+            });
+        }
+
+
+        player.body.velocity.set(0);
+
+
+        if (cursors.left.isDown) {
+            player.body.velocity.x = -100;
+            player.play('left');
+        }
+        else if (cursors.right.isDown) {
+            player.body.velocity.x = 100;
+            player.play('right');
+        }
+        else if (cursors.up.isDown) {
+            player.body.velocity.y = -100;
+            player.play('up');
+        }
+        else if (cursors.down.isDown) {
+            player.body.velocity.y = 100;
+            player.play('down');
+        }
+        else {
+            player.animations.stop();
+        }
+
+
+    }
+
+    function colide() {
+        console.log(12);
+
+    }
+    function over() {
+
+        console.log(12);
+    }
+    function render() {
+
+        // game.debug.body(player);
+
+    }
+
+    function createCastles() {
+
+        let castleArr = [];
+        let x = 9000;
+        let y = 8600;
+
+        let tempX = 0;
+        let tempY = 150;
+
+        let step = 180;
+        let percentOfBuild = 30;
+
+        while (tempY <= y) {
+
+            for (let i = 0; i <= x; i += step) {
+
+                tempX = i;
+                if ((Math.random(0, 100) * 100) < percentOfBuild) {
+                    castleArr.push({x: tempX, y: tempY, king: "Pinko", attack: 100, health: 40})
+                }
+            }
+            tempY += step
+        }
+
+        return castleArr;
+    }
+
+</script>
+</body>
+</html>
