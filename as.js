@@ -1,0 +1,1 @@
+var test = '["{\"x\":0,\"y\":150,\"casleName\":0,\"castleAttack\":50,\"castleHealth\":1000,\"ownerId\":null}","{\"x\":540,\"y\":150,\"casleName\":0,\"castleAttack\":50,\"castleHealth\":1000,\"ownerId\":null}"]';

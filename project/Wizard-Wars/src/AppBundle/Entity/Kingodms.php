@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="kingodms", indexes={@ORM\Index(name="FK_kingodms_user", columns={"owner_id"})})
  * @ORM\Entity
  */
-class Kingodms
+class Kingodms implements \JsonSerializable
 {
     /**
      * @var integer
@@ -22,11 +22,11 @@ class Kingodms
     private $id;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="casle_name", type="integer", nullable=false)
+     * @ORM\Column(name="casle_name", type="string", nullable=false)
      */
-    private $casleName = '0';
+    private $casleName;
 
     /**
      * @var integer
@@ -63,6 +63,11 @@ class Kingodms
      */
     private $ownerId;
 
+
+    private $kingName;
+
+
+
     /**
      * @return int
      */
@@ -70,6 +75,7 @@ class Kingodms
     {
         return $this->casleName;
     }
+
 
     /**
      * @param int $casleName
@@ -159,6 +165,26 @@ class Kingodms
         $this->ownerId = $ownerId;
     }
 
+    public function setKingName($name){
+
+        $this->kingName = $name;
+    }
+
+
+    function jsonSerialize()
+    {
+        return
+            [
+                'id' => $this->id,
+                'x' => $this->x,
+                'y' => $this->y,
+                'casleName' => $this->casleName,
+                'castleAttack' => $this->castleAttack,
+                'castleHealth' => $this->castleHealth,
+                'ownerId'=> $this->ownerId,
+                'kingName'=> $this->kingName
+            ];
+    }
 
 
 }

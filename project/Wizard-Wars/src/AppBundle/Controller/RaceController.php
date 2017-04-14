@@ -23,16 +23,22 @@ class RaceController extends Controller
      * @Route("/choosing_race", name="choosing_race")
      * @Method("POST")
      */
-    public function chooseRaceAction(Request $request){
+    public function chooseRaceAction(Request $request)
+    {
 
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
 
 
             $type = $request->get('type');
-            $race = $this->getDoctrine()->getRepository('AppBundle:Race')->findBy(["name"=>$type]);
+            $race = $this->getDoctrine()->getRepository('AppBundle:Race')->findBy(["name" => $type]);
             $user = $this->get('security.token_storage')->getToken()->getUser();
             $user->setChoosedRace(1);
             $user->setRace($race[0]);
+
+            $user->setAttack($race[0]->getAttack());
+            $user->setHealth($race[0]->getHealth());
+            $user->setMana(300 + $race[0]->getManaBonus());
+            $user->setMoney(500);
 
             $em = $this->getDoctrine()->getManager();
             $em->flush();

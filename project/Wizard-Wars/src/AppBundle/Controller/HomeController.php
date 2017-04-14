@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     /**
      * @Security("is_authenticated()")
-     * @Route("/", name="homepage")
+     * @Route("/kingdom", name="own-kingdom")
      */
     public function indexAction(Request $request)
     {

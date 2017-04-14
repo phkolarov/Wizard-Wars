@@ -36,6 +36,10 @@ class RegistrationController extends Controller
             // Set their role
             $user->setRole('ROLE_USER');
 
+
+            $user->setX(rand(0, 9000));
+            $user->setY(rand(0, 8600));
+
             // Save
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
