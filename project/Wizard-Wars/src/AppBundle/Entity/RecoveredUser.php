@@ -69,6 +69,54 @@ class User implements UserInterface
     private $race;
 
     /**
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="x", type="integer", nullable=true)
+     */
+    private $x;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="y", type="integer", nullable=true)
+     */
+    private $y;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="money", type="integer", nullable=true)
+     */
+    private $money = 500;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="mana", type="integer", nullable=true)
+     */
+    private $mana = 1000;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="attack", type="integer", nullable=true)
+     */
+    private $attack = 100;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="health", type="integer", nullable=true)
+     */
+    private $health = 1000;
+
+    /**
      * @return int
      */
     public function getId()
@@ -198,6 +246,118 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         return null;
+    }
+
+    /**
+     * @return int
+     */
+    public function getX()
+    {
+        return $this->x;
+    }
+
+    /**
+     * @param int $x
+     */
+    public function setX($x)
+    {
+        $this->x = $x;
+    }
+
+    /**
+     * @return int
+     */
+    public function getY()
+    {
+        return $this->y;
+    }
+
+    /**
+     * @param int $y
+     */
+    public function setY($y)
+    {
+        $this->y = $y;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMoney()
+    {
+        return $this->money;
+    }
+
+    /**
+     * @param int $money
+     */
+    public function setMoney($money)
+    {
+        $this->money = $money;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMana()
+    {
+        return $this->mana;
+    }
+
+    /**
+     * @param int $mana
+     */
+    public function setMana($mana)
+    {
+        $this->mana = $mana;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAttack()
+    {
+        return $this->attack;
+    }
+
+    /**
+     * @param int $attack
+     */
+    public function setAttack($attack)
+    {
+        $this->attack = $attack;
+    }
+
+    /**
+     * @return int
+     */
+    public function getHealth()
+    {
+        return $this->health;
+    }
+
+    /**
+     * @param int $health
+     */
+    public function setHealth($health)
+    {
+        $this->health = $health;
+    }
+
+    /**
+     * @return  string $plainPassword
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
     }
 }
 

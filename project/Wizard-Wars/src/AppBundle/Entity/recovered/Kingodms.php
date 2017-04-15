@@ -22,9 +22,9 @@ class Kingodms
     private $id;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="casle_name", type="integer", nullable=false)
+     * @ORM\Column(name="casle_name", type="string", length=50, nullable=false)
      */
     private $casleName = '0';
 
@@ -66,13 +66,29 @@ class Kingodms
     /**
      * @return int
      */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
     public function getCasleName()
     {
         return $this->casleName;
     }
 
     /**
-     * @param int $casleName
+     * @param string $casleName
      */
     public function setCasleName($casleName)
     {
@@ -159,6 +175,20 @@ class Kingodms
         $this->ownerId = $ownerId;
     }
 
+    function jsonSerialize()
+    {
+        return
+            [
+                'id' => $this->id,
+                'x' => $this->x,
+                'y' => $this->y,
+                'casleName' => $this->casleName,
+                'castleAttack' => $this->castleAttack,
+                'castleHealth' => $this->castleHealth,
+                'ownerId' => $this->ownerId,
+                'kingName' => $this->kingname
+            ];
+    }
 
 
 }

@@ -22,6 +22,20 @@ class UsersBuildings
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="level", type="integer", nullable=true)
+     */
+    private $level;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="time_to_build", type="datetime", nullable=true)
+     */
+    private $timeToBuild;
+
+    /**
      * @var \Buildings
      *
      * @ORM\ManyToOne(targetEntity="Buildings")
@@ -40,6 +54,54 @@ class UsersBuildings
      * })
      */
     private $user;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param int $level
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getTimeToBuild()
+    {
+        return $this->timeToBuild;
+    }
+
+    /**
+     * @param \DateTime $timeToBuild
+     */
+    public function setTimeToBuild($timeToBuild)
+    {
+        $this->timeToBuild = $timeToBuild;
+    }
 
     /**
      * @return \Buildings

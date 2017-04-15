@@ -24,9 +24,9 @@ class Kingodms implements \JsonSerializable
     /**
      * @var string
      *
-     * @ORM\Column(name="casle_name", type="string", nullable=false)
+     * @ORM\Column(name="casle_name", type="string", length=50, nullable=false)
      */
-    private $casleName;
+    private $casleName = '0';
 
     /**
      * @var integer
@@ -63,22 +63,35 @@ class Kingodms implements \JsonSerializable
      */
     private $ownerId;
 
-
-    private $kingName;
-
+    private $kingname;
 
 
     /**
      * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
      */
     public function getCasleName()
     {
         return $this->casleName;
     }
 
-
     /**
-     * @param int $casleName
+     * @param string $casleName
      */
     public function setCasleName($casleName)
     {
@@ -165,9 +178,20 @@ class Kingodms implements \JsonSerializable
         $this->ownerId = $ownerId;
     }
 
-    public function setKingName($name){
+    /**
+     * @return mixed
+     */
+    public function getKingName()
+    {
+        return $this->kingname;
+    }
 
-        $this->kingName = $name;
+    /**
+     * @param mixed $kingname
+     */
+    public function setKingName($kingname)
+    {
+        $this->kingname = $kingname;
     }
 
 
@@ -181,11 +205,9 @@ class Kingodms implements \JsonSerializable
                 'casleName' => $this->casleName,
                 'castleAttack' => $this->castleAttack,
                 'castleHealth' => $this->castleHealth,
-                'ownerId'=> $this->ownerId,
-                'kingName'=> $this->kingName
+                'ownerId' => $this->ownerId,
+                'kingName' => $this->kingname
             ];
     }
-
-
 }
 

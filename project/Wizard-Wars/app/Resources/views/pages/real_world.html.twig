@@ -172,6 +172,13 @@
                 castle.events.onInputDown.add(function () {
 
                     console.log(castleInfoObject.id);
+                    let castleId = castleInfoObject.id;
+
+                    setTimeout(function () {
+
+//                        console.log(Routing.generate('castleAttack', {'id': 1}));
+                        location.href =  Routing.generate('castleAttack', {'id': castleId});
+                    },1000)
                 });
                 castleArr.push(castle);
             }

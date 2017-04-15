@@ -38,9 +38,44 @@ class Necklaces
     /**
      * @var integer
      *
+     * @ORM\Column(name="mana_bonus", type="integer", nullable=false)
+     */
+    private $manaBonus;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dogs_attack_bonus", type="integer", nullable=false)
+     */
+    private $dogsAttackBonus;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dogs_defense_bonus", type="integer", nullable=false)
+     */
+    private $dogsDefenseBonus;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="health_bonus", type="integer", nullable=false)
      */
     private $healthBonus;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="castle_health_bonus", type="integer", nullable=false)
+     */
+    private $castleHealthBonus;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=50, nullable=false)
+     */
+    private $image;
 
     /**
      * @return int
@@ -48,6 +83,14 @@ class Necklaces
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -85,6 +128,54 @@ class Necklaces
     /**
      * @return int
      */
+    public function getManaBonus()
+    {
+        return $this->manaBonus;
+    }
+
+    /**
+     * @param int $manaBonus
+     */
+    public function setManaBonus($manaBonus)
+    {
+        $this->manaBonus = $manaBonus;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDogsAttackBonus()
+    {
+        return $this->dogsAttackBonus;
+    }
+
+    /**
+     * @param int $dogsAttackBonus
+     */
+    public function setDogsAttackBonus($dogsAttackBonus)
+    {
+        $this->dogsAttackBonus = $dogsAttackBonus;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDogsDefenseBonus()
+    {
+        return $this->dogsDefenseBonus;
+    }
+
+    /**
+     * @param int $dogsDefenseBonus
+     */
+    public function setDogsDefenseBonus($dogsDefenseBonus)
+    {
+        $this->dogsDefenseBonus = $dogsDefenseBonus;
+    }
+
+    /**
+     * @return int
+     */
     public function getHealthBonus()
     {
         return $this->healthBonus;
@@ -98,6 +189,37 @@ class Necklaces
         $this->healthBonus = $healthBonus;
     }
 
+    /**
+     * @return int
+     */
+    public function getCastleHealthBonus()
+    {
+        return $this->castleHealthBonus;
+    }
+
+    /**
+     * @param int $castleHealthBonus
+     */
+    public function setCastleHealthBonus($castleHealthBonus)
+    {
+        $this->castleHealthBonus = $castleHealthBonus;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
 
 
 

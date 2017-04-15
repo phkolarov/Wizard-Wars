@@ -68,7 +68,10 @@ class User implements UserInterface
      */
     private $race;
 
-
+    /**
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
 
     /**
      * @var integer
@@ -112,7 +115,6 @@ class User implements UserInterface
      * @ORM\Column(name="health", type="integer", nullable=true)
      */
     private $health = 1000;
-
 
     /**
      * @return int
@@ -342,6 +344,20 @@ class User implements UserInterface
         $this->health = $health;
     }
 
+    /**
+     * @return  string $plainPassword
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
 
+    /**
+     * @param string $password
+     */
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
+    }
 }
 

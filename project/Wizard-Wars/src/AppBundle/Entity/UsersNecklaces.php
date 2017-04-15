@@ -22,6 +22,20 @@ class UsersNecklaces
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="level", type="integer", nullable=true)
+     */
+    private $level = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="time_to_update", type="datetime", nullable=true)
+     */
+    private $timeToUpdate;
+
+    /**
      * @var \Necklaces
      *
      * @ORM\ManyToOne(targetEntity="Necklaces")
@@ -40,6 +54,55 @@ class UsersNecklaces
      * })
      */
     private $user;
+
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param int $level
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getTimeToUpdate()
+    {
+        return $this->timeToUpdate;
+    }
+
+    /**
+     * @param \DateTime $timeToUpdate
+     */
+    public function setTimeToUpdate($timeToUpdate)
+    {
+        $this->timeToUpdate = $timeToUpdate;
+    }
 
     /**
      * @return \Necklaces
@@ -72,6 +135,8 @@ class UsersNecklaces
     {
         $this->user = $user;
     }
+
+
 
 
 
