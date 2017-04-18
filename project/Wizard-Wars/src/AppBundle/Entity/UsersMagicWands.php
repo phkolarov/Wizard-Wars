@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * UsersNecklaces
+ * UsersMagicWands
  *
- * @ORM\Table(name="users_necklaces", indexes={@ORM\Index(name="FK_users_necklaces_user", columns={"user_id"}), @ORM\Index(name="FK_users_necklaces_necklaces", columns={"necklace_id"})})
+ * @ORM\Table(name="users_magic_wands", indexes={@ORM\Index(name="FK_users_magic_wands_user", columns={"user_id"}), @ORM\Index(name="FK_users_magic_wands_magic_wands", columns={"magic_wand_id"})})
  * @ORM\Entity
  */
-class UsersNecklaces
+class UsersMagicWands
 {
     /**
      * @var integer
@@ -24,7 +24,7 @@ class UsersNecklaces
     /**
      * @var integer
      *
-     * @ORM\Column(name="level", type="integer", nullable=true)
+     * @ORM\Column(name="level", type="integer", nullable=false)
      */
     private $level = '0';
 
@@ -36,14 +36,14 @@ class UsersNecklaces
     private $timeToUpdate;
 
     /**
-     * @var \Necklaces
+     * @var \MagicWands
      *
-     * @ORM\ManyToOne(targetEntity="Necklaces")
+     * @ORM\ManyToOne(targetEntity="MagicWands")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="necklace_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="magic_wand_id", referencedColumnName="id")
      * })
      */
-    private $necklace;
+    private $magicWand;
 
     /**
      * @var \User
@@ -54,7 +54,6 @@ class UsersNecklaces
      * })
      */
     private $user;
-
 
     /**
      * @return int
@@ -105,19 +104,19 @@ class UsersNecklaces
     }
 
     /**
-     * @return \Necklaces
+     * @return \MagicWands
      */
-    public function getNecklace()
+    public function getMagicWand()
     {
-        return $this->necklace;
+        return $this->magicWand;
     }
 
     /**
-     * @param \Necklaces $necklace
+     * @param \MagicWands $magicWand
      */
-    public function setNecklace($necklace)
+    public function setMagicWand($magicWand)
     {
-        $this->necklace = $necklace;
+        $this->magicWand = $magicWand;
     }
 
     /**
@@ -135,7 +134,6 @@ class UsersNecklaces
     {
         $this->user = $user;
     }
-
 
 
 

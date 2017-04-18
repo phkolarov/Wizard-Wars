@@ -116,6 +116,13 @@ class User implements UserInterface
      */
     private $health = 1000;
 
+
+    /**
+     * @var integer
+     * @ORM\Column(name="wand", type="integer", nullable=true)
+     */
+    private $wand;
+
     /**
      * @return int
      */
@@ -359,5 +366,23 @@ class User implements UserInterface
     {
         $this->plainPassword = $password;
     }
+
+    /**
+     * @return int
+     */
+    public function getWand()
+    {
+        return $this->wand;
+    }
+
+    /**
+     * @param int $wand
+     */
+    public function setWand($wand)
+    {
+        $this->wand = $wand;
+    }
+
+
 }
 

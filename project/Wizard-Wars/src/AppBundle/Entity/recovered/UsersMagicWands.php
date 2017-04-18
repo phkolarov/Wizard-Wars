@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * UsersMagicSticks
+ * UsersMagicWands
  *
- * @ORM\Table(name="users_magic_sticks")
+ * @ORM\Table(name="users_magic_wands")
  * @ORM\Entity
  */
-class UsersMagicSticks
+class UsersMagicWands
 {
     /**
      * @var integer

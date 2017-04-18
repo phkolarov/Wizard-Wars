@@ -28,7 +28,6 @@ class RaceController extends Controller
 
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
 
-
             $type = $request->get('type');
             $race = $this->getDoctrine()->getRepository('AppBundle:Race')->findBy(["name" => $type]);
             $user = $this->get('security.token_storage')->getToken()->getUser();

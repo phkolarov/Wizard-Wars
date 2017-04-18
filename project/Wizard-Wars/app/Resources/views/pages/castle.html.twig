@@ -1,0 +1,149 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ include('partials/navbar.html.twig') }}
+
+    <div id="game-wrapper" class="col-centered">
+
+        <h1>CASTLES</h1>
+
+        {#<img src="assets/own-castles.jpg" id="castlesThumb">#}
+        <table class="table table-hover tst">
+            <thead>
+            <tr>
+                <th>Castle ID</th>
+                <th>Castle Name</th>
+                <th>Castle Eye Attack</th>
+                <th>Castle Eye Health</th>
+                <th>Position X</th>
+                <th>Position Y</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for castle in ownCastles %}
+                <tr>
+                    <td>{{ castle.getId() }}</td>
+                    <td>{{ castle.getCastleName() }}</td>
+                    <td>{{ castle.getCastleAttack() }}</td>
+                    <td>{{ castle.getCastleHealth() }}</td>
+                    <td>{{ castle.getX() }}</td>
+                    <td>{{ castle.getY() }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+        <h1>MAGIC WANDS</h1>
+        <table class="table table-hover tst">
+            <thead>
+            <tr>
+                <th>WAND NAME</th>
+                <th>ATTACK BONUS</th>
+                <th>HEALTH BONUS</th>
+                <th>CASTLE ATTACK BONUS</th>
+                <th>IMAGE</th>
+                <th>ACTION</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for magicWand in magicWands %}
+                <tr>
+                    <td>{{ magicWand.getMagicWand().getName() }}</td>
+                    <td>{{ magicWand.getMagicWand().getAttackBonus()}}</td>
+                    <td>{{ magicWand.getMagicWand().getHealthBonus()}}</td>
+                    <td>{{ magicWand.getMagicWand().getCastleAttackBonus() }}</td>
+                    <td>{{ magicWand.getMagicWand().getImage() }}</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <h1>NECKLACES AND MEDALIONS</h1>
+
+        <table class="table table-hover tst">
+            <thead>
+            <tr>
+                <th>WAND NAME</th>
+                <th>ATTACK BONUS</th>
+                <th>DEFENCE BONUS</th>
+                <th>CASTLE ATTACK BONUS</th>
+                <th>DOGS ATTACK BONUS</th>
+                <th>DOGS ATTACK BONUS</th>
+                <th>IMAGE</th>
+                <th>ACTION</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for userNecklace in userNecklaces %}
+                <tr>
+                    <td>{{ userNecklace.getNecklace().getName() }}</td>
+                    <td>{{ userNecklace.getNecklace().getAttackBonus()}}</td>
+                    <td>{{ userNecklace.getNecklace().getHealthBonus()}}</td>
+                    <td>{{ userNecklace.getNecklace().getCastleHealthBonus() }}</td>
+                    <td>{{ userNecklace.getNecklace().getDogsAttackBonus() }}</td>
+                    <td>{{ userNecklace.getNecklace().getDogsDefenseBonus() }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+{% endblock %}
+    {% block stylesheets %}
+        <style>
+
+            body {
+                background-image: url("http://vignette1.wikia.nocookie.net/wizard101/images/3/31/Cool-background_020.jpg/revision/latest?cb=20130722205636") !important;
+                background-size: 100%;
+            }
+
+            canvas {
+                margin: auto;
+
+            }
+
+            #game-wrapper {
+                width: 53.3333%;
+                box-shadow: inset 0 0 1.5em 1.5em #114ea7, 0 0 1.5em 1.5em #114ea7; /* padding:1em */
+                display: block;
+                margin: 88px auto;
+                padding: 20px;
+
+                background-color: black;
+                background-image: url("assets/own-castles.jpg");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+
+            h1 {
+                color: white !important;
+            }
+
+            #castlesThumb {
+                width: 300px;
+            }
+
+            .tst {
+                color: white;
+                background-color: rgba(0, 0, 0, 0.69);
+            }
+
+            .table-hover > tbody > tr:hover {
+                color: black;
+            }
+
+        </style>
+    {% endblock %}
+
+{% block javascripts %}
+
+
+
+
+{% endblock %}

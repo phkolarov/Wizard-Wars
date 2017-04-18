@@ -23,10 +23,9 @@ class Kingodms implements \JsonSerializable
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="casle_name", type="string", length=50, nullable=false)
+     * @ORM\Column(name="castle_name", type="string", length=50, nullable=false)
      */
-    private $casleName = '0';
+    private $castleName = '0';
 
     /**
      * @var integer
@@ -85,17 +84,17 @@ class Kingodms implements \JsonSerializable
     /**
      * @return string
      */
-    public function getCasleName()
+    public function getCastleName()
     {
-        return $this->casleName;
+        return $this->castleName;
     }
 
     /**
-     * @param string $casleName
+     * @param string $castleName
      */
-    public function setCasleName($casleName)
+    public function setCastleName($castleName)
     {
-        $this->casleName = $casleName;
+        $this->castleName = $castleName;
     }
 
     /**
@@ -202,7 +201,7 @@ class Kingodms implements \JsonSerializable
                 'id' => $this->id,
                 'x' => $this->x,
                 'y' => $this->y,
-                'casleName' => $this->casleName,
+                'castleName' => $this->castleName,
                 'castleAttack' => $this->castleAttack,
                 'castleHealth' => $this->castleHealth,
                 'ownerId' => $this->ownerId,

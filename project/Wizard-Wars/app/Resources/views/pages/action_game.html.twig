@@ -3,14 +3,34 @@
 {% block body %}
     {{ include('partials/navbar.html.twig')}}
 
-    <div id="game-wrapper" class="col-centered">
+    <div id="game-wrapper" class="col-centered"></div>
 
 
 {% endblock %}
+{% block stylesheets %}
+    <style>
 
+        body{
+            background-image: url("http://vignette1.wikia.nocookie.net/wizard101/images/3/31/Cool-background_020.jpg/revision/latest?cb=20130722205636")!important;
+            background-size: 100%;
+        }
+        canvas{
+            margin: auto;
+
+        }
+        #game-wrapper{
+            width: 53.3333%;
+            box-shadow: inset 0 0 1.5em 1.5em  #114ea7,0 0 1.5em 1.5em #114ea7;  /* padding:1em */
+            display: block;
+            margin: 88px auto;
+        }
+
+
+    </style>
+{% endblock %}
 {% block javascripts %}
 <script>
-    let game = new Phaser.Game(800, 600, Phaser.AUTO, 'game-wrapper', {preload: preload, create: create, update: update});
+    let game = new Phaser.Game(992, 702, Phaser.AUTO, 'game-wrapper', {preload: preload, create: create, update: update});
 
     function preload() {
 //        game.load.image('sky', 'assets/sky.jpg');
@@ -21,9 +41,9 @@
         game.load.image('enemyBullet', 'assets/enemy-bullet.png');
         game.load.spritesheet('kaboom', 'assets/explode.png', 128, 128);
         game.load.spritesheet('magician', 'assets/magician.png', 68, 80);
-        game.load.audio('explosion', 'assets/audio/explosion.mp3');
-        game.load.audio('magic_shot', 'assets/audio/magic_shot.mp3');
-        game.load.audio('sauron_shot', 'assets/audio/sauron_shot.mp3');
+//        game.load.audio('explosion', 'assets/audio/explosion.mp3');
+//        game.load.audio('magic_shot', 'assets/audio/magic_shot.mp3');
+//        game.load.audio('sauron_shot', 'assets/audio/sauron_shot.mp3');
         game.load.atlas('win-button', 'assets/win-button.png','assets/win-button.json');
         game.load.atlas('lose-button', 'assets/lose-button.png','assets/lose-button.json');
     }
@@ -38,24 +58,28 @@
     let sauron;
     let player;
     let cursors;
-    let playerName = "Dinko";
-    let playerLive = 1000;
+    let playerName = "{{ wizardName }}";
+    let playerLive = {{ userHealth + userBonusHealth}};
+    let bonusLive = "{{ userBonusHealth }}"
     let playerLevel = 1;
-    let playerDamage = 100;
+    let playerDamage = {{ userAttack }};
     let totalPlayerDamage = 0;
     let playerShoots = 0;
+    let wandName = "{{ wandName }}";
 
     let bullets;
     let sauronBulletTime = 0;
     let bulletTime = 0;
     let bullet;
 
-    let enemyName = "Pinko";
+    let enemyName = 'Eye of "{{ castleKing }}"';
+    let castleId = '{{castleId }}'
     let enemyShootingLevel = 500;  //lower is faster
     let enemyLevel = 1;
     let enemyBullet;
-    let enemyDamage = 100;
-    let sauronEyeLive = 3500;
+    let enemyDamage = {{ castleAttack }};
+    let sauronEyeLive = {{ castleHealth + bonusCastleLive}};
+    let bonusEyeLive = {{ bonusCastleLive }};
     let sauronMovementSpeed = 3500;
     let totalEnemyDamage = 0;
     let enemyShoots = 0;
@@ -134,9 +158,13 @@
 
 
         let style = {font: "20px Courier", fill: "#fffcec", tabs: 0,fontWeight : 'bold'};
-        playerLiveText = game.add.text(30, 573, `Player Health: ${playerLive}`, style);
+        playerWandText = game.add.text(30, 648, `Wizard "${playerName}" use "${wandName}"`, style);
+        playerWandText.strokeThickness = 6;
+        playerLiveText = game.add.text(30, 673, `Player Health: ${playerLive}`, style);
         playerLiveText.strokeThickness = 6;
-        enemyLiveText = game.add.text(550, 573, `Enemy Health: ${sauronEyeLive}`, style)
+         playerDamageTextText = game.add.text(200, 673, `Player Damage: ${playerDamage}`, style);
+        playerDamageTextText.strokeThickness = 6;
+        enemyLiveText = game.add.text(550, 673, `Enemy Health: ${sauronEyeLive}`, style)
         enemyLiveText.strokeThickness = 6;
     }
 
@@ -177,7 +205,9 @@
         if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
             fireBullet();
         }
-        playerLiveText.text = `${playerName} health: ${playerLive}`;
+
+        playerLiveText.text = `health: ${playerLive}`;
+        playerDamageTextText.text = `damage: ${playerDamage}`;
         enemyLiveText.text = `${enemyName} health: ${sauronEyeLive}`;
         game.physics.arcade.overlap(bullets, sauron, playerHitEnemy, null, this);
         game.physics.arcade.overlap(enemyBullets, player, enemyHitsPlayer, null, this);
@@ -259,7 +289,7 @@
         sauron.animations.add('fly', [0,], 10, true);
         sauron.play('fly');
         sauron.body.moves = false;
-        sauron.x = 600;
+        sauron.x = 800;
         sauron.y = 50;
 
 //          All this does is basically start the invaders moving. Notice we're moving the Group they belong to, rather than the invaders directly.
@@ -292,7 +322,7 @@
         let style = {font: "20px Courier", fill: "#fff", tabs: 100};
 
         let headings = ['Player', 'Total Damage', 'Speed Level', 'Total Landed Shoots'];
-        text = game.add.text(32, 64, '', style);
+        text = game.add.text(102, 64, '', style);
         text.parseList(headings);
 
         let gameInfo = [
@@ -301,11 +331,11 @@
         ];
 
         let style2 = {font: "20px Courier", fill: "#fff", tabs: 200};
-        let text2 = game.add.text(32, 120, '', style2);
+        let text2 = game.add.text(102, 120, '', style2);
         text2.parseList(gameInfo);
 
         let style3 = {font: "50px Courier", fill: "#fff", tabs: 200, align: 'center'};
-        let gameWinText = game.add.text(200, 220, `GAME OVER ${playerName}`, style3);
+        let gameWinText = game.add.text(300, 220, `GAME OVER ${playerName}`, style3);
 
         button = game.add.button(game.world.centerX - 95,300, 'lose-button', loseClick, this, 'out', 'over');
 
@@ -335,11 +365,68 @@
 
     function winClick() {
 
+        let data = {
+            "playerHealth": playerLive,
+            "opponentCastleHealth" : sauronEyeLive,
+            "castleId": castleId
+        };
+
+        if(playerLive> 0 && sauronEyeLive > 0){
+            data.result = "escape"
+        }else if(playerLive > 0 && sauronEyeLive < 0){
+                         data.result = "win"
+        }else{
+            data.result = "lose";
+        }
+
+        let token = $("csrf-token").attr('value');
+
+        ww.helpers.request('{{ path("send-game-result") }}',"POST", {"_csrf_token": token},data,function(data) {
+
+            let result = JSON.parse(data);
+
+            if(result.success = 'win'){
+                window.location.href = "{{ path('homepage',{"message":"You win"}) }}";
+            }else if(result.success = 'lose'){
+                window.location.href = "{{ path('homepage',{"message":"You lose"}) }}";
+            }else if(result.success = 'die'){
+                window.location.href = "{{ path('homepage',{"message":"You die... please make new profile registration"}) }}";
+            }else{
+                window.location.href = "{{ path('homepage',{"message":"Battle draw"}) }}";
+            }
+
+        },function(error) {
+            console.log(error);
+        });
 
     }
 
     function loseClick() {
-        console.log(1221);
+
+        let data = {
+            "playerHealth": playerLive,
+            "opponentCastleHealth" : sauronEyeLive,
+            "castleId": castleId
+        };
+
+        if(playerLive> 0 && sauronEyeLive > 0){
+            data.result = "escape"
+        }else if(playerLive > 0 && sauronEyeLive < 0){
+                         data.result = "win"
+        }else{
+            data.result = "lose";
+        }
+
+        let token = $("csrf-token").attr('value');
+
+        ww.helpers.request('{{ path("send-game-result") }}',"POST", {"_csrf_token": token},data,function(data) {
+
+            console.log(data);
+
+
+        },function(error) {
+            console.log(error);
+        });
     }
 
 </script>
