@@ -50,24 +50,19 @@ class MagicWands
     private $castleAttackBonus;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="image", type="integer", nullable=true)
+     * @ORM\Column(name="image", type="string", nullable=true)
      */
     private $image;
 
 
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="price", type="integer", nullable=true)
+     */
+    private $price;
 
 
     /**
@@ -166,8 +161,21 @@ class MagicWands
         $this->image = $image;
     }
 
+    /**
+     * @return int
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
 
-
+    /**
+     * @param int $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
 
 }
 

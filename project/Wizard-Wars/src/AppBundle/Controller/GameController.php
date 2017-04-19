@@ -267,7 +267,8 @@ class GameController extends Controller
         return $this->render('pages/castle.html.twig', [
             'ownCastles' => $ownCastles,
             'userNecklaces'=>$userNecklaces,
-            'magicWands'=>$magicWands
+            'magicWands'=>$magicWands,
+            'userWand'=> $user->getWand()
         ]);
     }
 }

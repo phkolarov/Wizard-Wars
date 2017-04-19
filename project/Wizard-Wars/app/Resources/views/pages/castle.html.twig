@@ -43,6 +43,8 @@
                 <th>ATTACK BONUS</th>
                 <th>HEALTH BONUS</th>
                 <th>CASTLE ATTACK BONUS</th>
+                <th>LEVEL</th>
+                <th>USING</th>
                 <th>IMAGE</th>
                 <th>ACTION</th>
             </tr>
@@ -54,8 +56,16 @@
                     <td>{{ magicWand.getMagicWand().getAttackBonus()}}</td>
                     <td>{{ magicWand.getMagicWand().getHealthBonus()}}</td>
                     <td>{{ magicWand.getMagicWand().getCastleAttackBonus() }}</td>
+                    <td>{{ magicWand.getLevel() }}</td>
+                    <td>{% if userWand == magicWand.getMagicWand().getId() %}
+                        <span style="color: #ff4f4c">USED NOW</span>
+                        {% else %}
+                         NOT USED
+                       {% endif %}
+                    </td>
                     <td>{{ magicWand.getMagicWand().getImage() }}</td>
 
+                    <td><form method="post" action="{{ path('useWand',{"id": magicWand.getMagicWand().getId()}) }}"><input class="btn btn-sm btn-danger" type="hidden" name="stick_id"><button  class="btn btn-sm btn-danger" type="submit" value="Use this wand">USE </button> </form></td>
                 </tr>
             {% endfor %}
             </tbody>
