@@ -57,6 +57,12 @@ class UsersNecklaces
 
 
     /**
+     * @var integer
+     * @ORM\Column(name="castle_id", type="integer", nullable=true)
+     */
+    private $castle_id;
+
+    /**
      * @return int
      */
     public function getId()
@@ -136,9 +142,21 @@ class UsersNecklaces
         $this->user = $user;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCastleId()
+    {
+        return $this->castle_id;
+    }
 
-
-
+    /**
+     * @param mixed $castle_id
+     */
+    public function setCastleId($castle_id)
+    {
+        $this->castle_id = $castle_id;
+    }
 
 }
 

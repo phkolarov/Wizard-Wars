@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 /**
  * User
  *
@@ -122,6 +123,19 @@ class User implements UserInterface
      * @ORM\Column(name="wand", type="integer", nullable=true)
      */
     private $wand;
+
+
+    /**
+     * @var integer
+     * @ORM\Column(name="xp", type="integer", nullable=false)
+     */
+    private $xp = 0;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="level", type="integer", nullable=false)
+     */
+    private $level = 0;
 
     /**
      * @return int
@@ -382,6 +396,40 @@ class User implements UserInterface
     {
         $this->wand = $wand;
     }
+
+    /**
+     * @return int
+     */
+    public function getXp()
+    {
+        return $this->xp;
+    }
+
+    /**
+     * @param int $xp
+     */
+    public function setXp($xp)
+    {
+        $this->xp = $xp;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param int $level
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+    }
+
+
 
 
 }

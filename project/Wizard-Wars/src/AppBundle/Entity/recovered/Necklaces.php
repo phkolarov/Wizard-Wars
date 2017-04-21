@@ -78,6 +78,19 @@ class Necklaces
     private $image;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="updater", type="integer", nullable=false)
+     */
+    private $updater = '0';
+
+    /**
+     * @var integer
+     * @ORM\Column(name="price", type="integer", nullable=false)
+     */
+    private $price;
+
+    /**
      * @return int
      */
     public function getId()
@@ -221,6 +234,37 @@ class Necklaces
         $this->image = $image;
     }
 
+    /**
+     * @return int
+     */
+    public function getUpdater()
+    {
+        return $this->updater;
+    }
+
+    /**
+     * @param int $updater
+     */
+    public function setUpdater($updater)
+    {
+        $this->updater = $updater;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param int $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
 
 
 }

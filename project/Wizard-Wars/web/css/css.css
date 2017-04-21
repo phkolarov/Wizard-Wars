@@ -35,3 +35,6 @@ body{
     font-family: magicFont !important;
 }
 
+.progress{
+    margin-top: 15px;
+}

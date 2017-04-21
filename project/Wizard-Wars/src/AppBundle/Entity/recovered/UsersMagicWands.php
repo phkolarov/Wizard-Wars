@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UsersMagicWands
  *
- * @ORM\Table(name="users_magic_wands")
+ * @ORM\Table(name="users_magic_wands", indexes={@ORM\Index(name="FK_users_magic_wands_user", columns={"user_id"}), @ORM\Index(name="FK_users_magic_wands_magic_wands", columns={"magic_wand_id"})})
  * @ORM\Entity
  */
 class UsersMagicWands
@@ -24,20 +24,6 @@ class UsersMagicWands
     /**
      * @var integer
      *
-     * @ORM\Column(name="user_id", type="integer", nullable=false)
-     */
-    private $userId = '0';
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="magic_stick_id", type="integer", nullable=false)
-     */
-    private $magicStickId = '0';
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="level", type="integer", nullable=false)
      */
     private $level = '0';
@@ -48,6 +34,26 @@ class UsersMagicWands
      * @ORM\Column(name="time_to_update", type="datetime", nullable=true)
      */
     private $timeToUpdate;
+
+    /**
+     * @var \MagicWands
+     *
+     * @ORM\ManyToOne(targetEntity="MagicWands")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="magic_wand_id", referencedColumnName="id")
+     * })
+     */
+    private $magicWand;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
 
     /**
      * @return int
@@ -63,38 +69,6 @@ class UsersMagicWands
     public function setId($id)
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->userId;
-    }
-
-    /**
-     * @param int $userId
-     */
-    public function setUserId($userId)
-    {
-        $this->userId = $userId;
-    }
-
-    /**
-     * @return int
-     */
-    public function getMagicStickId()
-    {
-        return $this->magicStickId;
-    }
-
-    /**
-     * @param int $magicStickId
-     */
-    public function setMagicStickId($magicStickId)
-    {
-        $this->magicStickId = $magicStickId;
     }
 
     /**
@@ -128,6 +102,39 @@ class UsersMagicWands
     {
         $this->timeToUpdate = $timeToUpdate;
     }
+
+    /**
+     * @return \MagicWands
+     */
+    public function getMagicWand()
+    {
+        return $this->magicWand;
+    }
+
+    /**
+     * @param \MagicWands $magicWand
+     */
+    public function setMagicWand($magicWand)
+    {
+        $this->magicWand = $magicWand;
+    }
+
+    /**
+     * @return \User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param \User $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
 
 
 

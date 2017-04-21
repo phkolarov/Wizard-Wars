@@ -22,5 +22,7 @@ class Dogs
     private $id;
 
 
+
+
 }
 

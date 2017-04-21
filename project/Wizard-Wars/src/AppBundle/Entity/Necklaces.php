@@ -85,6 +85,12 @@ class Necklaces
     private $updater = '0';
 
     /**
+     * @var integer
+     * @ORM\Column(name="price", type="integer", nullable=false)
+     */
+    private $price;
+
+    /**
      * @return int
      */
     public function getId()
@@ -243,6 +249,23 @@ class Necklaces
     {
         $this->updater = $updater;
     }
+
+    /**
+     * @return int
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param int $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
 
 }
 

@@ -63,11 +63,12 @@
         var layer;
         var cursors;
         var player;
+        var playerId = {{ userId }};
+
 
         var castleArr = [];
         var castleInfoArr = [];
         var castle;
-
         let kingomsString = '{{ kingdoms|raw }}';
         castleInfoArr = JSON.parse(kingomsString);
 
@@ -95,7 +96,7 @@
             game.world.setBounds(0, 0, 9000, 8600);
             game.add.sprite(0, 0, 'world');
 
-            for (var i = 0; i < castleInfoArr.length; i++) {
+            for (let i = 0; i < castleInfoArr.length; i++) {
 
                 let castleInfoObject = castleInfoArr[i];
                 let x = castleInfoObject.x;
@@ -146,13 +147,27 @@
                     });
 
 
-                    attack = game.add.text(x+ 30, y + 62, 'Attack', {
-                        font: '26px Arial',
-                        'fontWeight': 'bold',
-                        'stroke': '#f62c36',
-                        'strokeThickness': 6,
-                        'fill': '#43d637',
-                    });
+                    if(playerId != castleInfoObject.ownerId){
+
+                        attack = game.add.text(x+ 30, y + 62, 'Attack', {
+                            font: '26px Arial',
+                            'fontWeight': 'bold',
+                            'stroke': '#f62c36',
+                            'strokeThickness': 6,
+                            'fill': '#43d637',
+                        });
+                    }else{
+
+                        attack = game.add.text(x+ 30, y + 62, 'Your castle', {
+                            font: '26px Arial',
+                            'fontWeight': 'bold',
+                            'stroke': '#eef648',
+                            'strokeThickness': 6,
+                            'fill': '#43d637',
+                        });
+                    }
+
+
 
                 }, this);
 
@@ -169,17 +184,20 @@
                     attack.destroy();
                 }, this);
 
-                castle.events.onInputDown.add(function () {
+                if(playerId != castleInfoObject.ownerId){
+                    castle.events.onInputDown.add(function () {
 
-                    console.log(castleInfoObject.id);
-                    let castleId = castleInfoObject.id;
+                        console.log(castleInfoObject.id);
+                        let castleId = castleInfoObject.id;
 
-                    setTimeout(function () {
+                        setTimeout(function () {
 
 //                        console.log(Routing.generate('castleAttack', {'id': 1}));
-                        location.href =  Routing.generate('castleAttack', {'id': castleId});
-                    },1000)
-                });
+                            location.href =  Routing.generate('castleAttack', {'id': castleId});
+                        },1000)
+                    });
+                }
+
                 castleArr.push(castle);
             }
 

@@ -70,6 +70,7 @@ class GameController extends Controller
                 'x' => $x,
                 'y' => $y,
                 'kingdoms' => $jsonContent,
+                'userId'=>$user->getId(),
                 'last_username' => $helper->getLastUsername(),
                 'error' => $helper->getLastAuthenticationError(),
             )
@@ -205,10 +206,11 @@ class GameController extends Controller
 
             $castle->setOwnerId($user->getId());
             $castle->setCastleHealth(500);
-
             $response->setContent(json_encode(array(
                 'success' => "win",
             )));
+            $em->flush();
+
             return $response;
         } else if ($playerHealth < 0 && $opponentCastleHealth > 0 && $result == "lose") {
 
@@ -250,25 +252,5 @@ class GameController extends Controller
 
     }
 
-    /**
-     * @Security("is_authenticated()")
-     * @Route("castles", name="castle")
-     * @return mixed
-     */
-    public function castles()
-    {
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        $ownCastles = $this->getDoctrine()->getRepository('AppBundle:Kingodms')->findBy(['ownerId'=> $user->getId()]);
-        $userNecklaces = $this->getDoctrine()->getRepository('AppBundle:UsersNecklaces')->findBy(['user'=>$user]);
-        $magicWands = $this->getDoctrine()->getRepository('AppBundle:UsersMagicWands')->findBy(['user'=>$user]);
 
-
-
-        return $this->render('pages/castle.html.twig', [
-            'ownCastles' => $ownCastles,
-            'userNecklaces'=>$userNecklaces,
-            'magicWands'=>$magicWands,
-            'userWand'=> $user->getWand()
-        ]);
-    }
 }
