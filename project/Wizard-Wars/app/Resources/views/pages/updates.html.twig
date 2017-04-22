@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ include('partials/navbar.html.twig') }}
+
+    <div id="game-wrapper" class="col-centered">
+
+        <h1>UPDATES STATUS</h1>
+
+        <h2>Updating Necklaces</h2>
+
+        <table class="table table-hover tst">
+            <thead>
+            <tr>
+                <th>WAND NAME</th>
+                <th>DESCRIPTION</th>
+                <th>IMAGE</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for userNecklace in updaters %}
+                <tr>
+                    <td>{{ userNecklace.getNecklace().getName() }}</td>
+                    <td>{{ userNecklace.getNecklace().getAttackBonus() }}</td>
+                    <td>{{ userNecklace.getNecklace().getHealthBonus() }}</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+        <div class="updates-buttons-wrapper">
+           <button class="btn btn-lg btn-danger">UPDATE LAYCANS</button>
+           <button class="btn btn-lg btn-danger">UPDATE NECKLACES</button>
+           <button class="btn btn-lg btn-danger">UPDATE WANDS</button>
+           <button class="btn btn-lg btn-danger">UPDATES STATUS</button>
+       </div>
+    </div>
+
+
+{% endblock %}
+    {% block stylesheets %}
+        <style>
+
+            body {
+                background-image: url("http://vignette1.wikia.nocookie.net/wizard101/images/3/31/Cool-background_020.jpg/revision/latest?cb=20130722205636") !important;
+                background-size: 100%;
+            }
+
+            canvas {
+                margin: auto;
+
+            }
+
+            #game-wrapper {
+                position: relative;
+                width: 53.3333%;
+                box-shadow: inset 0 0 1.5em 1.5em #114ea7, 0 0 1.5em 1.5em #114ea7; /* padding:1em */
+                display: block;
+                margin: 88px auto;
+                padding: 20px;
+
+                background-color: black;
+                background-image: url("assets/world/building_backgrounds/updates.jpg");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                min-height: 700px;
+            }
+
+            h1,h2 {
+                color: white !important;
+            }
+
+            .updates-buttons-wrapper{
+                position: absolute;
+                height: 100px;
+                left: 10px;
+                bottom: 0px;
+            }
+            .tst{
+                background-color: rgba(0, 0, 0, 0.71);
+                color: white;
+            }
+        </style>
+    {% endblock %}
+
+{% block javascripts %}
+
+<script>
+
+
+</script>
+
+
+{% endblock %}

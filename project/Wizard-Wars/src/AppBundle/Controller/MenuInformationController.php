@@ -18,7 +18,7 @@ class MenuInformationController extends Controller
 {
     /**
      * @Security("is_authenticated()")
-     * @Route("/", name="homepage")
+     * @Route("/userBarInfo", name="userBarInfo")
      */
     public function loadXPAction()
     {
@@ -26,6 +26,7 @@ class MenuInformationController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
 
+        //LEVEL FORMULA
         $roundedXPlevel = sprintf('%0.2f', ((sqrt(625 + 100 * $user->getXP()) - 25) / 50));
         $levelPercent = explode('.', $roundedXPlevel);
         $percentToNewLevel = $levelPercent[1];
@@ -45,12 +46,22 @@ class MenuInformationController extends Controller
             $level = $levelPercent[0] + 1;
         }
 
+
+        //MAX   IMUM HEALTH PER LEVEL FORMULA
+        $percentHealth = ($user->getHealth() / (100 * $user->getLevel()) * 100);
+        if ($percentHealth > 100) {
+            $percentHealth = 100;
+        }
+
         return $this->render('partials/user-information.html.twig', [
             'xp' => $user->getXP(),
             'percentToNewLevel' => $percentToNewLevel,
             'mana' => $mana,
             'level' => $level,
-            'percentMana' => $percentMana
+            'percentHealth' => $percentHealth,
+            'health' => $user->getHealth(),
+            'percentMana' => $percentMana,
+            'gold' => $user->getGold()
         ]);
     }
 

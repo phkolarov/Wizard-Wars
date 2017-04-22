@@ -14,7 +14,7 @@
             <table class="table table-hover tst">
                 <thead>
                 <tr>
-                    <th>WAND NAME</th>
+                    <th>NECKLACE TYPE</th>
                     <th>ATTACK BONUS</th>
                     <th>DEFENCE BONUS</th>
                     <th>CASTLE ATTACK BONUS</th>
@@ -83,7 +83,8 @@
                     <th>ATTACK </th>
                     <th>HEALTH </th>
                     <th>LEVEL</th>
-                    <th>CASTLE</th>
+                    <th>CURRENT CASTLE</th>
+                    <th>YOUR OWN CASTLES</th>
                     <th>SET TO CASTLE GUARD</th>
                 </tr>
                 </thead>
@@ -91,11 +92,23 @@
 
                 {% for lycan in lycans %}
                     <tr>
+                        <form method="post" action='{{ path('setLycanToCastleGuard',{"lycanId": lycan.getId()}) }}'>
                         <td>{{ lycan.getName() }}</td>
                         <td>{{ lycan.getAttack() }}</td>
                         <td>{{ lycan.getHealth() }}</td>
-                        <td>{{ lycan.castleName }}</td>
-                        <td>asd Action</td>
+                            <td>{{ lycan.getLevel() }}</td>
+                            <td>{{ lycan.castleName }}</td>
+                        <td>
+                        <select class="form-control" name="castleId">
+                            <option value="">CHOOSE CASTLE</option>
+
+                            {% for castle in ownCastles %}
+                                    <option value="{{ castle.getId() }}">{{ castle.getCastleName() }}</option>
+                                {% endfor %}
+                        </select>
+                        </td>
+                        <td><button type="submit" class="btn btn-danger">SET</button></td>
+                            </form>
 
                     </tr>
                 {% endfor %}

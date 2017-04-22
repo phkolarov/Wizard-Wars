@@ -47,7 +47,7 @@ class Lycans
      *
      * @ORM\Column(name="level", type="integer", nullable=true)
      */
-    private $level = '0';
+    private $level = '1';
 
     /**
      * @var integer

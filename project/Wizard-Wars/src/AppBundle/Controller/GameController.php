@@ -109,16 +109,21 @@ class GameController extends Controller
 
             $necklaces = $this->getDoctrine()
                 ->getRepository('AppBundle:UsersNecklaces')
-                ->findAll(['user_id' => $owner->getId(), 'castle_id' => $id]);
+                ->findBy(['user' => $owner->getId(), 'castle_id' => $id]);
 
-            var_dump($necklaces);
-            var_dump($necklaces);
-            var_dump($necklaces);
             foreach ($necklaces as $necklace) {
-
                 $bonusCastleLive += intval($necklace->getNecklace()->getCastleHealthBonus());
             }
+
+            $lycans = $this->getDoctrine()->getRepository('AppBundle:Lycans')->findBy(['castleId' => $id]);
+
+            foreach ($lycans as $lycan){
+                $castleAttack += intval($lycan->getAttack());
+                $castleHealth += intval($lycan->getHealth());
+            }
         }
+
+
 
 
         $userHealth = $user->getHealth();
@@ -128,7 +133,7 @@ class GameController extends Controller
 
         $userNecklaces = $this->getDoctrine()
             ->getRepository('AppBundle:UsersNecklaces')
-            ->findAll(['user_id' => $id]);
+            ->findBy(['user' => $id]);
 
 
         if (is_int($user->getWand())) {
@@ -191,6 +196,8 @@ class GameController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $castle = $this->getDoctrine()->getRepository('AppBundle:Kingodms')->find($castleId);
 
+
+
         $user->setHealth($playerHealth);
         $castle->setCastleHealth($opponentCastleHealth);
         $response = new Response();
@@ -204,6 +211,11 @@ class GameController extends Controller
             return $response;
         } else if ($playerHealth > 0 && $opponentCastleHealth < 0 && $result == "win") {
 
+            $lycans = $this->getDoctrine()->getRepository('AppBundle:Lycans')->findBy(['castleId'=>$castleId]);
+
+            foreach ($lycans as $lycan) {
+                $em->remove($lycan);
+            }
             $castle->setOwnerId($user->getId());
             $castle->setCastleHealth(500);
             $response->setContent(json_encode(array(

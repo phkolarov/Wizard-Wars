@@ -19,6 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class CastleController extends Controller
 {
 
+    const CATACOMB_LEVEL = 2;
     /**
      * @Security("is_authenticated()")
      * @Route("castles", name="castle")
@@ -58,21 +59,26 @@ class CastleController extends Controller
 
             if (is_numeric($lycan->getCastleId())) {
 
-                $ownCastles = $this->getDoctrine()->getRepository('AppBundle:Kingodms')->findBy(['id' => $lycan->getCastleId()]);
+                $ownCastle = $this->getDoctrine()->getRepository('AppBundle:Kingodms')->findOneBy(['id' => $lycan->getCastleId()]);
 
-                $lycan->castleName = $ownCastles->getCastleName();
+                $lycan->castleName = $ownCastle->getCastleName();
             } else {
                 $lycan->castleName = "No associated castle";
             };
             $lycCastles[] = $lycan;
         }
 
-        return $this->render('pages/catacobs.html.twig', [
-            'ownCastles' => $ownCastles,
-            'userNecklaces' => $userNecklaces,
-            'userWand' => $user->getWand(),
-            'lycans' => $lycCastles
-        ]);
+       if($user->getLevel() >= self::CATACOMB_LEVEL){
+
+           return $this->render('pages/catacombs.html.twig', [
+               'ownCastles' => $ownCastles,
+               'userNecklaces' => $userNecklaces,
+               'userWand' => $user->getWand(),
+               'lycans' => $lycCastles
+           ]);
+       }else{
+           return $this->redirectToRoute("castle",["error"=>"you need level ".self::CATACOMB_LEVEL." level to access the DANGER CATACOMBS"]);
+       }
     }
 
     /**
@@ -121,6 +127,32 @@ class CastleController extends Controller
             return $this->redirectToRoute("castle", ["success" => "Successfully set your necklace"]);
         } else {
             return $this->redirectToRoute("castle", ["error" => "You do not own that necklace or kingdom!"]);
+        }
+    }
+
+
+    /**
+     * @Security("is_authenticated()")
+     * @Route("setLycan/{lycanId}", name="setLycanToCastleGuard")
+     * @Method("POST")
+     */
+    public function setLycan($lycanId, Request $request)
+    {
+
+        $castleId = $request->get('castleId');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $lycan = $this->getDoctrine()->getRepository('AppBundle:Lycans')->findOneBy(['id' => $lycanId]);
+        $castle = $this->getDoctrine()->getRepository('AppBundle:Kingodms')->findOneBy(['ownerId' => $user->getId()]);
+
+        if ($lycan && $castle && $castleId != "") {
+
+            $lycan->setCastleId($castleId);
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            return $this->redirectToRoute("catacombs", ["success" => "Successfully set your necklace"]);
+        } else {
+            return $this->redirectToRoute("catacombs", ["error" => "You do not own that necklace or kingdom!"]);
         }
     }
 }

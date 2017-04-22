@@ -92,9 +92,9 @@ class User implements UserInterface
     /**
      * @var integer
      *
-     * @ORM\Column(name="money", type="integer", nullable=true)
+     * @ORM\Column(name="gold", type="integer", nullable=true)
      */
-    private $money = 500;
+    private $gold = 500;
 
     /**
      * @var integer
@@ -304,17 +304,17 @@ class User implements UserInterface
     /**
      * @return int
      */
-    public function getMoney()
+    public function getGold()
     {
-        return $this->money;
+        return $this->gold;
     }
 
     /**
-     * @param int $money
+     * @param int $gold
      */
-    public function setMoney($money)
+    public function setGold($gold)
     {
-        $this->money = $money;
+        $this->gold = $gold;
     }
 
     /**
