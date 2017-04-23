@@ -18,8 +18,8 @@
                     <th>ATTACK BONUS</th>
                     <th>DEFENCE BONUS</th>
                     <th>CASTLE ATTACK BONUS</th>
-                    <th>DOGS ATTACK BONUS</th>
-                    <th>DOGS ATTACK BONUS</th>
+                    <th>LYCAN ATTACK BONUS</th>
+                    <th>LYCAN HEALTH BONUS</th>
                     <th>IMAGE</th>
                     <th>ACTION</th>
                 </tr>
@@ -32,8 +32,8 @@
                         <td>{{ userNecklace.getNecklace().getAttackBonus() }}</td>
                         <td>{{ userNecklace.getNecklace().getHealthBonus() }}</td>
                         <td>{{ userNecklace.getNecklace().getCastleHealthBonus() }}</td>
-                        <td>{{ userNecklace.getNecklace().getDogsAttackBonus() }}</td>
-                        <td>{{ userNecklace.getNecklace().getDogsDefenseBonus() }}</td>
+                        <td>{{ userNecklace.getNecklace().getLycanAttackBonus() }}</td>
+                        <td>{{ userNecklace.getNecklace().getLycanHealthBonus() }}</td>
                         <td><img src="assets/necklaces/{{ userNecklace.getNecklace().getImage() }}" style="height: 150px"></td>
 
                         <td>
@@ -64,7 +64,7 @@
 
                             {% else %}
 
-                                DIRECT AFFECT TO YOUR HERO OR DOGS
+                                DIRECT AFFECT TO YOUR HERO OR LYCAN
                             {% endif %}
                         </td>
                     </tr>

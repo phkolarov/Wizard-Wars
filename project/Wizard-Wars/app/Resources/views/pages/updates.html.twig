@@ -7,6 +7,12 @@
 
         <h1>UPDATES STATUS</h1>
 
+        <div class="updates-buttons-wrapper">
+            <button class="btn btn-lg btn-danger">UPDATE LAYCANS</button>
+            <button class="btn btn-lg btn-danger">UPDATE NECKLACES</button>
+            <button class="btn btn-lg btn-danger">UPDATE WANDS</button>
+            <button class="btn btn-lg btn-danger">UPDATES STATUS</button>
+        </div>
         <h2>Updating Necklaces</h2>
 
         <table class="table table-hover tst">
@@ -15,6 +21,7 @@
                 <th>WAND NAME</th>
                 <th>DESCRIPTION</th>
                 <th>IMAGE</th>
+                <th>TIME LEFT</th>
             </tr>
             </thead>
             <tbody>
@@ -23,7 +30,9 @@
                 <tr>
                     <td>{{ userNecklace.getNecklace().getName() }}</td>
                     <td>{{ userNecklace.getNecklace().getAttackBonus() }}</td>
-                    <td>{{ userNecklace.getNecklace().getHealthBonus() }}</td>
+                    <td><img src="assets/necklaces/{{ userNecklace.getNecklace().getImage() }}" style="height: 150px"></td>
+
+                    <td>{{ userNecklace.getTimeToUpdate().format('d/m/Y') }}</td>
 
                 </tr>
             {% endfor %}
@@ -31,12 +40,7 @@
         </table>
 
 
-        <div class="updates-buttons-wrapper">
-           <button class="btn btn-lg btn-danger">UPDATE LAYCANS</button>
-           <button class="btn btn-lg btn-danger">UPDATE NECKLACES</button>
-           <button class="btn btn-lg btn-danger">UPDATE WANDS</button>
-           <button class="btn btn-lg btn-danger">UPDATES STATUS</button>
-       </div>
+
     </div>
 
 
@@ -74,14 +78,15 @@
             }
 
             .updates-buttons-wrapper{
-                position: absolute;
                 height: 100px;
-                left: 10px;
-                bottom: 0px;
             }
             .tst{
                 background-color: rgba(0, 0, 0, 0.71);
                 color: white;
+                margin-bottom: 50px;
+            }
+            .tst>tbody>tr:hover{
+                color: black;
             }
         </style>
     {% endblock %}

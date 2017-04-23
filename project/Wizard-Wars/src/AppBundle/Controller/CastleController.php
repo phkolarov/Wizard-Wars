@@ -144,10 +144,14 @@ class CastleController extends Controller
         $lycan = $this->getDoctrine()->getRepository('AppBundle:Lycans')->findOneBy(['id' => $lycanId]);
         $castle = $this->getDoctrine()->getRepository('AppBundle:Kingodms')->findOneBy(['ownerId' => $user->getId()]);
 
-        if ($lycan && $castle && $castleId != "") {
+        if ($lycan && $castle ) {
 
-            $lycan->setCastleId($castleId);
             $em = $this->getDoctrine()->getManager();
+            if($castleId != ""){
+                $lycan->setCastleId(null);
+            }else{
+                $lycan->setCastleId($castleId);
+            }
             $em->flush();
 
             return $this->redirectToRoute("catacombs", ["success" => "Successfully set your necklace"]);

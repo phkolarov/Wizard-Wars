@@ -48,7 +48,7 @@ class MenuInformationController extends Controller
 
 
         //MAX   IMUM HEALTH PER LEVEL FORMULA
-        $percentHealth = ($user->getHealth() / (100 * $user->getLevel()) * 100);
+        $percentHealth = ($user->getHealth() / ($user->getRace()->getHealth() * $user->getLevel()) * 100);
         if ($percentHealth > 100) {
             $percentHealth = 100;
         }

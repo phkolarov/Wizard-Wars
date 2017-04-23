@@ -45,16 +45,16 @@ class Necklaces
     /**
      * @var integer
      *
-     * @ORM\Column(name="dogs_attack_bonus", type="integer", nullable=false)
+     * @ORM\Column(name="lycan_attack_bonus", type="integer", nullable=false)
      */
-    private $dogsAttackBonus;
+    private $lycanAttackBonus;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="dogs_defense_bonus", type="integer", nullable=false)
+     * @ORM\Column(name="lycan_health_bonus", type="integer", nullable=false)
      */
-    private $dogsDefenseBonus;
+    private $lycanHealthBonus;
 
     /**
      * @var integer
@@ -157,33 +157,33 @@ class Necklaces
     /**
      * @return int
      */
-    public function getDogsAttackBonus()
+    public function getLycanAttackBonus()
     {
-        return $this->dogsAttackBonus;
+        return $this->lycanAttackBonus;
     }
 
     /**
      * @param int $dogsAttackBonus
      */
-    public function setDogsAttackBonus($dogsAttackBonus)
+    public function setLycanAttackBonus($lycanAttackBonus)
     {
-        $this->dogsAttackBonus = $dogsAttackBonus;
+        $this->lycanAttackBonus = $lycanAttackBonus;
     }
 
     /**
      * @return int
      */
-    public function getDogsDefenseBonus()
+    public function getLycanHealthBonus()
     {
-        return $this->dogsDefenseBonus;
+        return $this->lycanAttackBonus;
     }
 
     /**
      * @param int $dogsDefenseBonus
      */
-    public function setDogsDefenseBonus($dogsDefenseBonus)
+    public function setLycanHealthBonus($lycanAttackBonus)
     {
-        $this->dogsDefenseBonus = $dogsDefenseBonus;
+        $this->lycanAttackBonus = $lycanAttackBonus;
     }
 
     /**
