@@ -19,7 +19,7 @@ ww.helpers = (() => {
         })
     }
 
-    function startTimer(duration, display) {
+    function startTimer(duration, display,defaultTime) {
         var timer = duration, minutes, seconds;
         setInterval(function () {
             minutes = parseInt(timer / 60, 10);
@@ -32,17 +32,21 @@ ww.helpers = (() => {
 
             if (--timer < 0) {
                 timer = duration;
+                if(defaultTime){
+                    timer = defaultTime;
+                }
             }
         }, 1000);
     }
 
 
-    function countDownTimer(seconds,clockId) {
+    function countDownTimer(seconds,clockId,defaultTime = null) {
 
+        console.log(clockId);
         jQuery(function ($) {
             var fiveMinutes = seconds,
                 display = $('#'+clockId);
-            startTimer(fiveMinutes, display);
+            startTimer(fiveMinutes, display,defaultTime);
         });
 
     }

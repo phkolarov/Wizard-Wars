@@ -93,22 +93,22 @@
                 {% for lycan in lycans %}
                     <tr>
                         <form method="post" action='{{ path('setLycanToCastleGuard',{"lycanId": lycan.getId()}) }}'>
-                        <td>{{ lycan.getName() }}</td>
-                        <td>{{ lycan.getAttack() }}</td>
-                        <td>{{ lycan.getHealth() }}</td>
+                            <td>{{ lycan.getName() }}</td>
+                            <td>{{ lycan.getAttack() }}</td>
+                            <td>{{ lycan.getHealth() }}</td>
                             <td>{{ lycan.getLevel() }}</td>
                             <td>{{ lycan.castleName }}</td>
-                        <td>
-                        <select class="form-control" name="castleId">
-                            <option value="">CHOOSE CASTLE</option>
+                            <td>
+                                <select class="form-control" name="castleId">
+                                    <option value="">CHOOSE CASTLE</option>
 
-                            {% for castle in ownCastles %}
-                                    <option value="{{ castle.getId() }}">{{ castle.getCastleName() }}</option>
-                                {% endfor %}
-                        </select>
-                        </td>
-                        <td><button type="submit" class="btn btn-danger">SET</button></td>
-                            </form>
+                                    {% for castle in ownCastles %}
+                                        <option value="{{ castle.getId() }}">{{ castle.getCastleName() }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td><button type="submit" class="btn btn-danger">SET</button></td>
+                        </form>
 
                     </tr>
                 {% endfor %}

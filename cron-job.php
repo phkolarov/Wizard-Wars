@@ -26,7 +26,7 @@ foreach ($necklacesForUpdate as $necklace) {
 
     $updateTime = $necklace['time_to_update'];
 
-    if (strtotime($dateNow)< strtotime($updateTime)) {
+    if (strtotime($dateNow)> strtotime($updateTime)) {
 
         $id = $necklace['id'];
         $level = $necklace['userLevel'];
@@ -44,7 +44,7 @@ foreach ($necklacesForUpdate as $necklace) {
                $neHealth = intval($necklace['health']) + intval($necklace['health_bonus']) * intval($necklace['necklaceLevel']);
                $healthPercentage = (intval($necklace['health']) / (intval($necklace['raceHealth']) * intval($necklace['userLevel'])) * 100);
 
-               if($healthPercentage > 100){
+               if($healthPercentage < 100){
                    $neHealth = intval($necklace['health']) + intval($necklace['health_bonus']) * intval($necklace['necklaceLevel']);
 
                    $query = "UPDATE user SET health='$neHealth' WHERE id = '$userId'";

@@ -90,6 +90,13 @@ class Necklaces
      */
     private $price;
 
+
+    /**
+     * @var string
+     * @ORM\Column(name="description", type="string", nullable=true)
+     */
+    private $description;
+
     /**
      * @return int
      */
@@ -265,6 +272,23 @@ class Necklaces
     {
         $this->price = $price;
     }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
 
 
 }
