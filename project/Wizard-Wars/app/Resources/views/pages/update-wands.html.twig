@@ -55,10 +55,10 @@
                         </td>
 
                         <td>
-                            <form method="post" action="{{ path('useWand',{"id": magicWand.getMagicWand().getId()}) }}">
-                                <input class="btn btn-sm btn-danger" type="hidden" name="stick_id">
+                            <form method="post" action="{{ path('set-wand-update',{"id": magicWand.getMagicWand().getId()}) }}">
+                                <input class="btn btn-sm btn-danger" type="hidden" name="gold" value="{{ magicWand.getMagicWand().getPrice()  * magicWand.getLevel() }}">
                                 <button class="btn btn-sm btn-warning" type="submit" value="Use this wand">UPDATE
-                                    FOR {{ magicWand.getMagicWand().getPrice() }}</button>
+                                    FOR {{ magicWand.getMagicWand().getPrice() * magicWand.getLevel()  }}</button>
                             </form>
                         </td>
                     </tr>
@@ -145,6 +145,8 @@
 
                 let secondsLeft = timeLeft.diff(moment(), 'seconds');
                 let idName = $(timer[0]).attr('id');
+
+                console.log(secondsLeft);
 
                 if (secondsLeft > 0) {
 

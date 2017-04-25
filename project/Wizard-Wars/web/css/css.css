@@ -1,24 +1,25 @@
 
-.col-centered{
+.col-centered {
     float: none;
     margin: 0 auto;
 }
 
-#login_wrapper{
+#login_wrapper {
     background: url("images/login_page.png");
     background-size: cover;
     background-repeat: no-repeat;
     display: block;
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     position: absolute;
 }
 
-#login_wrapper>div>div{
+#login_wrapper > div > div {
 
     top: 501px;
 }
-#login_wrapper label{
+
+#login_wrapper label {
     color: white;
 }
 
@@ -31,10 +32,45 @@ html {
     cursor: url("../assets/world/cursor.png"), auto;
 }
 
-body{
+body {
     font-family: magicFont !important;
 }
 
-.progress{
+.progress {
     margin-top: 15px;
+}
+
+.table-hover > tbody > tr:hover {
+    color: black;
+}
+
+.tst {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.69);
+}
+
+.page {
+    display: inline-block;
+    border: 1px solid white;
+    width: 30px;
+    padding: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.62);
+    font-size: 18px;
+    color: white;
+}
+
+.next, .previous, .last, .first  {
+    font-family: "Times New Roman", sans-serif;
+    display: inline-block;
+    border: 1px solid white;
+    min-width: 30px;
+    padding: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.62);
+    font-size: 18px;
+}
+
+.page a, .next a, .previous a, .last a, .first a {
+    color: white;
 }

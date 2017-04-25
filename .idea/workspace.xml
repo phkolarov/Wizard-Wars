@@ -15,113 +15,71 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GameController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/GameController.php">
+      <file leaf-file-name="shop.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/shop.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2023">
-              <caret line="134" column="52" lean-forward="false" selection-start-line="134" selection-start-column="44" selection-end-line="134" selection-end-column="52" />
+            <state relative-caret-position="306">
+              <caret line="18" column="47" lean-forward="false" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="buy-necklaces.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/buy-necklaces.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="34" column="90" lean-forward="false" selection-start-line="34" selection-start-column="90" selection-end-line="34" selection-end-column="90" />
               <folding>
-                <element signature="e#123#154#0#PHP" expanded="true" />
+                <element signature="e#1384#1404#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CastleController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/CastleController.php">
+      <file leaf-file-name="buy-lycans.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/buy-lycans.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-              <folding>
-                <element signature="e#122#167#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UpdatesController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UpdatesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/UpdatesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="193" column="62" lean-forward="false" selection-start-line="193" selection-start-column="62" selection-end-line="193" selection-end-column="62" />
+            <state relative-caret-position="610">
+              <caret line="314" column="114" lean-forward="false" selection-start-line="314" selection-start-column="114" selection-end-line="314" selection-end-column="114" />
               <folding>
-                <element signature="e#123#168#0#PHP" expanded="true" />
-                <marker date="1493103039227" expanded="true" signature="996:1111" ph="SELECT un FR... AppBundle" />
-                <marker date="1493103039227" expanded="true" signature="996:1112" ph="SELECT un FR... AppBundle" />
-                <marker date="1493103039227" expanded="true" signature="996:1117" ph="SELECT un FR... AppBundle" />
-                <marker date="1493103039227" expanded="true" signature="5113:5234" ph="SELECT un FR... AppBundle" />
+                <element signature="e#41#77#0#PHP" expanded="true" />
+                <marker date="1493150608509" expanded="true" signature="1066:1181" ph="SELECT un FR... AppBundle" />
+                <marker date="1493150608509" expanded="true" signature="1066:1182" ph="SELECT un FR... AppBundle" />
+                <marker date="1493150608509" expanded="true" signature="1066:1187" ph="SELECT un FR... AppBundle" />
+                <marker date="1493150608509" expanded="true" signature="5183:5304" ph="SELECT un FR... AppBundle" />
+                <marker date="1493150608509" expanded="true" signature="8468:8503" ph="SELECT a FRO... AppBundle" />
+                <marker date="1493150608509" expanded="true" signature="10538:10570" ph="SELECT l FRO... AppBundle" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="update-wands.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/update-wands.html.twig">
+      <file leaf-file-name="css.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/css/css.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2686">
-              <caret line="158" column="59" lean-forward="false" selection-start-line="158" selection-start-column="59" selection-end-line="158" selection-end-column="59" />
+            <state relative-caret-position="657">
+              <caret line="66" column="8" lean-forward="false" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="helpers.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/js/app/helpers.js">
+      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/config/config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="49" column="11" lean-forward="false" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cron-job.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cron-job.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1768">
-              <caret line="104" column="26" lean-forward="false" selection-start-line="104" selection-start-column="26" selection-end-line="104" selection-end-column="26" />
-              <folding>
-                <marker date="1493063360900" expanded="true" signature="159:581" ph="SELECT un.id... users_necklaces" />
-                <marker date="1493063360900" expanded="true" signature="1067:1131" ph="UPDATE users... " />
-                <marker date="1493063360900" expanded="true" signature="1803:1858" ph="UPDATE user " />
-                <marker date="1493063360900" expanded="true" signature="2184:2227" ph="UPDATE user " />
-                <marker date="1493063360900" expanded="true" signature="2184:2236" ph="UPDATE user " />
-                <marker date="1493063360900" expanded="true" signature="2537:2589" ph="UPDATE user " />
-                <marker date="1493063360900" expanded="true" signature="2767:2804" ph="SELECT * FRO... lycans" />
-                <marker date="1493063360900" expanded="true" signature="2767:2813" ph="SELECT * FRO... lycans" />
-                <marker date="1493063360900" expanded="true" signature="3357:3394" ph="UPDATE lycan... " />
-                <marker date="1493063360900" expanded="true" signature="3357:3414" ph="UPDATE lycan... " />
-                <marker date="1493063360900" expanded="true" signature="3675:3706" ph="SELECT * FRO... users_magic_wands" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UsersMagicWands.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/UsersMagicWands.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2703">
-              <caret line="159" column="5" lean-forward="false" selection-start-line="159" selection-start-column="5" selection-end-line="159" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="update-necklaces.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/update-necklaces.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="updates.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/updates.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1870">
-              <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="141" selection-end-column="14" />
+            <state relative-caret-position="793">
+              <caret line="80" column="94" lean-forward="false" selection-start-line="80" selection-start-column="94" selection-end-line="80" selection-end-column="94" />
               <folding />
             </state>
           </provider>
@@ -130,8 +88,8 @@
       <file leaf-file-name="castle.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/castle.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="52" column="34" lean-forward="false" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
+            <state relative-caret-position="334">
+              <caret line="124" column="12" lean-forward="false" selection-start-line="124" selection-start-column="12" selection-end-line="127" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -143,21 +101,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>casleName</find>
-      <find>castles</find>
-      <find>&lt;div&gt;</find>
-      <find>magicWands</find>
-      <find>attack</find>
-      <find>findAll</find>
-      <find>findAlll</find>
-      <find>money</find>
       <find>castleId</find>
       <find>userWand</find>
       <find>lycanTable</find>
@@ -180,6 +130,14 @@
       <find>update-necklace-action</find>
       <find>Necklace</find>
       <find>lycan</find>
+      <find>setTimeToUpdate</find>
+      <find>zone</find>
+      <find>init</find>
+      <find>statis</find>
+      <find>exe</find>
+      <find>$smt</find>
+      <find>name</find>
+      <find>time</find>
     </findStrings>
     <replaceStrings>
       <replace>$</replace>
@@ -193,17 +151,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/AppBundle.php" />
-        <option value="$PROJECT_DIR$/front/real_world.html" />
-        <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/DatabaseController.php" />
-        <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/HomeController.php" />
-        <option value="$PROJECT_DIR$/as.js" />
-        <option value="$PROJECT_DIR$/as.json" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/recovered/User.php" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/login.html.twig" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/register.html.twig" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/RegistrationController.php" />
-        <option value="$PROJECT_DIR$/project/Wizard-Wars/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/Buildings.php" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/Race.php" />
@@ -220,8 +171,6 @@
         <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/UsersNecklaces.php" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/Kingodms.php" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/MagicWands.php" />
-        <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/real_world.html.twig" />
-        <option value="$PROJECT_DIR$/project/Wizard-Wars/web/css/css.css" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/partials/navbar.html.twig" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/Dogs.php" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/Wolverines.php" />
@@ -230,7 +179,6 @@
         <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/CastleController.php" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/MenuInformationController.php" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/partials/user-information.html.twig" />
-        <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/Necklaces.php" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/web/js/libraries/moment/moment.js" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/catacombs.html.twig" />
@@ -238,11 +186,21 @@
         <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/update-lycans.html.twig" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/update-necklaces.html.twig" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/updates.html.twig" />
-        <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/castle.html.twig" />
-        <option value="$PROJECT_DIR$/cron-job.php" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/UsersMagicWands.php" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/web/js/app/helpers.js" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/update-wands.html.twig" />
+        <option value="$PROJECT_DIR$/project/Wizard-Wars/web/app.php" />
+        <option value="$PROJECT_DIR$/cron-job.php" />
+        <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/castle.html.twig" />
+        <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/real_world.html.twig" />
+        <option value="$PROJECT_DIR$/project/Wizard-Wars/app/AppKernel.php" />
+        <option value="$PROJECT_DIR$/project/Wizard-Wars/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/buy-necklaces.html.twig.html" />
+        <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/shop.html.twig" />
+        <option value="$PROJECT_DIR$/project/Wizard-Wars/web/css/css.css" />
+        <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/Necklaces.php" />
+        <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/buy-necklaces.html.twig" />
+        <option value="$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/buy-lycans.html.twig" />
         <option value="$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/UpdatesController.php" />
       </list>
     </option>
@@ -530,101 +488,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="world" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wizard-Wars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wizard-Wars" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wizard-Wars" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="world" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="building_backgrounds" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wizard-Wars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wizard-Wars" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wizard-Wars" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wands" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wizard-Wars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wizard-Wars" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wizard-Wars" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lycans" />
+              <option name="myItemId" value="cards" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -1047,15 +911,15 @@
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Wizard-Wars\project\Wizard-Wars\web\css" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Wizard-Wars\project\Wizard-Wars\app\Resources\views\pages" />
+      <recent name="C:\xampp\htdocs\Wizard-Wars\project\Wizard-Wars\web\assets\cards" />
+      <recent name="C:\xampp\htdocs\Wizard-Wars\project\Wizard-Wars\web\assets\cars" />
       <recent name="C:\xampp\htdocs\Wizard-Wars\project\Wizard-Wars\web\assets\wands" />
       <recent name="C:\xampp\htdocs\Wizard-Wars\project\Wizard-Wars\web\assets\lycans" />
-      <recent name="C:\xampp\htdocs\Wizard-Wars\project\Wizard-Wars\app\Resources\views\pages" />
-      <recent name="C:\xampp\htdocs\Wizard-Wars\project\Wizard-Wars\web\js\libraries\moment" />
-      <recent name="C:\xampp\htdocs\Wizard-Wars\project\Wizard-Wars\web\assets\necklaces" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Wizard-Wars\project\Wizard-Wars\web\css" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1162,12 +1026,12 @@
       <workItem from="1492276317008" duration="9475000" />
       <workItem from="1492343337400" duration="19299000" />
       <workItem from="1492430805838" duration="94482000" />
-      <workItem from="1493102822185" duration="217000" />
+      <workItem from="1493102822185" duration="23481000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194218000" />
+    <option name="totallyTimeSpent" value="217482000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1924" height="1056" extended-state="0" />
@@ -1177,6 +1041,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1188,7 +1053,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1196,16 +1060,17 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20735608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19796138" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1225,255 +1090,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/AppKernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="72" lean-forward="false" selection-start-line="4" selection-start-column="72" selection-end-line="4" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/Race.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-179">
-          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/RecoveredUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/UserBuildings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
-          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/Buildings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1462">
-          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/recovered/Kingodms.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3009">
-          <caret line="177" column="1" lean-forward="false" selection-start-line="177" selection-start-column="1" selection-end-line="190" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/recovered/MagicWands.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="7" lean-forward="false" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/recovered/UsersMagicWands.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/ground.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/explode.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/castle.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/grass.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/UsersBuildings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="785">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/RaceController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/login.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="30" lean-forward="false" selection-start-line="39" selection-start-column="30" selection-end-line="41" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/register.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/choose_race.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2907">
-          <caret line="183" column="0" lean-forward="false" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/game.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/MagicWands.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="52" column="18" lean-forward="false" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/Kingodms.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="60" column="33" lean-forward="false" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="58" column="29" lean-forward="false" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/real_world.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="149" column="33" lean-forward="false" selection-start-line="149" selection-start-column="33" selection-end-line="149" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/action_game.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-459">
-          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/partials/navbar.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="27" lean-forward="false" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/recovered/Buildings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/css/css.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="23" lean-forward="false" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="317" column="5" lean-forward="false" selection-start-line="317" selection-start-column="5" selection-end-line="317" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/Lycans.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="56" column="21" lean-forward="false" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/MenuInformationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="50" column="77" lean-forward="false" selection-start-line="50" selection-start-column="77" selection-end-line="50" selection-end-column="77" />
-          <folding>
-            <element signature="e#123#185#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/partials/user-information.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="27" lean-forward="false" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/Necklaces.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1769">
-          <caret line="292" column="0" lean-forward="false" selection-start-line="292" selection-start-column="0" selection-end-line="292" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="27" lean-forward="false" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/UsersNecklaces.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="83" column="28" lean-forward="false" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/js/libraries/moment/moment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="40" column="16" lean-forward="false" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/lycans/lycan_show.gif">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1492,79 +1108,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/update-lycans.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="103" lean-forward="false" selection-start-line="10" selection-start-column="103" selection-end-line="10" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/catacombs.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="73" column="14" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="73" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/update-necklaces.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/GameController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2023">
-          <caret line="134" column="52" lean-forward="false" selection-start-line="134" selection-start-column="44" selection-end-line="134" selection-end-column="52" />
-          <folding>
-            <element signature="e#123#154#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/castle.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="52" column="34" lean-forward="false" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/updates.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1870">
           <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="141" selection-end-column="14" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/UsersMagicWands.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2703">
-          <caret line="159" column="5" lean-forward="false" selection-start-line="159" selection-start-column="5" selection-end-line="159" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cron-job.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
-          <caret line="104" column="26" lean-forward="false" selection-start-line="104" selection-start-column="26" selection-end-line="104" selection-end-column="26" />
-          <folding>
-            <marker date="1493063360900" expanded="true" signature="159:581" ph="SELECT un.id... users_necklaces" />
-            <marker date="1493063360900" expanded="true" signature="1067:1131" ph="UPDATE users... " />
-            <marker date="1493063360900" expanded="true" signature="1803:1858" ph="UPDATE user " />
-            <marker date="1493063360900" expanded="true" signature="2184:2227" ph="UPDATE user " />
-            <marker date="1493063360900" expanded="true" signature="2184:2236" ph="UPDATE user " />
-            <marker date="1493063360900" expanded="true" signature="2537:2589" ph="UPDATE user " />
-            <marker date="1493063360900" expanded="true" signature="2767:2804" ph="SELECT * FRO... lycans" />
-            <marker date="1493063360900" expanded="true" signature="2767:2813" ph="SELECT * FRO... lycans" />
-            <marker date="1493063360900" expanded="true" signature="3357:3394" ph="UPDATE lycan... " />
-            <marker date="1493063360900" expanded="true" signature="3357:3414" ph="UPDATE lycan... " />
-            <marker date="1493063360900" expanded="true" signature="3675:3706" ph="SELECT * FRO... users_magic_wands" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1576,35 +1124,345 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/UsersMagicWands.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="35" column="25" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/vendor/symfony/symfony/src/Symfony/Component/Validator/Constraints/DateTime.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/update-necklaces.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="134" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/update-wands.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2686">
-          <caret line="158" column="59" lean-forward="false" selection-start-line="158" selection-start-column="59" selection-end-line="158" selection-end-column="59" />
+        <state relative-caret-position="487">
+          <caret line="148" column="39" lean-forward="false" selection-start-line="148" selection-start-column="39" selection-end-line="148" selection-end-column="39" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/GameController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="134" column="52" lean-forward="false" selection-start-line="134" selection-start-column="44" selection-end-line="134" selection-end-column="52" />
+          <folding>
+            <element signature="e#123#154#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="e#50#95#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/CastleController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        <state relative-caret-position="-714">
+          <caret line="70" column="48" lean-forward="false" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
           <folding>
-            <element signature="e#122#167#0#PHP" expanded="true" />
+            <element signature="e#122#167#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/382514913.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="58" column="29" lean-forward="false" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/game.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/real_world.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="327" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cron-job.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1160">
+          <caret line="139" column="0" lean-forward="true" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding>
+            <marker date="1493110279937" expanded="true" signature="198:620" ph="SELECT un.id... users_necklaces" />
+            <marker date="1493110279937" expanded="true" signature="1151:1215" ph="UPDATE users... " />
+            <marker date="1493110279937" expanded="true" signature="1934:1989" ph="UPDATE user " />
+            <marker date="1493110279937" expanded="true" signature="2346:2398" ph="UPDATE user " />
+            <marker date="1493110279937" expanded="true" signature="2723:2775" ph="UPDATE user " />
+            <marker date="1493110279937" expanded="true" signature="2973:3019" ph="SELECT * FRO... lycans" />
+            <marker date="1493110279937" expanded="true" signature="3601:3658" ph="UPDATE lycan... " />
+            <marker date="1493110279937" expanded="true" signature="3999:4294" ph="SELECT umw.u... users_magic_wands" />
+            <marker date="1493110279937" expanded="true" signature="4943:4984" ph="UPDATE user " />
+            <marker date="1493110279937" expanded="true" signature="5024:5089" ph="UPDATE users... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/action_game.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/catacombs.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="44" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="186" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/world.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/win-button.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/star.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/sky.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/sauron.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/paper.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/own-castles.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/magician.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/lycan.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/lose-button.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/grass.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/ground.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/explode.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/enemy-bullet.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/cursor.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/castle.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/button1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/button.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/burger.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/assets/world/magic_shop.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/AppKernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="19" column="65" lean-forward="false" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/vendor/symfony/symfony/src/Symfony/Component/Inflector/Tests/InflectorTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="48" column="19" lean-forward="false" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/choose_race.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/castle.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="124" column="12" lean-forward="false" selection-start-line="124" selection-start-column="12" selection-end-line="127" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="793">
+          <caret line="80" column="94" lean-forward="false" selection-start-line="80" selection-start-column="94" selection-end-line="80" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/web/css/css.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="657">
+          <caret line="66" column="8" lean-forward="false" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/shop.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="47" lean-forward="false" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/buy-necklaces.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="34" column="90" lean-forward="false" selection-start-line="34" selection-start-column="90" selection-end-line="34" selection-end-column="90" />
+          <folding>
+            <element signature="e#1384#1404#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Entity/Necklaces.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4686">
+          <caret line="334" column="0" lean-forward="false" selection-start-line="334" selection-start-column="0" selection-end-line="334" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/update-lycans.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="103" lean-forward="false" selection-start-line="10" selection-start-column="103" selection-end-line="10" selection-end-column="103" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/src/AppBundle/Controller/UpdatesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="193" column="62" lean-forward="false" selection-start-line="193" selection-start-column="62" selection-end-line="193" selection-end-column="62" />
+        <state relative-caret-position="610">
+          <caret line="314" column="114" lean-forward="false" selection-start-line="314" selection-start-column="114" selection-end-line="314" selection-end-column="114" />
           <folding>
-            <element signature="e#123#168#0#PHP" expanded="true" />
-            <marker date="1493103039227" expanded="true" signature="996:1111" ph="SELECT un FR... AppBundle" />
-            <marker date="1493103039227" expanded="true" signature="996:1112" ph="SELECT un FR... AppBundle" />
-            <marker date="1493103039227" expanded="true" signature="996:1117" ph="SELECT un FR... AppBundle" />
-            <marker date="1493103039227" expanded="true" signature="5113:5234" ph="SELECT un FR... AppBundle" />
+            <element signature="e#41#77#0#PHP" expanded="true" />
+            <marker date="1493150608509" expanded="true" signature="1066:1181" ph="SELECT un FR... AppBundle" />
+            <marker date="1493150608509" expanded="true" signature="1066:1182" ph="SELECT un FR... AppBundle" />
+            <marker date="1493150608509" expanded="true" signature="1066:1187" ph="SELECT un FR... AppBundle" />
+            <marker date="1493150608509" expanded="true" signature="5183:5304" ph="SELECT un FR... AppBundle" />
+            <marker date="1493150608509" expanded="true" signature="8468:8503" ph="SELECT a FRO... AppBundle" />
+            <marker date="1493150608509" expanded="true" signature="10538:10570" ph="SELECT l FRO... AppBundle" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Wizard-Wars/app/Resources/views/pages/buy-lycans.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>

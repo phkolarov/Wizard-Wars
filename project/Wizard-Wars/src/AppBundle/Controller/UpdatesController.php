@@ -1,23 +1,22 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mst
- * Date: 22.4.2017 г.
- * Time: 13:26
- */
 
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\UsersNecklaces;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class UpdatesController extends Controller
 {
 
+
+    const BASE_UPDATE_TIME = 2;
+    const LYCAN_PRICE = 50;
 
     /**
      *
@@ -122,8 +121,8 @@ class UpdatesController extends Controller
             $requestedGOLD = $request->get('price');
             if ($money >= ($requestedGOLD)) {
 
-                $user->setGold($money - $requestedGOLD);
                 $em = $this->getDoctrine()->getManager();
+                $user->setGold($money - $requestedGOLD);
                 $level = $lycan->getLevel();
                 $lycan->setLevel($level + 1);
                 $lycan->setAttack($lycan->getAttack() + $level / 2 + 5);
@@ -160,7 +159,7 @@ class UpdatesController extends Controller
                 $necklacesUpdaters[] = $necklace;
             }
         }
-        return $this->render('pages/update-necklaces.html.twig',['necklaces'=> $necklacesUpdaters]);
+        return $this->render('pages/update-necklaces.html.twig', ['necklaces' => $necklacesUpdaters]);
     }
 
     /**
@@ -174,9 +173,9 @@ class UpdatesController extends Controller
         $magicWands = $this->getDoctrine()->getRepository('AppBundle:UsersMagicWands')->findBy(['user' => $user]);
 
 
-        return $this->render('pages/update-wands.html.twig',[
+        return $this->render('pages/update-wands.html.twig', [
             'magicWands' => $magicWands,
-            'userWand'=>$user->getWand()
+            'userWand' => $user->getWand()
         ]);
     }
 
@@ -188,20 +187,144 @@ class UpdatesController extends Controller
      */
     public function setUpdateAction($id, Request $request)
     {
-
-
+        $em = $this->getDoctrine()->getManager();
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        $userNecklaces = $this->getDoctrine()->getRepository()
-        $money = $user->getGold();
-        $requestedGOLD = $request->get('price');
+        $magicWands = $this->getDoctrine()->getRepository('AppBundle:UsersMagicWands')->findOneBy(['user' => $user, 'magicWand' => $id]);
 
-        if ($money >= ($requestedGOLD)) {
+        if ($magicWands) {
+            $money = $user->getGold();
+            $requestedGOLD = $request->get('gold');
 
+            if ($money >= ($requestedGOLD)) {
 
+                $user->setGold($user->getGold() - $requestedGOLD);
+                $level = $magicWands->getLevel() * self::BASE_UPDATE_TIME;
+                $stringTIme = "+$level minutes";
+                $time = new \DateTime();
 
+                $timePlus = strtotime($stringTIme, strtotime($time->format('Y-m-d H:i:s')));
+                $totalTime = new \DateTime(date('Y-m-d H:i:s', $timePlus));
+                $magicWands->setTimeToUpdate($totalTime);
+                $magicWands->setStatus(1);
+                $em->flush();
 
+                return $this->redirectToRoute('update-magic-wands', ['success' => 'Successfully requested update']);
+            } else {
+                return $this->redirectToRoute('update-magic-wands', ['error' => 'You don\'t enough gold']);
+            }
 
+        } else {
+            return $this->redirectToRoute('update-magic-wands', ['error' => 'You don\'t own this wand']);
         }
     }
+
+
+    /**
+     * @Security("is_authenticated()")
+     * @Route("/shop", name="shop")
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     */
+    public function shopAction(Request $request)
+    {
+        return $this->render('pages/shop.html.twig');
+    }
+
+
+    /**
+     * @Security("is_authenticated()")
+     * @Route("/buy-necklace", name="buy-necklace")
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     */
+    public function BuyNecklaceAction(Request $request)
+    {
+
+        $em = $this->get('doctrine.orm.entity_manager');
+        $dql = "SELECT n FROM AppBundle:Necklaces n";
+        $query = $em->createQuery($dql);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            4
+        );
+
+        return $this->render('pages/buy-necklaces.html.twig', ['pagination' => $pagination]);
+    }
+
+
+    /**
+     * @Security("is_authenticated()")
+     * @Route("/purchase-necklace/{id}", name="purchase-necklace")
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     */
+    public function PurchaseNecklaceAction($id,Request $request)
+    {
+        $gold = $request->get('priceGold');
+        $mana = $request->get('priceMana');
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        if($user->getMana() >= $mana && $user->getGold()>= $gold){
+
+            $em = $this->get('doctrine.orm.entity_manager');
+
+            $user->setGold($user->getGold() - $gold);
+            $user->setMana($user->getMana() - $mana);
+            $em->flush();
+
+            $necklace = $this->getDoctrine()->getRepository('AppBundle:Necklaces')->findOneBy(['id' => $id]);
+
+            $userNecklace = new UsersNecklaces();
+            $userNecklace->setNecklace($necklace);
+            $userNecklace->setTimeToUpdate(new \DateTime());
+            $userNecklace->setUser($user);
+            $userNecklace->setLevel(1);
+            $em->persist($userNecklace);
+            $em->flush();
+
+            return $this->redirectToRoute('buy-necklace',['success'=>'Successfully purchased this item']);
+
+        }else{
+            return $this->redirectToRoute('buy-necklace',['error'=>'You not enough resources']);
+        }
+    }
+
+    /**
+     * @Security("is_authenticated()")
+     * @Route("/buy-lycans", name="buy-lycans")
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     */
+    public function BuyLycansAction(Request $request)
+    {
+        $em = $this->get('doctrine.orm.entity_manager');
+        $dql = "SELECT l FROM AppBundle:Lycans l";
+        $query = $em->createQuery($dql);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            4
+        );
+
+        return $this->render('pages/buy-lycans.html.twig', ['pagination' => $pagination,'price'=>self::LYCAN_PRICE]);
+    }
+
+    /**
+     * @Security("is_authenticated()")
+     * @Route("/buy-wand", name="buy-wand")
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     */
+    public function BuyWandsAction()
+    {
+
+    }
+
 
 }

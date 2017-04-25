@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ include('partials/navbar.html.twig') }}
+
+    <div id="game-wrapper" class="col-centered">
+        <h1>BUY LYCANS</h1>
+        <a class="btn btn-danger" id="back_to_kingdom" href="{{ path('shop') }}">BACK TO MAIN SHOP</a>
+        <br>
+        <br>
+
+        <div class="container">
+            <table class="table table-hover tst">
+                <tr>
+                    {# sorting of properties based on query components #}
+                    <th>{{ knp_pagination_sortable(pagination, 'Id', 'n.id') }}</th>
+                    <th{% if pagination.isSorted('n.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'n.name') }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'Price', ['n.price']) }}</th>
+                    <th>Image</th>
+                    <th>Mana</th>
+                    <th>Gold</th>
+                    <th></th>
+                </tr>
+
+                {# table body #}
+                {% for necklace in pagination %}
+                    <tr {% if loop.index is odd %}class="color"{% endif %}>
+                        <td>{{ necklace.getId() }}</td>
+                        <td>{{ necklace.getName() }}</td>
+                        <td>{{ necklace.getPrice() }}</td>
+                        <td><img src="assets/necklaces/{{ necklace.getImage() }}" style="width: 150px"></td>
+                        <td>{{ necklace.getPriceMana() }}</td>
+                        <td>{{ necklace.getPrice() }}</td>
+                        <td>
+                            <form method="post" action="{{ path('purchase-necklace',{'id':necklace.getId()}) }}">
+                                <input type="hidden" name="priceMana" value="{{ necklace.getPriceMana() }}">
+                                <input type="hidden" name="priceGold" value="{{ necklace.getPrice() }}">
+                                <input type="submit" class="btn btn-warning" value="BUY NECKLACE">
+                            </form>
+                        </td>
+
+                        {#<td>{{ necklace.date | date('Y-m-d') }}, {{ article.time | date('H:i:s') }}</td>#}
+                    </tr>
+                {% endfor %}
+            </table>
+            {# display navigation #}
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+
+
+    </div>
+
+
+{% endblock %}
+    {% block stylesheets %}
+        <style>
+
+            body {
+                background-image: url("assets/world/magic_shop.jpg") !important;
+                background-size: 100%;
+            }
+
+            canvas {
+                margin: auto;
+
+            }
+
+            #game-wrapper {
+                width: 100%;
+                min-height: 100%;
+                box-shadow: inset 0 0 1.5em 1.5em #114ea7, 0 0 1.5em 1.5em #114ea7; /* padding:1em */
+                display: inline-block;
+                position: absolute;
+                margin: 0px auto;
+                padding: 20px;
+                padding-top: 68px;
+
+                background-color: transparent;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+
+            h1 {
+                color: white !important;
+                text-align: center;
+            }
+
+            #castlesThumb {
+                width: 300px;
+            }
+
+            .tst {
+                color: white;
+                background-color: rgba(0, 0, 0, 0.69);
+            }
+
+            .table-hover > tbody > tr:hover {
+                color: black;
+            }
+
+            select {
+                color: black;
+            }
+
+            #back_to_kingdom {
+                position: absolute;
+                right: 35px;
+            }
+
+
+        </style>
+    {% endblock %}
+
+{% block javascripts %}
+    <script>
+
+
+    </script>
+{% endblock %}

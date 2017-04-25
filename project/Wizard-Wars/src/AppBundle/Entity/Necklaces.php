@@ -92,6 +92,18 @@ class Necklaces
 
 
     /**
+     * @var integer
+     * @ORM\Column(name="price_mana", type="integer", nullable=false)
+     */
+    private $priceMana;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="level", type="integer", nullable=false)
+     */
+    private $level = 0;
+
+    /**
      * @var string
      * @ORM\Column(name="description", type="string", nullable=true)
      */
@@ -289,7 +301,37 @@ class Necklaces
         $this->description = $description;
     }
 
+    /**
+     * @return int
+     */
+    public function getPriceMana()
+    {
+        return $this->priceMana;
+    }
 
+    /**
+     * @param int $priceMana
+     */
+    public function setPriceMana($priceMana)
+    {
+        $this->priceMana = $priceMana;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param int $level
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+    }
 
 }
 
