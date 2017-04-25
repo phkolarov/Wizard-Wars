@@ -139,12 +139,13 @@ class GameController extends Controller
         if (is_int($user->getWand())) {
 
             $userWand = $this->getDoctrine()
-                ->getRepository('AppBundle:MagicWands')
-                ->find($user->getWand());
+                ->getRepository('AppBundle:UsersMagicWands')
+                ->findOneBy(['user'=>$user,'magicWand'=>$user->getWand()]);
 
-            $userAttack += $userWand->getAttackBonus();
-            $userBonusHealth += $userWand->getHealthBonus();
-            $wandName = $userWand->getName();
+
+            $userAttack += ($userWand->getMagicWand()->getAttackBonus() * $userWand->getLevel());
+            $userBonusHealth += ($userWand->getMagicWand()->getHealthBonus()  * $userWand->getLevel());
+            $wandName = $userWand->getMagicWand()->getName();
         }
 
         foreach ($userNecklaces as $necklace) {

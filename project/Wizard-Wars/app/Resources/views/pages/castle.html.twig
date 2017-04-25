@@ -40,48 +40,51 @@
         </div>
 
 
-       <div class="castleTable">
-           <h1>MAGIC WANDS</h1>
-           <table class="table table-hover tst">
-               <thead>
-               <tr>
-                   <th>WAND NAME</th>
-                   <th>ATTACK BONUS</th>
-                   <th>HEALTH BONUS</th>
-                   <th>CASTLE ATTACK BONUS</th>
-                   <th>LEVEL</th>
-                   <th>USING</th>
-                   <th>IMAGE</th>
-                   <th>ACTION</th>
-               </tr>
-               </thead>
-               <tbody>
-               {% for magicWand in magicWands %}
-                   <tr>
-                       <td>{{ magicWand.getMagicWand().getName() }}</td>
-                       <td>{{ magicWand.getMagicWand().getAttackBonus() }}</td>
-                       <td>{{ magicWand.getMagicWand().getHealthBonus() }}</td>
-                       <td>{{ magicWand.getMagicWand().getCastleAttackBonus() }}</td>
-                       <td>{{ magicWand.getLevel() }}</td>
-                       <td>{% if userWand == magicWand.getMagicWand().getId() %}
-                               <span style="color: #ff4f4c">USED NOW</span>
-                           {% else %}
-                               NOT USED
-                           {% endif %}
-                       </td>
-                       <td><img src="assets/wands/{{ magicWand.getMagicWand().getImage() }}" style="height: 100px"></td>
+        <div class="castleTable">
+            <h1>MAGIC WANDS</h1>
+            <table class="table table-hover tst">
+                <thead>
+                <tr>
+                    <th>WAND NAME</th>
+                    <th>ATTACK BONUS</th>
+                    <th>HEALTH BONUS</th>
+                    <th>CASTLE ATTACK BONUS</th>
+                    <th>LEVEL</th>
+                    <th>USING</th>
+                    <th>ACTION</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for magicWand in magicWands %}
+                    <tr>
+                        <td>{{ magicWand.getMagicWand().getName() }}</td>
+                        <td>{{ magicWand.getMagicWand().getAttackBonus() }}</td>
+                        <td>{{ magicWand.getMagicWand().getHealthBonus() }}</td>
+                        <td>{{ magicWand.getMagicWand().getCastleAttackBonus() }}</td>
+                        <td>{{ magicWand.getLevel() }}</td>
+                        <td>{% if userWand == magicWand.getMagicWand().getId() %}
+                                <span style="color: #ff4f4c">USED NOW</span>
+                            {% else %}
+                                NOT USED
+                            {% endif %}
+                        </td>
 
-                       <td>
-                           <form method="post" action="{{ path('useWand',{"id": magicWand.getMagicWand().getId()}) }}">
-                               <input class="btn btn-sm btn-danger" type="hidden" name="stick_id">
-                               <button class="btn btn-sm btn-danger" type="submit" value="Use this wand">USE</button>
-                           </form>
-                       </td>
-                   </tr>
-               {% endfor %}
-               </tbody>
-           </table>
-       </div>
+                        <td>
+                            <form method="post" action="{{ path('useWand',{"id": magicWand.getMagicWand().getId()}) }}">
+                                <input class="btn btn-sm btn-danger" type="hidden" name="stick_id">
+                                <button class="btn btn-sm btn-danger" type="submit" value="Use this wand">USE</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="assets/wands/{{ magicWand.getMagicWand().getImage() }}" style="width: 300px">
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
 
@@ -133,7 +136,7 @@
                 color: black;
             }
 
-            .castleTable{
+            .castleTable {
                 max-height: 530px;
                 overflow: auto;
                 border: 3px solid darkred;

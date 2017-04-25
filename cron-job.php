@@ -95,3 +95,11 @@ foreach ($necklacesForUpdate as $necklace) {
         var_dump('waiting');
     }
 }
+
+
+$query = "SELECT * FROM users_magic_wands";
+
+$stmt = $pdo->query($query);
+$stmt->execute();
+$wandsForUpdate = $stmt->fetchAll(PDO::FETCH_ASSOC);
+var_dump($wandsForUpdate);

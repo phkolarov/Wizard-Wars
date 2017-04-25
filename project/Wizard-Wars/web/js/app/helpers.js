@@ -21,7 +21,7 @@ ww.helpers = (() => {
 
     function startTimer(duration, display,defaultTime) {
         var timer = duration, minutes, seconds;
-        setInterval(function () {
+       let interval = setInterval(function () {
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
 
@@ -31,9 +31,11 @@ ww.helpers = (() => {
             display.text(minutes + ":" + seconds);
 
             if (--timer < 0) {
-                timer = duration;
                 if(defaultTime){
                     timer = defaultTime;
+                }else{
+                    clearInterval(interval);
+                    return false;
                 }
             }
         }, 1000);
@@ -42,7 +44,6 @@ ww.helpers = (() => {
 
     function countDownTimer(seconds,clockId,defaultTime = null) {
 
-        console.log(clockId);
         jQuery(function ($) {
             var fiveMinutes = seconds,
                 display = $('#'+clockId);

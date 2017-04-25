@@ -9,8 +9,10 @@
 
         <div class="updates-buttons-wrapper">
             <a href="{{ path('update-lycans') }}" class="btn btn-lg btn-danger">UPDATE LYCANS</a>
+            <a href="{{ path('update-necklace') }}" class="btn btn-lg btn-danger">UPDATE NECKLACES</a>
+            <a href="{{ path('update-magic-wands') }}" class="btn btn-lg btn-danger">UPDATE MAGIC WANDS</a>
         </div>
-        <h2>Updating Necklaces</h2>
+        <h2>Updating Special Necklaces</h2>
 
         <table class="table table-hover tst">
             <thead>
@@ -37,7 +39,7 @@
                                 class="time">{{ userNecklace.getTimeToUpdate().format('Y-m-d H:i:s') }}</span><br><span
                                 class="timer" id="timer-{{ userNecklace.getId() }}"></span></td>
                     <td>
-                        <form method="post" action="{{ path('update-updater',{'id':userNecklace.getId()}) }}">
+                        <form method="post" action="{{ path('update-necklace-action',{'id':userNecklace.getId()}) }}">
                             <input type="hidden" value="{{ userNecklace.getNecklace().getPrice() * userNecklace.getLevel() }}" name="price">
                             <button type="submit" class="btn btn-warning">UPDATE
                                 FOR {{ userNecklace.getNecklace().getPrice() * userNecklace.getLevel() }} GOLD</button>

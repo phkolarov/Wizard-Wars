@@ -8,7 +8,7 @@
         <h1>UPDATES STATUS</h1>
 
         <div class="updates-buttons-wrapper">
-            <a href="{{ path('updates') }}" class="btn btn-lg btn-danger">BACK TO DYNAMIC UPDATE NECKLACES</a>
+            <a href="{{ path('updates') }}" class="btn btn-lg btn-danger">BACK TO SPECIAL NECKLACES</a>
         </div>
         <h2>Updating Necklaces</h2>
 
@@ -19,25 +19,20 @@
                 <th>DESCRIPTION</th>
                 <th> LEVEL</th>
                 <th>IMAGE</th>
-                <th>TIME LEFT</th>
                 <th>UPDATE</th>
             </tr>
             </thead>
             <tbody>
 
-            {% for userNecklace in updaters %}
+            {% for userNecklace in necklaces %}
                 <tr>
                     <td>{{ userNecklace.getNecklace().getName() }}</td>
                     <td>{{ userNecklace.getNecklace().getDescription() }}</td>
                     <td>{{ userNecklace.getLevel() }}</td>
                     <td><img src="assets/necklaces/{{ userNecklace.getNecklace().getImage() }}" style="height: 150px">
                     </td>
-
-                    <td class="timeleft"><span
-                                class="time">{{ userNecklace.getTimeToUpdate().format('Y-m-d H:i:s') }}</span><br><span
-                                class="timer" id="timer-{{ userNecklace.getId() }}"></span></td>
                     <td>
-                        <form method="post" action="{{ path('update-updater',{'id':userNecklace.getId()}) }}">
+                        <form method="post" action="{{ path('update-necklace-action',{'id':userNecklace.getId()}) }}">
                             <input type="hidden" value="{{ userNecklace.getNecklace().getPrice() * userNecklace.getLevel() }}" name="price">
                             <button type="submit" class="btn btn-warning">UPDATE
                                 FOR {{ userNecklace.getNecklace().getPrice() * userNecklace.getLevel() }} GOLD</button>
