@@ -4,7 +4,7 @@
     {{ include('partials/navbar.html.twig') }}
 
     <div id="game-wrapper" class="col-centered">
-        <h1>BUY NECKLACE</h1>
+        <h1>BUY WANDS</h1>
         <a class="btn btn-danger" id="back_to_kingdom" href="{{ path('shop') }}">BACK TO MAIN SHOP</a>
         <br>
         <br>
@@ -14,30 +14,28 @@
                 <tr>
                     {# sorting of properties based on query components #}
                     <th>{{ knp_pagination_sortable(pagination, 'Id', 'n.id') }}</th>
-                    <th{% if pagination.isSorted('n.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'n.name') }}</th>
+                    <th{% if pagination.isSorted('n.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Name', 'n.name') }}</th>
                     <th>{{ knp_pagination_sortable(pagination, 'Price', ['n.price']) }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'Mana Price', ['n.priceMana']) }}</th>
+
                     <th>Image</th>
-                    <th>Mana</th>
-                    <th>Gold</th>
-                    <th>Description</th>
+
                     <th></th>
                 </tr>
 
                 {# table body #}
-                {% for necklace in pagination %}
+                {% for wands in pagination %}
                     <tr {% if loop.index is odd %}class="color"{% endif %}>
-                        <td>{{ necklace.getId() }}</td>
-                        <td>{{ necklace.getName() }}</td>
-                        <td>{{ necklace.getPrice() }}</td>
-                        <td><img src="assets/necklaces/{{ necklace.getImage() }}" style="width: 150px"></td>
-                        <td>{{ necklace.getPriceMana() }}</td>
-                        <td>{{ necklace.getPrice() }}</td>
-                        <td>{{ necklace.getDescription() }}</td>
+                        <td>{{ wands.getId() }}</td>
+                        <td>{{ wands.getName() }}</td>
+                        <td>{{ wands.getPrice() }}</td>
+                        <td>{{ wands.getPriceMana() }}</td>
+                        <td><img src="assets/wands/{{ wands.getImage() }}" style="width: 150px"></td>
                         <td>
-                            <form method="post" action="{{ path('purchase-necklace',{'id':necklace.getId()}) }}">
-                                <input type="hidden" name="priceMana" value="{{ necklace.getPriceMana() }}">
-                                <input type="hidden" name="priceGold" value="{{ necklace.getPrice() }}">
-                                <input type="submit" class="btn btn-warning" value="BUY NECKLACE">
+                            <form method="post" action="{{ path('purchase-wand',{'id':wands.getId()}) }}">
+                                <input type="hidden" name="priceMana" value="{{ wands.getPriceMana() }}">
+                                <input type="hidden" name="priceGold" value="{{ wands.getPrice() }}">
+                                <input type="submit" class="btn btn-warning" value="BUY WAND">
                             </form>
                         </td>
 

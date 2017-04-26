@@ -10,43 +10,29 @@
         <br>
 
         <div class="container">
-            <table class="table table-hover tst">
-                <tr>
-                    {# sorting of properties based on query components #}
-                    <th>{{ knp_pagination_sortable(pagination, 'Id', 'n.id') }}</th>
-                    <th{% if pagination.isSorted('n.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'n.name') }}</th>
-                    <th>{{ knp_pagination_sortable(pagination, 'Price', ['n.price']) }}</th>
-                    <th>Image</th>
-                    <th>Mana</th>
-                    <th>Gold</th>
-                    <th></th>
-                </tr>
+            <img src="assets/lycans/lycan_present.jpg" id="lycan_present">
+            <form method="post" action="{{ path('purchase-lycans') }}">
+                <div class="form-group col-md-6 col-centered">
+                    <br>
+                    <h3>
+                        <label for="lycanCount" class="label label-warning">Number of lycans</label>
+                    </h3>
+                    <input type="number" name="countOfLycans" value="1" id="countOfLycans" class="form-control">
+                    <br>
+                    <h3>
+                        <label for="price" class="label label-warning">GOLD Price</label>
+                    </h3>
+                    <input type="" name="price" value="50" id="price" disabled="disabled" class="form-control">
+                    <br>
+                    <h3>
+                        <label for="mana" class="label label-warning">MANA Price</label>
+                    </h3>
+                    <input type="" name="mana" value="25" id="mana" disabled="disabled" class="form-control">
+                    <br>
+                    <input type="submit" class="btn btn-danger" value="BUY LYCANS">
 
-                {# table body #}
-                {% for necklace in pagination %}
-                    <tr {% if loop.index is odd %}class="color"{% endif %}>
-                        <td>{{ necklace.getId() }}</td>
-                        <td>{{ necklace.getName() }}</td>
-                        <td>{{ necklace.getPrice() }}</td>
-                        <td><img src="assets/necklaces/{{ necklace.getImage() }}" style="width: 150px"></td>
-                        <td>{{ necklace.getPriceMana() }}</td>
-                        <td>{{ necklace.getPrice() }}</td>
-                        <td>
-                            <form method="post" action="{{ path('purchase-necklace',{'id':necklace.getId()}) }}">
-                                <input type="hidden" name="priceMana" value="{{ necklace.getPriceMana() }}">
-                                <input type="hidden" name="priceGold" value="{{ necklace.getPrice() }}">
-                                <input type="submit" class="btn btn-warning" value="BUY NECKLACE">
-                            </form>
-                        </td>
-
-                        {#<td>{{ necklace.date | date('Y-m-d') }}, {{ article.time | date('H:i:s') }}</td>#}
-                    </tr>
-                {% endfor %}
-            </table>
-            {# display navigation #}
-            <div class="navigation">
-                {{ knp_pagination_render(pagination) }}
-            </div>
+                </div>
+            </form>
         </div>
 
 
@@ -87,28 +73,12 @@
                 text-align: center;
             }
 
-            #castlesThumb {
-                width: 300px;
+            #lycan_present {
+                width: 48%;
+                border: 3px solid black;
+                display: block;
+                margin: 0 auto;
             }
-
-            .tst {
-                color: white;
-                background-color: rgba(0, 0, 0, 0.69);
-            }
-
-            .table-hover > tbody > tr:hover {
-                color: black;
-            }
-
-            select {
-                color: black;
-            }
-
-            #back_to_kingdom {
-                position: absolute;
-                right: 35px;
-            }
-
 
         </style>
     {% endblock %}
@@ -116,6 +86,13 @@
 {% block javascripts %}
     <script>
 
+        $('#countOfLycans').on('change', function () {
+
+            let count = $('#countOfLycans').val();
+
+            $('#price').val(count * {{ lycan.getPrice() }});
+            $('#mana').val(count * ({{ lycan.getPriceMana() }} ));
+        });
 
     </script>
 {% endblock %}

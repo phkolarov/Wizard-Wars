@@ -56,9 +56,9 @@
                 <tbody>
                 {% for magicWand in magicWands %}
                     <tr>
-                        <td>{{ magicWand.getMagicWand().getName() }}</td>
-                        <td>{{ magicWand.getMagicWand().getAttackBonus() }}</td>
-                        <td>{{ magicWand.getMagicWand().getHealthBonus() }}</td>
+                        <td>{{ magicWand.getMagicWand().getName()}}</td>
+                        <td>{{ magicWand.getMagicWand().getAttackBonus() * magicWand.getLevel() }}</td>
+                        <td>{{ magicWand.getMagicWand().getHealthBonus() * magicWand.getLevel()}}</td>
                         <td>{{ magicWand.getMagicWand().getCastleAttackBonus() }}</td>
                         <td>{{ magicWand.getLevel() }}</td>
                         <td>{% if userWand == magicWand.getMagicWand().getId() %}

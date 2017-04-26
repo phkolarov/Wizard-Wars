@@ -60,7 +60,8 @@ body {
     color: white;
 }
 
-.next, .previous, .last, .first  {
+.next, .previous, .last, .first.page,.current,.first {
+    cursor: url("../assets/world/cursor.png"), auto;
     font-family: "Times New Roman", sans-serif;
     display: inline-block;
     border: 1px solid white;
@@ -74,3 +75,22 @@ body {
 .page a, .next a, .previous a, .last a, .first a {
     color: white;
 }
+
+.tst {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.69);
+}
+
+.table-hover > tbody > tr:hover {
+    color: black;
+}
+
+select {
+    color: black;
+}
+
+#back_to_kingdom {
+    position: absolute;
+    right: 35px;
+}
+

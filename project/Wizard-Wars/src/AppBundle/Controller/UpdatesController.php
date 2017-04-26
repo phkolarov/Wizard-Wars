@@ -26,23 +26,9 @@ class UpdatesController extends Controller
      */
     public function UpdaterViewAction()
     {
-
         $user = $this->get('security.token_storage')->getToken()->getUser();
-
-//        $necklacesUpdaters = $this->getDoctrine()->getRepository('AppBundle:UsersNecklaces')->findBy(['user' => $user->getId(), 'castle_id' => null]);
-
         $em = $this->get('doctrine.orm.entity_manager');
-        $necklaces = $em->createQuery('SELECT un FROM AppBundle:UsersNecklaces un LEFT JOIN AppBundle:Necklaces n WHERE un.necklace = n.id and n.updater = \'1\'')->getResult();
-
-        $necklacesUpdaters = [];
-
-        foreach ($necklaces as $necklace) {
-
-            if ($necklace->getNecklace()->getUpdater() == 1) {
-                $necklacesUpdaters[] = $necklace;
-            }
-        }
-
+        $necklacesUpdaters =  $this->getDoctrine()->getRepository('AppBundle:UsersNecklaces')->getUpdaterNecklaces($user,$em);
 
         return $this->render('pages/updates.html.twig', [
             'updaters' => $necklacesUpdaters
@@ -151,15 +137,11 @@ class UpdatesController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
         $em = $this->get('doctrine.orm.entity_manager');
-        $necklaces = $em->createQuery('SELECT un FROM AppBundle:UsersNecklaces un LEFT JOIN AppBundle:Necklaces n WHERE un.necklace = n.id and n.updater = \'1\'')->getResult();
-        $necklacesUpdaters = [];
-        foreach ($necklaces as $necklace) {
 
-            if ($necklace->getNecklace()->getUpdater() != 1) {
-                $necklacesUpdaters[] = $necklace;
-            }
-        }
-        return $this->render('pages/update-necklaces.html.twig', ['necklaces' => $necklacesUpdaters]);
+        $normalNecklaces =  $this->getDoctrine()->getRepository('AppBundle:UsersNecklaces')->getNormalNecklaces($user,$em);
+
+
+        return $this->render('pages/update-necklaces.html.twig', ['necklaces' => $normalNecklaces]);
     }
 
     /**
@@ -219,112 +201,7 @@ class UpdatesController extends Controller
     }
 
 
-    /**
-     * @Security("is_authenticated()")
-     * @Route("/shop", name="shop")
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @param Request $request
-     */
-    public function shopAction(Request $request)
-    {
-        return $this->render('pages/shop.html.twig');
-    }
 
-
-    /**
-     * @Security("is_authenticated()")
-     * @Route("/buy-necklace", name="buy-necklace")
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @param Request $request
-     */
-    public function BuyNecklaceAction(Request $request)
-    {
-
-        $em = $this->get('doctrine.orm.entity_manager');
-        $dql = "SELECT n FROM AppBundle:Necklaces n";
-        $query = $em->createQuery($dql);
-
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query,
-            $request->query->getInt('page', 1),
-            4
-        );
-
-        return $this->render('pages/buy-necklaces.html.twig', ['pagination' => $pagination]);
-    }
-
-
-    /**
-     * @Security("is_authenticated()")
-     * @Route("/purchase-necklace/{id}", name="purchase-necklace")
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @param Request $request
-     */
-    public function PurchaseNecklaceAction($id,Request $request)
-    {
-        $gold = $request->get('priceGold');
-        $mana = $request->get('priceMana');
-
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-
-        if($user->getMana() >= $mana && $user->getGold()>= $gold){
-
-            $em = $this->get('doctrine.orm.entity_manager');
-
-            $user->setGold($user->getGold() - $gold);
-            $user->setMana($user->getMana() - $mana);
-            $em->flush();
-
-            $necklace = $this->getDoctrine()->getRepository('AppBundle:Necklaces')->findOneBy(['id' => $id]);
-
-            $userNecklace = new UsersNecklaces();
-            $userNecklace->setNecklace($necklace);
-            $userNecklace->setTimeToUpdate(new \DateTime());
-            $userNecklace->setUser($user);
-            $userNecklace->setLevel(1);
-            $em->persist($userNecklace);
-            $em->flush();
-
-            return $this->redirectToRoute('buy-necklace',['success'=>'Successfully purchased this item']);
-
-        }else{
-            return $this->redirectToRoute('buy-necklace',['error'=>'You not enough resources']);
-        }
-    }
-
-    /**
-     * @Security("is_authenticated()")
-     * @Route("/buy-lycans", name="buy-lycans")
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @param Request $request
-     */
-    public function BuyLycansAction(Request $request)
-    {
-        $em = $this->get('doctrine.orm.entity_manager');
-        $dql = "SELECT l FROM AppBundle:Lycans l";
-        $query = $em->createQuery($dql);
-
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query,
-            $request->query->getInt('page', 1),
-            4
-        );
-
-        return $this->render('pages/buy-lycans.html.twig', ['pagination' => $pagination,'price'=>self::LYCAN_PRICE]);
-    }
-
-    /**
-     * @Security("is_authenticated()")
-     * @Route("/buy-wand", name="buy-wand")
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @param Request $request
-     */
-    public function BuyWandsAction()
-    {
-
-    }
 
 
 }

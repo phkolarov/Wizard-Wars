@@ -45,16 +45,16 @@ class Necklaces
     /**
      * @var integer
      *
-     * @ORM\Column(name="dogs_attack_bonus", type="integer", nullable=false)
+     * @ORM\Column(name="lycan_attack_bonus", type="integer", nullable=false)
      */
-    private $dogsAttackBonus;
+    private $lycanAttackBonus;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="dogs_defense_bonus", type="integer", nullable=false)
+     * @ORM\Column(name="lycan_health_bonus", type="integer", nullable=false)
      */
-    private $dogsDefenseBonus;
+    private $lycanHealthBonus;
 
     /**
      * @var integer
@@ -89,6 +89,25 @@ class Necklaces
      * @ORM\Column(name="price", type="integer", nullable=false)
      */
     private $price;
+
+
+    /**
+     * @var integer
+     * @ORM\Column(name="price_mana", type="integer", nullable=false)
+     */
+    private $priceMana;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="level", type="integer", nullable=false)
+     */
+    private $level = 0;
+
+    /**
+     * @var string
+     * @ORM\Column(name="description", type="string", nullable=true)
+     */
+    private $description;
 
     /**
      * @return int
@@ -157,33 +176,33 @@ class Necklaces
     /**
      * @return int
      */
-    public function getDogsAttackBonus()
+    public function getLycanAttackBonus()
     {
-        return $this->dogsAttackBonus;
+        return $this->lycanAttackBonus;
     }
 
     /**
      * @param int $dogsAttackBonus
      */
-    public function setDogsAttackBonus($dogsAttackBonus)
+    public function setLycanAttackBonus($lycanAttackBonus)
     {
-        $this->dogsAttackBonus = $dogsAttackBonus;
+        $this->lycanAttackBonus = $lycanAttackBonus;
     }
 
     /**
      * @return int
      */
-    public function getDogsDefenseBonus()
+    public function getLycanHealthBonus()
     {
-        return $this->dogsDefenseBonus;
+        return $this->lycanAttackBonus;
     }
 
     /**
      * @param int $dogsDefenseBonus
      */
-    public function setDogsDefenseBonus($dogsDefenseBonus)
+    public function setLycanHealthBonus($lycanAttackBonus)
     {
-        $this->dogsDefenseBonus = $dogsDefenseBonus;
+        $this->lycanAttackBonus = $lycanAttackBonus;
     }
 
     /**
@@ -266,6 +285,53 @@ class Necklaces
         $this->price = $price;
     }
 
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPriceMana()
+    {
+        return $this->priceMana;
+    }
+
+    /**
+     * @param int $priceMana
+     */
+    public function setPriceMana($priceMana)
+    {
+        $this->priceMana = $priceMana;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param int $level
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+    }
 
 }
 

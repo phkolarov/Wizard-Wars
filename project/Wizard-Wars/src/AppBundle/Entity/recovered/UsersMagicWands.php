@@ -56,6 +56,14 @@ class UsersMagicWands
     private $user;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=false)
+     */
+    private $status = '0';
+
+
+    /**
      * @return int
      */
     public function getId()
@@ -135,8 +143,20 @@ class UsersMagicWands
         $this->user = $user;
     }
 
+    /**
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 
-
-
+    /**
+     * @param int $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
 }
 
