@@ -1,6 +1,10 @@
 -- Project demo --
 http://ww.goltmarketings.com/web/
 
+Full user
+ - username: master@mst.bg
+ - password: 123123
+
 Symfony Standard Edition
 ========================
 
