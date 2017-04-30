@@ -1,10 +1,22 @@
 -- Project demo --
 http://ww.goltmarketings.com/web/
 
-Full user
- - username: master@mst.bg
- - password: 123123
+ -Full user-
+	*username: master@mst.bg
+	*password: 123123
 
+ -Libraries-
+	*Jquery
+	*NotyJS
+	*Bootstrap
+	*Moment
+	*Phaser
+ 
+ -Solved bugs-
+	*Problem with comleting battle on project defence;
+
+ 
+ 
 Symfony Standard Edition
 ========================
 
