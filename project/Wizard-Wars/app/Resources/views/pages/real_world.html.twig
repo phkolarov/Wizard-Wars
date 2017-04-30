@@ -115,6 +115,14 @@
 
                     castle.animations.play('onhover');
 
+                    info = game.add.text(x, y - 112, 'Kingdom Id: ' + castleInfoObject.id, {
+                        font: '16px Arial',
+                        fill: '#FFFFFF',
+                        'fontWeight': 'bold',
+                        'stroke': '#000000',
+                        'strokeThickness': 6
+                    });
+
                     info0 = game.add.text(x, y - 90, 'King of kingdom: ' + castleInfoObject.castleName, {
                         font: '16px Arial',
                         fill: '#FFFFFF',
@@ -176,6 +184,7 @@
                     $('#wizard_world').css('cursor', "url('assets/world/cursor.png'), auto");
 
                     castle.animations.play('outhover');
+                    info.destroy();
                     info0.destroy();
                     info1.destroy();
                     info2.destroy();

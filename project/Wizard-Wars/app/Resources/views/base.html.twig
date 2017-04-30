@@ -11,12 +11,13 @@
 
     <link href="js/libraries/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="css/css.css" rel="stylesheet">
+    <link href="js/libraries/noty-3.1.0/lib/noty.css" rel="stylesheet">
 
     <script src="js/libraries/jquery/jquery-3.2.0.min.js"></script>
     <script src="js/libraries/phaser/phaser.js"></script>
     <script src="js/libraries/bootstrap/js/bootstrap.js"></script>
     <script src="js/libraries/moment/moment.js"></script>
-
+    <script src="js/libraries/noty-3.1.0/lib/noty.js" type="text/javascript"></script>
 
     <script src="js/app/app.js"></script>
     <script src="js/app/helpers.js"></script>
@@ -27,4 +28,54 @@
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
+
+    <script>
+
+       $(document).ready(function () {
+
+//           let url = location.href;
+//
+//           let params = url.match(/(success|error)=(.+)/);
+//
+//
+//           if(params[1]== 'success' || params[1] == 'error'){
+//               console.log(params[2].replace(/%20/g, " "))
+//               urlMessage((params[2].replace(/%20/g, " ")),params[1])
+//           }
+//
+//           function urlMessage($message,$type) {
+//
+//               new Noty({
+//                   type: $type,
+//                   layout: 'topCenter',
+//                   theme: 'mint',
+//                   text: $message,
+//                   timeout: 3000,
+//                   progressBar: true,
+//                   closeWith: ['click', 'button'],
+//                   animation: {
+//                       open: 'noty_effects_open',
+//                       close: 'noty_effects_close'
+//                   },
+//                   id: false,
+//                   force: false,
+//                   killer: false,
+//                   queue: 'global',
+//                   container: false,
+//                   buttons: [],
+//                   sounds: {
+//                       sources: [],
+//                       volume: 1,
+//                       conditions: []
+//                   },
+//                   titleCount: {
+//                       conditions: []
+//                   },
+//                   modal: true
+//               }).show()
+//           }
+
+       })
+
+    </script>
 </html>

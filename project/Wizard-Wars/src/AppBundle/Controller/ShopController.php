@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Lycans;
+use AppBundle\Entity\UsersBuildings;
 use AppBundle\Entity\UsersMagicWands;
 use AppBundle\Entity\UsersNecklaces;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,15 +17,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 class ShopController extends Controller
 {
 
-
     /**
      * @Security("is_authenticated()")
-     * @Route("/shop", name="shop")
+     * @Route("/shop", options={"expose"=true},name="shop")
      * @return \Symfony\Component\HttpFoundation\Response
      * @param Request $request
      */
@@ -81,6 +82,29 @@ class ShopController extends Controller
 
             $necklace = $this->getDoctrine()->getRepository('AppBundle:Necklaces')->findOneBy(['id' => $id]);
 
+            if ($necklace->getUpdater()->getType() == "Building") {
+
+                $buildingType = trim(str_replace(' Necklace','',$necklace->getName()));
+                $building = $this->getDoctrine()->getRepository('AppBundle:Buildings')->findOneBy(['type'=>strtolower($buildingType)]);
+
+                $userBuilding = new UsersBuildings();
+                $userBuilding->setUser($user);
+                $userBuilding->setLevel(1);
+                $userBuilding->setBuilding($building);
+
+                $dateNow = new \DateTime();
+                $randTime = rand(1, 2) * 60;
+                $seconds = "+" . ($randTime) . ' seconds';
+                $endTime = date('Y-m-d H:i:s', strtotime($seconds, strtotime($dateNow->format('Y-m-d H:i:s'))));
+
+                $userBuilding->setTimeToBuild(new \DateTime($endTime));
+                $userBuilding->setIsBuilt(0);
+                if(strtolower($buildingType) == 'catacomb'){
+                    $userBuilding->setIsBuilt(1);
+                }
+                $em->persist($userBuilding);
+            }
+
             $userNecklace = new UsersNecklaces();
             $userNecklace->setNecklace($necklace);
             $userNecklace->setTimeToUpdate(new \DateTime());
@@ -88,7 +112,7 @@ class ShopController extends Controller
             $userNecklace->setLevel(1);
             $em->persist($userNecklace);
             $em->flush();
-
+//die();
             return $this->redirectToRoute('buy-necklace', ['success' => 'Successfully purchased this item']);
 
         } else {
@@ -122,14 +146,13 @@ class ShopController extends Controller
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $lycan = $this->getDoctrine()->getRepository('AppBundle:Lycan')->find(1);
-        $countOfRequestedLycans = $request->get('countOfLycans');
-        ;
+        $countOfRequestedLycans = $request->get('countOfLycans');;
 
         $priceGold = $lycan->getPrice() * $countOfRequestedLycans;
         $priceMana = $lycan->getPriceMana() * $countOfRequestedLycans;
 
 
-        if($user->getGold() >= $priceGold && $user->getMana() >= $priceMana){
+        if ($user->getGold() >= $priceGold && $user->getMana() >= $priceMana) {
             $em = $this->getDoctrine()->getManager();
 
             for ($i = 0; $i < $countOfRequestedLycans; $i++) {
@@ -150,7 +173,7 @@ class ShopController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('buy-lycans', ['success' => 'Successfully purchased lycans']);
-        }else{
+        } else {
             return $this->redirectToRoute('buy-lycans', ['error' => 'Not enough resources']);
 
         }
@@ -186,7 +209,8 @@ class ShopController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @param Request $request
      */
-    public function PurchaseWandAction($id,Request $request){
+    public function PurchaseWandAction($id, Request $request)
+    {
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $priceGold = $request->get('priceGold');
@@ -194,11 +218,11 @@ class ShopController extends Controller
         $currentWand = $this->getDoctrine()->getRepository('AppBundle:MagicWands')->find($id);
 
 
-//        if($currentWand->getId() == $user->getWand()){
-//            return $this->redirectToRoute('buy-wands', ['error' => 'You already have that wand']);
-//        }
+        if ($currentWand->getId() == $user->getWand()) {
+            return $this->redirectToRoute('buy-wands', ['error' => 'You already have that wand']);
+        }
 
-        if($user->getGold() >= $priceGold && $user->getMana() >= $priceMana) {
+        if ($user->getGold() >= $priceGold && $user->getMana() >= $priceMana) {
             $em = $this->getDoctrine()->getManager();
 
             $userWand = new UsersMagicWands();
@@ -215,7 +239,7 @@ class ShopController extends Controller
 
             return $this->redirectToRoute('buy-wands', ['success' => 'Successfully purchased magic wand']);
 
-        }else{
+        } else {
             return $this->redirectToRoute('buy-wands', ['error' => 'Not enough resources']);
         }
     }

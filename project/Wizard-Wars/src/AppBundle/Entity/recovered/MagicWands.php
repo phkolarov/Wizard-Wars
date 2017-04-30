@@ -64,6 +64,12 @@ class MagicWands
      */
     private $price;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="price_mana", type="integer", nullable=true)
+     */
+    private $priceMana;
 
     /**
      * @return int
@@ -176,6 +182,23 @@ class MagicWands
     {
         $this->price = $price;
     }
+
+    /**
+     * @return int
+     */
+    public function getPriceMana()
+    {
+        return $this->priceMana;
+    }
+
+    /**
+     * @param int $priceMana
+     */
+    public function setPriceMana($priceMana)
+    {
+        $this->priceMana = $priceMana;
+    }
+
 
 }
 

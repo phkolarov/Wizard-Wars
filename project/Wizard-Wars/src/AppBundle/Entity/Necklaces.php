@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Necklaces
  *
- * @ORM\Table(name="necklaces")
+ * @ORM\Table(name="necklaces", indexes={@ORM\Index(name="FK_necklaces_necklace_types", columns={"updater"})})
  * @ORM\Entity
  */
 class Necklaces
@@ -66,6 +66,13 @@ class Necklaces
     /**
      * @var integer
      *
+     * @ORM\Column(name="gold_bonus", type="integer", nullable=false)
+     */
+    private $goldBonus;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="castle_health_bonus", type="integer", nullable=false)
      */
     private $castleHealthBonus;
@@ -80,34 +87,40 @@ class Necklaces
     /**
      * @var integer
      *
-     * @ORM\Column(name="updater", type="integer", nullable=false)
-     */
-    private $updater = '0';
-
-    /**
-     * @var integer
-     * @ORM\Column(name="price", type="integer", nullable=false)
+     * @ORM\Column(name="price", type="integer", nullable=true)
      */
     private $price;
 
-
     /**
      * @var integer
-     * @ORM\Column(name="price_mana", type="integer", nullable=false)
+     *
+     * @ORM\Column(name="price_mana", type="integer", nullable=true)
      */
     private $priceMana;
 
     /**
      * @var integer
+     *
      * @ORM\Column(name="level", type="integer", nullable=false)
      */
-    private $level = 0;
+    private $level = '0';
 
     /**
      * @var string
-     * @ORM\Column(name="description", type="string", nullable=true)
+     *
+     * @ORM\Column(name="description", type="string", length=300, nullable=true)
      */
     private $description;
+
+    /**
+     * @var \NecklaceTypes
+     *
+     * @ORM\ManyToOne(targetEntity="NecklaceTypes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="updater", referencedColumnName="id")
+     * })
+     */
+    private $updater;
 
     /**
      * @return int
@@ -182,7 +195,7 @@ class Necklaces
     }
 
     /**
-     * @param int $dogsAttackBonus
+     * @param int $lycanAttackBonus
      */
     public function setLycanAttackBonus($lycanAttackBonus)
     {
@@ -194,15 +207,15 @@ class Necklaces
      */
     public function getLycanHealthBonus()
     {
-        return $this->lycanAttackBonus;
+        return $this->lycanHealthBonus;
     }
 
     /**
-     * @param int $dogsDefenseBonus
+     * @param int $lycanHealthBonus
      */
-    public function setLycanHealthBonus($lycanAttackBonus)
+    public function setLycanHealthBonus($lycanHealthBonus)
     {
-        $this->lycanAttackBonus = $lycanAttackBonus;
+        $this->lycanHealthBonus = $lycanHealthBonus;
     }
 
     /**
@@ -219,6 +232,22 @@ class Necklaces
     public function setHealthBonus($healthBonus)
     {
         $this->healthBonus = $healthBonus;
+    }
+
+    /**
+     * @return int
+     */
+    public function getGoldBonus()
+    {
+        return $this->goldBonus;
+    }
+
+    /**
+     * @param int $goldBonus
+     */
+    public function setGoldBonus($goldBonus)
+    {
+        $this->goldBonus = $goldBonus;
     }
 
     /**
@@ -256,22 +285,6 @@ class Necklaces
     /**
      * @return int
      */
-    public function getUpdater()
-    {
-        return $this->updater;
-    }
-
-    /**
-     * @param int $updater
-     */
-    public function setUpdater($updater)
-    {
-        $this->updater = $updater;
-    }
-
-    /**
-     * @return int
-     */
     public function getPrice()
     {
         return $this->price;
@@ -283,22 +296,6 @@ class Necklaces
     public function setPrice($price)
     {
         $this->price = $price;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string $description
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
     }
 
     /**
@@ -332,6 +329,40 @@ class Necklaces
     {
         $this->level = $level;
     }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return \NecklaceTypes
+     */
+    public function getUpdater()
+    {
+        return $this->updater;
+    }
+
+    /**
+     * @param \NecklaceTypes $updater
+     */
+    public function setUpdater($updater)
+    {
+        $this->updater = $updater;
+    }
+
+
 
 }
 

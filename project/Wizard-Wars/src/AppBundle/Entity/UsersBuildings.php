@@ -55,6 +55,15 @@ class UsersBuildings
      */
     private $user;
 
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="is_built", type="integer", nullable=true)
+     */
+    private $isBuilt = '0';
+
+
     /**
      * @return int
      */
@@ -133,6 +142,22 @@ class UsersBuildings
     public function setUser($user)
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIsBuilt()
+    {
+        return $this->isBuilt;
+    }
+
+    /**
+     * @param int $isBuilded
+     */
+    public function setIsBuilt($isBuilt)
+    {
+        $this->isBuilt = $isBuilt;
     }
 
 

@@ -37,7 +37,7 @@
                         <td><img src="assets/necklaces/{{ userNecklace.getNecklace().getImage() }}" style="height: 150px"></td>
 
                         <td>
-                            {% if userNecklace.getNecklace().getUpdater() == 0 %}
+                            {% if userNecklace.getNecklace().getUpdater().getType == 'Castle' %}
 
                                 Choose your kingdom to direct affect
                                 <form method="post"
@@ -58,7 +58,7 @@
                                     <input class="btn btn-danger" type="submit" value="AFFECT YOUR KINGDOM">
                                 </form>
 
-                            {% elseif userNecklace.getNecklace().getUpdater() == 1 %}
+                            {% elseif userNecklace.getNecklace().getUpdater().getType() == 'Updater' %}
 
                                 See your updater building to get status
 

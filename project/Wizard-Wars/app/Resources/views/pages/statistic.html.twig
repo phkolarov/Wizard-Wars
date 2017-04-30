@@ -1,0 +1,265 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ include('partials/navbar.html.twig') }}
+
+    <div id="game-wrapper" class="col-centered">
+        <h1>MY BATTLE REPORTS</h1>
+        <a class="btn btn-danger" id="back_to_kingdom" href="{{ path('attack_lycans') }}">BACK TO ATTACK SECTION</a>
+        <br>
+        <br>
+
+        <div class="col-md-12 tableWrapper">
+            <table class="table table-hover tst">
+                <thead>
+                <tr>
+                    <th>BATTLE ID</th>
+                    <th>ATTACKER</th>
+                    <th>CASTLE NAME</th>
+                    <th>TIME TO REACH DESTINATION</th>
+                    <th>STARTED ON</th>
+                    <th>FINISHED TIME</th>
+                    <th>TIME TO BACK</th>
+                    <th>STATISTIC</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for attack in battacks %}
+                    <tr>
+
+                        <td>{{ attack.getId() }}</td>
+                        <td>{{ attack.getUser().getName() }}</td>
+                        <td>{{ attack.getCastle().getCastleName() }}</td>
+                        <td>
+                            <span class="reachTime" reach-id="reach-{{ attack.getId() }}"
+                                  battle-winner="{{ attack.getWinner() }}"
+                                  battle-id="{{ attack.getId() }}">{{ attack.getTimeToReachDestination().format("Y-m-d H:i:s") }}</span>
+                            <p class="timer" id="reach-{{ attack.getId() }}"></p>
+                        </td>
+                        <td>
+                            <span class="startBattle hiddenTime"
+                                  id="battle-{{ attack.getId() }}-time">{{ attack.getStartedDate().format("Y-m-d H:i:s") }}</span>
+                            <p class="timer" id="battle-{{ attack.getId() }}"></p>
+                        </td>
+                        <td>
+                            <span class="finishBattle hiddenTime"
+                                  id="finish-{{ attack.getId() }}-time"> {{ attack.getFinishedDate().format("Y-m-d H:i:s") }}</span>
+                            <p class="timer" id="finish-{{ attack.getId() }}"></p>
+                        <td>
+                            <span class="timeToBack hiddenTime"
+                                  id="back-{{ attack.getId() }}-time">{{ attack.getTimeToBack().format("Y-m-d H:i:s") }}</span>
+                            <p class="timer" id="back-{{ attack.getId() }}"></p>
+                        </td>
+                        <td>
+                            <a class="btn btn-info battleStats" id="{{ attack.getId() }}-stat"
+                               href="{{ path('battle-stats',{'id':attack.getId()}) }}">BATTLE
+                                STATS</a>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+
+{% endblock %}
+    {% block stylesheets %}
+        <style>
+
+            body {
+                background-image: url("assets/world/building_backgrounds/attack_background.jpg") !important;
+                background-size: 100%;
+            }
+
+            canvas {
+                margin: auto;
+
+            }
+
+            #game-wrapper {
+                width: 100%;
+                height: 100%;
+                box-shadow: inset 0 0 1.5em 1.5em #114ea7, 0 0 1.5em 1.5em #114ea7; /* padding:1em */
+                display: inline-block;
+                position: absolute;
+                margin: 0px auto;
+                margin-top: 68px;
+                padding: 20px;
+                background-color: transparent;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+
+            h1 {
+                color: white !important;
+                text-align: center;
+            }
+
+            .tst {
+                color: white;
+                background-color: rgba(0, 0, 0, 0.69);
+
+            }
+
+            .tableWrapper {
+                max-height: 600px;
+                overflow-y: scroll;
+            }
+
+            .table-hover > tbody > tr:hover {
+                color: black;
+            }
+
+            select {
+                color: black;
+            }
+
+            #attackOpponent {
+                visibility: hidden;
+            }
+
+            #back_to_kingdom {
+                text-align: right;
+                float: right;
+                right: 7px;
+                position: relative;
+            }
+
+            .battleStats, .hiddenTime {
+                visibility: hidden;
+            }
+
+
+        </style>
+    {% endblock %}
+
+{% block javascripts %}
+    <script>
+
+        $(document).ready(function () {
+
+
+            $('.timer').on('DOMSubtreeModified', function () {
+                let currentCounter = $(this);
+
+                if (currentCounter.text() == "00:00") {
+                    timers();
+                }
+            });
+
+            timers();
+
+            function timers() {
+
+                let timers = $('.reachTime');
+
+                timers.each(function (i, t) {
+
+                    let time = $(this).text();
+
+                    let timeLeft = moment(time);
+
+                    let secondsLeft = timeLeft.diff(moment(), 'seconds');
+
+                    let idName = $(this).attr('reach-id');
+                    let battleId = $(this).attr('battle-id');
+                    let winner = $(this).attr('battle-winner');
+
+                    if (secondsLeft > 0) {
+
+                        ww.helpers.countDownTimer(secondsLeft, idName);
+                    } else {
+                        $('#' + idName).text('Reached');
+                        $('#' + idName).css({'font-size': '25px'})
+
+                        //STARTING BATTLE TIME
+                        let startedBattleTime = $('#battle-' + battleId + '-time').text();
+                        $('#battle-' + battleId + '-time').css({'visibility': 'visible'});
+                        let battleTimeLeft = moment(startedBattleTime);
+                        let battleSecondsLeft = battleTimeLeft.diff(moment(), 'seconds');
+                        let battleTimerId = "battle-" + battleId
+                        if (battleSecondsLeft > 0) {
+
+                            ww.helpers.countDownTimer(battleSecondsLeft, battleTimerId);
+
+
+                        } else {
+
+                            $('#' + battleTimerId).text('Started');
+                            $('#' + battleTimerId).css({'font-size': '25px'})
+
+
+                            //FINISH BATTLE TIME
+                            let finishedBattleTime = $('#finish-' + battleId + '-time').text();
+                            $('#finish-' + battleId + '-time').css({'visibility': 'visible'});
+
+                            let finishBattleTimeLeft = moment(finishedBattleTime);
+
+                            console.log(finishBattleTimeLeft);
+                            let finishSecondsLeft = finishBattleTimeLeft.diff(moment(), 'seconds');
+                            console.log(finishSecondsLeft);
+
+                            let finishTimerId = 'finish-' + battleId;
+
+                            if (finishSecondsLeft > 0) {
+                                ww.helpers.countDownTimer(finishSecondsLeft, finishTimerId);
+                            } else {
+                                $('#' + finishTimerId).text('Finished');
+                                $('#' + finishTimerId).css({'font-size': '25px'});
+
+
+                                let backBattleTime = $('#back-' + battleId + '-time').text();
+                                $('#back-' + battleId + '-time').css({'visibility': 'visible'});
+
+                                let backBattleTimeLeft = moment(backBattleTime);
+                                let backSecondsLeft = backBattleTimeLeft.diff(moment(), 'seconds');
+                                let backTimerId = 'back-' + battleId;
+
+                                if (backSecondsLeft > 0 && winner == 0) {
+
+                                    ww.helpers.countDownTimer(backSecondsLeft, backTimerId);
+
+                                } else {
+
+                                    if (winner == 0) {
+                                        $('#' + backTimerId).text('Lycans had returned');
+                                        $('#' + backTimerId).css({'font-size': '25px'});
+                                    } else {
+
+                                        $('#' + backTimerId).text('They are all dead');
+                                        $('#' + backTimerId).css({'font-size': '25px'});
+                                    }
+
+                                    $('#' + battleId + '-stat').css({'visibility': 'visible'});
+
+                                }
+                            }
+
+                        }
+                    }
+                })
+            }
+
+        });
+
+
+        //        $('.timeToBackTimer').on('change', function () {
+        //
+        //            let timer = $(this);
+        //
+        //            if (timer.text() == '00:00') {
+        //
+        //                let buttonId = timer.attr('button-id');
+        //
+        //                $(buttonId+'-stat').css({'visibility':'visible'})
+        //            }
+        //        })
+
+
+    </script>
+{% endblock %}

@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ include('partials/navbar.html.twig') }}
+
+    <div id="game-wrapper" class="col-centered">
+
+        <a class="btn btn-danger" href="{{ path('catacombs') }}">GO TO DANGER CATACOMBS</a>
+        <br>
+        <br>
+        {#<img src="assets/own-castles.jpg" id="castlesThumb">#}
+        <div class="castleTable">
+            <h1>BUILDINGS</h1>
+
+            <table class="table table-hover tst">
+                <thead>
+                <tr>
+                    <th>Building ID</th>
+                    <th>Bulding name</th>
+                    <th>Status</th>
+                    <th>Builded</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for building in userBuildings %}
+                    {% if building.getBuilding().getDefault() == 0 or  building.getBuilding().getDefault() == 2 %}
+                        <tr>
+                            <td>{{ building.getId() }}</td>
+                            <td>{{ building.getBuilding().getBuildingName() }}</td>
+                            <td class="time"
+                                building-id="{{ building.getId() }}">{{ building.getTimeToBuild().format('Y-m-d H:i:s') }}</td>
+                            <td>
+                                {% if building.getIsBuilt()  == 1 %}
+                                    <span>It's Built</span>
+                                {% else %}
+                                    <span class="timer" id="timer-{{ building.getId() }}"></span>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+    {% block stylesheets %}
+        <style>
+
+            body {
+                background-image: url("http://vignette1.wikia.nocookie.net/wizard101/images/3/31/Cool-background_020.jpg/revision/latest?cb=20130722205636") !important;
+                background-size: 100%;
+            }
+
+            canvas {
+                margin: auto;
+
+            }
+
+            #game-wrapper {
+                width: 53.3333%;
+                box-shadow: inset 0 0 1.5em 1.5em #114ea7, 0 0 1.5em 1.5em #114ea7; /* padding:1em */
+                display: block;
+                margin: 88px auto;
+                padding: 20px;
+
+                background-color: black;
+                background-image: url("assets/own-castles.jpg");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+
+            h1 {
+                color: white !important;
+            }
+
+            #castlesThumb {
+                width: 300px;
+            }
+
+            .tst {
+                color: white;
+                background-color: rgba(0, 0, 0, 0.69);
+            }
+
+            .table-hover > tbody > tr:hover {
+                color: black;
+            }
+
+            select {
+                color: black;
+            }
+
+            .castleTable {
+                max-height: 530px;
+                overflow: auto;
+                border: 3px solid darkred;
+            }
+
+        </style>
+    {% endblock %}
+
+{% block javascripts %}
+
+
+    <script>
+        $(document).ready(function () {
+
+            let timers = $('.time');
+
+            timers.each(function (i, t) {
+
+                let time = $(this).text();
+                let timeLeft = moment(time);
+
+                let secondsLeft = timeLeft.diff(moment(), 'seconds');
+                let buildingId = $(this).attr('building-id');
+                let timerName = "timer-"+buildingId;
+
+                if (secondsLeft > 0) {
+
+                    ww.helpers.countDownTimer(secondsLeft, timerName)
+                } else {
+                    $('#' + timerName).text('Built');
+                }
+            });
+
+            $('.timer').on('DOMSubtreeModified', function(){
+                let currentCounter = $(this);
+
+                if(currentCounter.text() == "00:00"){
+                    currentCounter.text("Building process complete")
+                }
+            })
+        });
+    </script>
+
+
+
+{% endblock %}

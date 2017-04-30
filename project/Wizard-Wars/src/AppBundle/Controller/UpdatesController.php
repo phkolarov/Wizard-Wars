@@ -21,14 +21,14 @@ class UpdatesController extends Controller
     /**
      *
      * @Security("is_authenticated()")
-     * @Route("/updates", name="updates")
+     * @Route("/updates", options={"expose"=true}, name="updates")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function UpdaterViewAction()
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $em = $this->get('doctrine.orm.entity_manager');
-        $necklacesUpdaters =  $this->getDoctrine()->getRepository('AppBundle:UsersNecklaces')->getUpdaterNecklaces($user,$em);
+        $necklacesUpdaters = $this->getDoctrine()->getRepository('AppBundle:UsersNecklaces')->getUpdaterNecklaces($user, $em);
 
         return $this->render('pages/updates.html.twig', [
             'updaters' => $necklacesUpdaters
@@ -100,6 +100,7 @@ class UpdatesController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
         $lycan = $this->getDoctrine()->getRepository('AppBundle:Lycans')->findOneBy(['user' => $user->getId(), 'id' => $id]);
+        $lycanEntity = $this->getDoctrine()->getRepository('AppBundle:Lycan')->findOneBy(['id' => 1]);
 
         if ($lycan) {
 
@@ -111,8 +112,8 @@ class UpdatesController extends Controller
                 $user->setGold($money - $requestedGOLD);
                 $level = $lycan->getLevel();
                 $lycan->setLevel($level + 1);
-                $lycan->setAttack($lycan->getAttack() + $level / 2 + 5);
-                $lycan->setHealth($lycan->getHealth() + $level / 2 + 5);
+                $lycan->setAttack($lycanEntity->getAttack() * ($level + 1));
+                $lycan->setHealth($lycanEntity->getHealth() * ($level + 1));
                 $em->flush();
 
                 return $this->redirectToRoute('update-lycans', ['error' => 'Successfully updated']);
@@ -138,7 +139,7 @@ class UpdatesController extends Controller
 
         $em = $this->get('doctrine.orm.entity_manager');
 
-        $normalNecklaces =  $this->getDoctrine()->getRepository('AppBundle:UsersNecklaces')->getNormalNecklaces($user,$em);
+        $normalNecklaces = $this->getDoctrine()->getRepository('AppBundle:UsersNecklaces')->getNormalNecklaces($user, $em);
 
 
         return $this->render('pages/update-necklaces.html.twig', ['necklaces' => $normalNecklaces]);
@@ -199,9 +200,6 @@ class UpdatesController extends Controller
             return $this->redirectToRoute('update-magic-wands', ['error' => 'You don\'t own this wand']);
         }
     }
-
-
-
 
 
 }

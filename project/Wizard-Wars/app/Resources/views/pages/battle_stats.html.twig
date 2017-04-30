@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ include('partials/navbar.html.twig') }}
+
+    <div id="game-wrapper" class="col-centered">
+        <h1>BATTLE STATS</h1>
+        <a class="btn btn-danger" id="back_to_kingdom" href="{{ path('battle-reports') }}">BACK TO ATTACK SECTION</a>
+        <br>
+        <br>
+
+        <div class="col-md-12 tableWrapper">
+            <h1>
+                {% if winnerCheck == 0 %}
+                    YOU HAVE ALREADY OWNED THE CASTLE!
+                {% else %}
+                    YOU LOSE AND ALL YOUR LYCANS IS DEAD!
+                {% endif %}
+            </h1>
+            <table class="table table-hover tst">
+                <thead>
+                <tr>
+                    <th>BATTLE ID</th>
+                    <th>Description</th>
+                    <th>Battle time</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for stat in battleStatistic %}
+                    <tr>
+
+                        <td>{{ stat.getId() }}</td>
+                        {% if stat.isLycan() == 1  and stat.getMakedDamage() > 0 %}
+
+                            <td>
+                                LYCAN {{ stat.getEntityName() }}
+                                attack {{ stat.getBattle().getCastle().GetCastleName() }}
+                                and get {{ stat.getMakedDamage() }} damage from him
+                            </td>
+                        {% elseif stat.isLycan() == 1  and stat.getMakedDamage() == 0 %}
+
+                            <td>
+                                LYCAN tried to attack {{ stat.getBattle().getCastle().GetCastleName() }}
+                                but he missed it. 0 Damage is taken
+                            </td>
+                        {% elseif stat.isLycan() == 0  and stat.getMakedDamage() > 0 %}
+
+                            <td>
+                                WIZARD CASTLE - {{ stat.getEntityName() }} attack LYCAN
+                                and get {{ stat.getMakedDamage() }} damage from him
+                            </td>
+                        {% elseif stat.isLycan() == 0  and stat.getMakedDamage() == 0 %}
+
+                            <td>
+                                WIZARD CASTLE - {{ stat.getEntityName() }} tried to attack your LYCAN but he missed it. 0
+                                Damage is taken
+                            </td>
+                        {% elseif stat.isLycan() == 0  and stat.getMakedDamage() < 0 %}
+
+                            <td>
+                                WIZARD CASTLE - {{ stat.getEntityName() }} <span class="warning">IS KILLED YOUR LYCAN</span>
+                            </td>
+                        {% elseif stat.isLycan() == 1  and stat.getMakedDamage() < 0 %}
+                            <td>
+                                LYCAN - {{ stat.getEntityName() }} <span class="warning"> KILL THE CASTLE DEFENCE</span>
+                            </td>
+                        {% else %}
+
+
+                            <td>Nothing...</td>
+                        {% endif %}
+                        <td class="reachTime"> {{ stat.getBattleTime().format("Y-m-d H:i:s") }}</td>
+
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+
+{% endblock %}
+    {% block stylesheets %}
+        <style>
+
+            body {
+                background-image: url("/wizard-wars/project/Wizard-Wars/web/assets/world/building_backgrounds/attack_background.jpg") !important;
+                background-size: 100%;
+            }
+
+            canvas {
+                margin: auto;
+
+            }
+
+            #game-wrapper {
+                width: 100%;
+                height: 100%;
+                box-shadow: inset 0 0 1.5em 1.5em #114ea7, 0 0 1.5em 1.5em #114ea7; /* padding:1em */
+                display: inline-block;
+                position: absolute;
+                margin: 0px auto;
+                margin-top: 68px;
+                padding: 20px;
+                background-color: transparent;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+
+            h1 {
+                color: white !important;
+                text-align: center;
+            }
+
+            .tst {
+                color: white;
+                background-color: rgba(0, 0, 0, 0.69);
+
+            }
+
+            .tableWrapper {
+                max-height: 600px;
+                overflow-y: scroll;
+            }
+
+            .table-hover > tbody > tr:hover {
+                color: black;
+            }
+
+            select {
+                color: black;
+            }
+
+            #attackOpponent {
+                visibility: hidden;
+            }
+
+            #back_to_kingdom {
+                text-align: right;
+                float: right;
+                right: 7px;
+                position: relative;
+            }
+
+            tbody > tr > td {
+
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+            }
+
+            .warning{
+                color: orangered;
+                font-weight: bold;
+            }
+
+        </style>
+    {% endblock %}
+
+{% block javascripts %}
+    <script>
+
+
+    </script>
+{% endblock %}

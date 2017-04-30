@@ -36,8 +36,12 @@ class RaceController extends Controller
 
             $user->setAttack($race[0]->getAttack());
             $user->setHealth($race[0]->getHealth());
+            $randX = rand(1, 9000);
+            $randY = rand(1, 8000);
+            $user->setX($randX);
+            $user->setX($randY);
             $user->setMana(300 + $race[0]->getManaBonus());
-            $user->setMoney(500);
+            $user->setGold(500);
 
             $em = $this->getDoctrine()->getManager();
             $em->flush();

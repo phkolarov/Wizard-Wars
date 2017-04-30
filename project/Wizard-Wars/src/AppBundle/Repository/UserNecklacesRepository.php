@@ -14,33 +14,60 @@ use Doctrine\ORM\EntityRepository;
 class UserNecklacesRepository extends EntityRepository
 {
 
+    //PROBLEM WITH MORE THAN TWO LEFT JOINS !!!
     public function getUpdaterNecklaces($user,$em){
 
-        $necklaces = $em->createQuery('SELECT un FROM AppBundle:UsersNecklaces un LEFT JOIN AppBundle:Necklaces n WHERE un.necklace = n.id')->getResult();
-        $necklacesUpdaters = [];
+        $qb = $em->createQueryBuilder();
 
-        foreach ($necklaces as $necklace) {
+        $queryQB = $qb->select('un')
+            ->from('AppBundle:UsersNecklaces', 'un')
+            ->leftJoin('AppBundle:Necklaces','n','WITH','un.necklace = n')
+            ->leftJoin('AppBundle:NecklaceTypes','nt','WITH','n.updater = nt')
+            ->where('nt.type = :neckType')
+            ->andWhere('un.user = :user')
+            ->setParameter('neckType','Updater')
+            ->setParameter('user',$user)
+        ;
 
-            if ($necklace->getNecklace()->getUpdater() == 1 && $user->getId() == $necklace->getUser()->getId()) {
-                $necklacesUpdaters[] = $necklace;
-            }
-        }
 
-        return $necklacesUpdaters;
+        return $queryQB->getQuery()->getResult();
     }
-
 
     public function getNormalNecklaces($user,$em){
 
-        $necklaces = $em->createQuery('SELECT un FROM AppBundle:UsersNecklaces un LEFT JOIN AppBundle:Necklaces n WHERE un.necklace = n.id')->getResult();
-        $normalNecklaces = [];
 
-        foreach ($necklaces as $necklace) {
+        $qb = $em->createQueryBuilder();
 
-            if ($necklace->getNecklace()->getUpdater() != 1&& $user->getId() == $necklace->getUser()->getId()) {
-                $normalNecklaces[] = $necklace;
-            }
-        }
-        return $normalNecklaces;
+        $queryQB = $qb->select('un')
+            ->from('AppBundle:UsersNecklaces', 'un')
+            ->leftJoin('AppBundle:Necklaces','n','WITH','un.necklace = n')
+            ->leftJoin('AppBundle:NecklaceTypes','nt','WITH','n.updater = nt')
+            ->where('nt.type != :neckType')
+            ->andWhere('un.user = :user')
+            ->setParameter('neckType','Updater')
+            ->setParameter('user',$user)
+        ;
+
+
+        return $queryQB->getQuery()->getResult();
+    }
+
+    public function getBonusNecklaces($user,$em){
+
+
+        $qb = $em->createQueryBuilder();
+
+        $queryQB = $qb->select('un')
+            ->from('AppBundle:UsersNecklaces', 'un')
+            ->leftJoin('AppBundle:Necklaces','n','WITH','un.necklace = n')
+            ->leftJoin('AppBundle:NecklaceTypes','nt','WITH','n.updater = nt')
+            ->where('nt.type != :neckType')
+            ->andWhere('un.user = :user')
+            ->setParameter('neckType','User')
+            ->setParameter('user',$user)
+        ;
+
+
+        return $queryQB->getQuery()->getResult();
     }
 }

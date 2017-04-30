@@ -1,0 +1,195 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ include('partials/navbar.html.twig') }}
+
+    <div id="game-wrapper" class="col-centered">
+        <h1>LYCANS</h1>
+        <a class="btn btn-info" id="battle_reports" href="{{ path('battle-reports') }}">BATTLE REPORTS</a>
+        <a class="btn btn-danger" id="back_to_kingdom" href="{{ path('own-kingdom') }}">BACK TO KINGDOM</a>
+        <br>
+        <br>
+
+        <div class="lycanTable">
+            <div class="col-md-4">
+                <img src="assets/lycans/lycan_show.gif" style="height: 268px">
+            </div>
+            <form method="post" action='{{ path('start-battle') }}'>
+                <div class="col-md-8 tableWrapper">
+                    <table class="table table-hover tst">
+                        <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>ATTACK</th>
+                            <th>HEALTH</th>
+                            <th>LEVEL</th>
+                            <th>ADD TO ATTACK TEAM</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for lycan in lycans %}
+                            <tr>
+
+                                <td>{{ lycan.getName() }}</td>
+                                <td>{{ lycan.getAttack() }}</td>
+                                <td>{{ lycan.getHealth() }}</td>
+                                <td>{{ lycan.getLevel() }}</td>
+
+                                <td>
+                                    <input type="checkbox" value="{{ lycan.getId() }}" name="attackers[]"
+                                           class="form-control">
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-md-12">
+                    <br>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <input type="number" value="" name="castleId" class="form-control" id="castleId"
+                                   placeholder="Castle ID">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <input id="attackOpponent" type="submit" class="btn btn-danger" value="ATTACK OPPONENT">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="castlesTable">
+            <h1>KINGDOMS</h1>
+            <div class="">
+                <table class="table table-hover tst">
+                    <tr>
+                        {# sorting of properties based on query components #}
+                        <th>{{ knp_pagination_sortable(pagination, 'Id', 'k.id') }}</th>
+                        <th{% if pagination.isSorted('n.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Name', 'k.castleName') }}</th>
+                        <th>WIZARD</th>
+                        <th>SELECT KINGDOM TO FIGHT</th>
+                    </tr>
+
+                    {# table body #}
+                    {% for castle in pagination %}
+                        <tr {% if loop.index is odd %}class="color"{% endif %}>
+                            <td>{{ castle.getId() }}</td>
+                            <td>{{ castle.getCastleName() }}</td>
+                            <td>{% if castle.getOwnerId() %}
+                                    CASTLE HAS A WIZARD (KING)
+                                {% elseif castle.getOwnerId() == userId %}
+                                    YOUR CASTLE
+                                {% else %}
+                                    No wizard
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if castle.getOwnerId() != userId %}
+                                    <input type="checkbox" value="{{ castle.getId() }}" name="castleId"
+                                           class="form-control castleId">
+                                    {% else %}
+
+                                    Cannot attack yourself
+                                {% endif %}
+                            </td>
+                            {#<td>{{ necklace.date | date('Y-m-d') }}, {{ article.time | date('H:i:s') }}</td>#}
+                        </tr>
+                    {% endfor %}
+                </table>
+                {# display navigation #}
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+    {% block stylesheets %}
+        <style>
+
+            body {
+                background-image: url("assets/world/building_backgrounds/attack_background.jpg") !important;
+                background-size: 100%;
+            }
+
+            canvas {
+                margin: auto;
+
+            }
+
+            #game-wrapper {
+                width: 100%;
+                height: 100%;
+                box-shadow: inset 0 0 1.5em 1.5em #114ea7, 0 0 1.5em 1.5em #114ea7; /* padding:1em */
+                display: inline-block;
+                position: absolute;
+                margin: 0px auto;
+                margin-top: 68px;
+                padding: 20px;
+                background-color: transparent;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+
+            h1 {
+                color: white !important;
+                text-align: center;
+            }
+
+            .tst {
+                color: white;
+                background-color: rgba(0, 0, 0, 0.69);
+
+            }
+
+            .tableWrapper {
+                height: 268px;
+                overflow-y: scroll;
+            }
+
+            .table-hover > tbody > tr:hover {
+                color: black;
+            }
+
+            select {
+                color: black;
+            }
+
+            #attackOpponent {
+                visibility: hidden;
+            }
+
+
+        </style>
+    {% endblock %}
+
+{% block javascripts %}
+    <script>
+
+        $(".castleId").on('click', function () {
+            var $box = $(this);
+            if ($box.is(":checked")) {
+                var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                $(group).prop("checked", false);
+                $box.prop("checked", true);
+            } else {
+                $box.prop("checked", false);
+            }
+
+            $('#castleId').val($box.val());
+
+            $('#attackOpponent').css({'visibility': 'visible'});
+
+
+        });
+    </script>
+{% endblock %}

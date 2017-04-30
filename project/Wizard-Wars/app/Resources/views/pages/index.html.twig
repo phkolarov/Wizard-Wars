@@ -49,17 +49,22 @@
                 update: update,
                 render: render
             });
-            let type = 'red';
+            let type = '{{ magicType }}';
             let pointerX;
             let pointerY;
-
 
             let buildingArray = [
                 {buildingName : "Castle", buildingImage : "castle/castle-sprite.png",positionX:610, positionY: 330, sizeX: 100, sizeY: 180},
                 {buildingName : "Shop", buildingImage: "store/store-sprite.png",positionX: 32, positionY: 80, sizeX: 170, sizeY: 105},
                 {buildingName : "Teleport",buildingImage: "teleport/teleport-sprite.png",positionX:455, positionY: 20, sizeX: 170, sizeY: 290},
-                {buildingName : "Updater",buildingImage: "updater/updater-sprite.png",positionX: 652, positionY: 80, sizeX: 125, sizeY: 110}
+                {buildingName : "Updater",buildingImage: "updater/updater-sprite.png",positionX: 652, positionY: 80, sizeX: 125, sizeY: 110},
+                {buildingName : "Attack",buildingImage: "attack/attack-sprite.png",positionX: 100, positionY: 440, sizeX: 164, sizeY: 127}
+
             ];
+
+            let fullBuildingsJSON = '{{ buildings|raw }}';
+            buildingArray = JSON.parse(fullBuildingsJSON);
+
 
             function preload() {
 
@@ -68,16 +73,12 @@
                 game.load.spritesheet('magician_' + type, 'assets/player/magician_' + type + '.png', 68, 80);
 
                 for(let building of buildingArray){
-
                     let buildingName = building.buildingName;
                     let buildingImage = building.buildingImage;
-                    let sizeX = building.sizeX;
-                    let sizeY = building.sizeY;
+                    let sizeX = parseInt(building.sizeX);
+                    let sizeY = parseInt(building.sizeY);
 
                     let buildingElement = game.load.spritesheet(buildingName, 'assets/world/buildings/' + buildingImage, sizeX, sizeY);
-
-
-
                 }
             }
 
@@ -95,9 +96,22 @@
 
                 for(let building of buildingArray){
 
-                    building = game.add.button( building.positionX, building.positionY,building.buildingName,clickBuilding,this, 1,0);
+                    info0 = game.add.text( parseInt(building.positionX) + 40, parseInt( building.positionY)- 20, building.buildingName, {
+                        font: '16px Arial',
+                        fill: '#FFFFFF',
+                        'fontWeight': 'bold',
+                        'stroke': '#000000',
+                        'strokeThickness': 6,
+                        'z-index': 100
+                    });
 
+
+                    let uri = building.uri;
+                    building = game.add.button( parseInt(building.positionX),parseInt( building.positionY),building.buildingName,clickBuilding,this, 1,0);
+                    building.uri = uri;
                     game.physics.arcade.enable(building, Phaser.Physics.Arcade);
+
+
 //            button.anchor.setTo(building.positionX, building.positionY);
 
 //            game.add.sprite(building.positionX, building.positionY, building.buildingName)
@@ -154,7 +168,7 @@
 
                 //make ajax to redirect to another page
 
-                console.log(building.key)
+                location.href =  Routing.generate(building.uri);
             }
 
             function render() {

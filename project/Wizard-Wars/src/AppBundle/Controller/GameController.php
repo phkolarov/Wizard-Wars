@@ -83,6 +83,7 @@ class GameController extends Controller
      */
     public function attackOpponent($id)
     {
+
         $kingdom = $this->getDoctrine()
             ->getRepository('AppBundle:Kingodms')
             ->find($id);
@@ -181,11 +182,13 @@ class GameController extends Controller
     public function gameResult(Request $request)
     {
 
-
         $submittedToken = $request->headers->get('host');
+        $response = new Response();
 
-        if ($this->isCsrfTokenValid('token_id', $submittedToken)) {
-            // ... do something, like deleting an object
+        if (!$this->isCsrfTokenValid('token_id', $submittedToken)) {
+            $response->setContent(json_encode(array(
+                'error' => "not authenticated",
+            )));
         }
 
 
@@ -200,8 +203,8 @@ class GameController extends Controller
 
 
         $user->setHealth($playerHealth);
+
         $castle->setCastleHealth($opponentCastleHealth);
-        $response = new Response();
         $em = $this->getDoctrine()->getManager();
 
         if ($playerHealth > 0 && $opponentCastleHealth > 0 && $result == "escape") {
@@ -211,7 +214,9 @@ class GameController extends Controller
             )));
             return $response;
         } else if ($playerHealth > 0 && $opponentCastleHealth < 0 && $result == "win") {
-
+            $user->setXP($user->getXP()+ 80 * $user->getLevel());
+            $user->setGold($user->getGold() + 20);
+            $user->setMana($user->getGold() + 20);
             $lycans = $this->getDoctrine()->getRepository('AppBundle:Lycans')->findBy(['castleId'=>$castleId]);
 
             foreach ($lycans as $lycan) {
@@ -235,6 +240,17 @@ class GameController extends Controller
                 $user->setAttack(0);
                 $user->setHealth(0);
                 $user->setMoney(0);
+
+                $userNecklaces = $this->getDoctrine()->getRepository('UsersNecklaces')->findBy(['user'=>$user]);
+
+                foreach ($userNecklaces as $necklace){
+
+                    if($userNecklaces->getNecklace()->getUpdater()->getType() == 'Updater'){
+
+                        $em->remove($necklace);
+                        $em->flush();
+                    }
+                }
 
                 $response->setContent(json_encode(array(
                     'success' => "die",

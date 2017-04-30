@@ -19,9 +19,9 @@ ww.helpers = (() => {
         })
     }
 
-    function startTimer(duration, display,defaultTime) {
-        var timer = duration, minutes, seconds;
-       let interval = setInterval(function () {
+    function startTimer(duration, display, defaultTime) {
+        let timer = duration, minutes, seconds;
+        let interval = setInterval(function () {
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
 
@@ -31,9 +31,9 @@ ww.helpers = (() => {
             display.text(minutes + ":" + seconds);
 
             if (--timer < 0) {
-                if(defaultTime){
+                if (defaultTime) {
                     timer = defaultTime;
-                }else{
+                } else {
                     clearInterval(interval);
                     return false;
                 }
@@ -42,12 +42,12 @@ ww.helpers = (() => {
     }
 
 
-    function countDownTimer(seconds,clockId,defaultTime = null) {
+    function countDownTimer(seconds, clockId, defaultTime = null) {
 
         jQuery(function ($) {
             var fiveMinutes = seconds,
-                display = $('#'+clockId);
-            startTimer(fiveMinutes, display,defaultTime);
+                display = $('#' + clockId);
+            startTimer(fiveMinutes, display, defaultTime);
         });
 
     }
@@ -55,7 +55,7 @@ ww.helpers = (() => {
 
     return {
         request: ajaxRequest,
-        countDownTimer:countDownTimer
+        countDownTimer: countDownTimer
     }
 
 })();

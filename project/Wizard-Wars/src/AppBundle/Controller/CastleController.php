@@ -22,7 +22,7 @@ class CastleController extends Controller
     const CATACOMB_LEVEL = 2;
     /**
      * @Security("is_authenticated()")
-     * @Route("castles", name="castle")
+     * @Route("castles",options={"expose"=true},  name="castle")
      * @return mixed
      */
     public function castlesAction()
@@ -32,12 +32,21 @@ class CastleController extends Controller
         $userNecklaces = $this->getDoctrine()->getRepository('AppBundle:UsersNecklaces')->findBy(['user' => $user]);
         $magicWands = $this->getDoctrine()->getRepository('AppBundle:UsersMagicWands')->findBy(['user' => $user]);
 
+        $building = $this->getDoctrine()->getRepository('AppBundle:Buildings')->findOneBy(['type' => 'catacomb']);
+        $catacomb = $this->getDoctrine()->getRepository('AppBundle:UsersBuildings')->findOneBy(['user' => $user,'building'=>$building]);
+
+        $passToCatacomb = false;
+        if($catacomb){
+            $passToCatacomb = true;
+        }
+
 
         return $this->render('pages/castle.html.twig', [
             'ownCastles' => $ownCastles,
             'userNecklaces' => $userNecklaces,
             'magicWands' => $magicWands,
-            'userWand'=>$user->getWand()
+            'userWand'=>$user->getWand(),
+            'passToCatacomb'=>$passToCatacomb
         ]);
     }
 
@@ -158,5 +167,17 @@ class CastleController extends Controller
         } else {
             return $this->redirectToRoute("catacombs", ["error" => "You do not own that necklace or kingdom!"]);
         }
+    }
+
+    /**
+     * @Security("is_authenticated()")
+     * @Route("buildings", name="buildings")
+     * @Method("GET")
+     */
+    public function BuildingController(){
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $userBuildings = $this->getDoctrine()->getRepository('AppBundle:UsersBuildings')->findBy(['user'=>$user]);
+        return $this->render('pages/buildings.html.twig',['userBuildings'=>$userBuildings]);
     }
 }
